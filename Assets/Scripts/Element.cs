@@ -9,10 +9,10 @@ public class Element : MonoBehaviour {
     public int y;
 
     //hold to display building name if there is a building on this location
-    public Text buildingName;
+    //public Text buildingName;
 
     void Start () {
-        buildingName = GetComponent<Text>();
+        //buildingName = GetComponent<Text>();
         //squares register themselves to the Grid
         x = (int)transform.position.x;
         y = (int)transform.position.y;
@@ -20,19 +20,23 @@ public class Element : MonoBehaviour {
             GameControl.grid[x, y] = this;
         } else {
             Debug.Log("reference exists");
+            if (BuildingCtrl.playerBuilding[x, y] != null) {
+                //should instantiate existing building in this location...but doesn't
+                Instantiate(BuildingCtrl.playerBuilding[x, y], transform.position, Quaternion.identity);
+            }
         }
     }
     
     void Update() {
-        if (GameControl.playerBuilding[x,y] != null) { 
-            buildingName.text = GameControl.playerBuilding[x, y].name;
-        }
+        //if (BuildingCtrl.playerBuilding[x,y] != null) { 
+        //    buildingName.text = BuildingCtrl.playerBuilding[x, y].name;
+        //}
     }
 
     void OnMouseUpAsButton() {
         Debug.Log(GameControl.grid[x,y].transform.position);
         if (InHandCtrl.isInHand) {
-            GameControl.placeBuilding(this);
+            BuildingCtrl.placeBuilding(this);
             //clears hand after placing building
             InHandCtrl.clearHand();
         }

@@ -2,25 +2,18 @@
 using UnityEngine.SceneManagement;
 using System.Collections;
 
-public class Building : MonoBehaviour
-{
+public class Building : MonoBehaviour {
 
     public string buildingName;
     public string description;
     public int cost;
 
     //keeps track of locations of buildings players have placed
-    public int[,] location = new int[13, 7];
-
-    void Awake() {
-        //to allow bulidings on grid to persist, call DestroyBuilding() to clear them
-        DontDestroyOnLoad(this);
-    }
+    //public int[,] location = new int[13, 7];
 
     public void BuyBuilding() {
         if (MoneyCtrl.CanAfford(cost)) {
-            if (!InHandCtrl.isInHand)
-            {
+            if (!InHandCtrl.isInHand) {
                 InHandCtrl.buildingInHand = this;
                 InHandCtrl.isInHand = true;
                 MoneyCtrl.SubtractMoney(cost);
