@@ -11,6 +11,7 @@ GameObject:
   - 114: {fileID: 11454390}
   - 222: {fileID: 22267168}
   - 61: {fileID: 6144566}
+  - 212: {fileID: 21251406}
   m_Layer: 0
   m_Name: FermentationShed
   m_TagString: Untagged
@@ -46,6 +47,36 @@ MonoBehaviour:
   buildingName: Fermentation Shed
   description: This is where grape mush rots into alocohol!
   cost: 500
+--- !u!212 &21251406
+SpriteRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 172334}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 0
+  m_ReflectionProbeUsage: 0
+  m_ProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: 6d7dd46784449f945a4a7d38f710062f, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
 --- !u!222 &22267168
 CanvasRenderer:
   m_ObjectHideFlags: 1

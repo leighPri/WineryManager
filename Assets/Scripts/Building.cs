@@ -12,6 +12,11 @@ public class Building : MonoBehaviour
     //keeps track of locations of buildings players have placed
     public int[,] location = new int[13, 7];
 
+    void Awake() {
+        //to allow bulidings on grid to persist, call DestroyBuilding() to clear them
+        DontDestroyOnLoad(this);
+    }
+
     public void BuyBuilding() {
         if (MoneyCtrl.CanAfford(cost)) {
             if (!InHandCtrl.isInHand)
@@ -28,5 +33,9 @@ public class Building : MonoBehaviour
 
     void OnMouseUpAsButton() {
         Debug.Log(name);
+    }
+    
+    public void DestroyBuilding() {
+        DestroyObject(this);
     }
 }
