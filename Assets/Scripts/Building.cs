@@ -13,11 +13,9 @@ public class Building : MonoBehaviour {
 
     public void BuyBuilding() {
         if (MoneyCtrl.CanAfford(cost)) {
-            if (!InHandCtrl.isInHand) {
+            if (!InHandCtrl.IsInHand()) {
                 InHandCtrl.buildingInHand = this;
-                InHandCtrl.isInHand = true;
                 MoneyCtrl.SubtractMoney(cost);
-                Debug.Log(InHandCtrl.buildingInHand + " " + InHandCtrl.isInHand);
                 SceneManager.LoadScene("MainGame");
             }
         } else

@@ -8,22 +8,22 @@ public class BuildingCtrl : MonoBehaviour {
 
     //holder of current buildings
     public static Building[] playerBuilding = new Building[GameControl.w * GameControl.h];
+    public static GameObject buildingHolder; //just used to be able to set parent
 
     void Awake() {
         if (buildingCtrl == null) {
             //DontDestroyOnLoad(gameObject);
             buildingCtrl = this;
         }
-        else if (buildingCtrl != this) {
+        else if (buildingCtrl != this)
             Destroy(gameObject);
-        }
     }
 
     // Use this for initialization
     void Start () {
         //loops through playerBuilding[] and, if a building is present, places a clone of it on 
         //the matching grid[] location
-        for (int x = 0; x < playerBuilding.GetLength(0); x++) {
+        for (int x = 0; x < playerBuilding.Length; x++) {
                 if (playerBuilding[x] != null) {
                     Debug.Log("thing exists");
                     //playerBuilding[x, y] = Instantiate(playerBuilding[x,y], GameControl.grid[x,y].transform.position, Quaternion.identity) as Building;
@@ -33,6 +33,7 @@ public class BuildingCtrl : MonoBehaviour {
 
     public static void placeBuilding(Element cell) {
         playerBuilding[cell.myPosition] = Instantiate(InHandCtrl.buildingInHand, cell.transform.position, Quaternion.identity) as Building;
+        playerBuilding[cell.myPosition].transform.parent = buildingHolder.transform;
         InHandCtrl.ClearHand();
         Debug.Log(playerBuilding[cell.myPosition]);
     }

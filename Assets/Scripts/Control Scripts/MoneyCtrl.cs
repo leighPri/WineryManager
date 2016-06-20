@@ -49,8 +49,7 @@ public class MoneyCtrl : MonoBehaviour {
         moneyOnHand += money;
     }
 
-    public static void SubtractMoney(int money)
-    {
+    public static void SubtractMoney(int money) {
         moneyOnHand -= money;
     }
 }

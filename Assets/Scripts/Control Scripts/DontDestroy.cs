@@ -10,6 +10,7 @@ public class DontDestroy : MonoBehaviour {
     void Awake() {
         if (controlHolder == null) {
             controlHolder = this;
+            DontDestroyOnLoad(gameObject);
         }
         else if (controlHolder != this)
             Destroy(gameObject);
@@ -17,6 +18,5 @@ public class DontDestroy : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        DontDestroyOnLoad(this);
 	}
 }

@@ -11,8 +11,9 @@ public class InHandCtrl : MonoBehaviour {
     Text inHandText;
     
     //variables used to hold onto the "inhand" operators
-    public static bool isInHand;
+    //public static bool isInHand;
     public static Building buildingInHand;
+    static Building nullBuilding;
 
     void Awake() {
         if (inHandCtrl == null) {
@@ -33,9 +34,15 @@ public class InHandCtrl : MonoBehaviour {
         else
             inHandText.text = "In Hand: ";
     }
+
+    public static bool IsInHand() {
+        if (buildingInHand)
+            return true;
+        else
+            return false;
+    }
     
     public static void ClearHand() {
         buildingInHand = null;
-        isInHand = false;
     }
 }
