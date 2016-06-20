@@ -206,6 +206,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddf03067f9cb7dd4f9ed66e9123997db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buildingHolder: {fileID: 191916, guid: 29797e7d887bd0b42a163b6dbb8f497f, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

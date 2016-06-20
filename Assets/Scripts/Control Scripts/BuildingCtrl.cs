@@ -8,7 +8,6 @@ public class BuildingCtrl : MonoBehaviour {
 
     //holder of current buildings
     public static Building[] playerBuilding = new Building[GameControl.w * GameControl.h];
-    public static GameObject buildingHolder; //just used to be able to set parent
 
     void Awake() {
         if (buildingCtrl == null) {
@@ -33,7 +32,7 @@ public class BuildingCtrl : MonoBehaviour {
 
     public static void placeBuilding(Element cell) {
         playerBuilding[cell.myPosition] = Instantiate(InHandCtrl.buildingInHand, cell.transform.position, Quaternion.identity) as Building;
-        playerBuilding[cell.myPosition].transform.parent = buildingHolder.transform;
+        playerBuilding[cell.myPosition].transform.parent = BuildingHolder.buildingHolder.gameObject.transform;
         InHandCtrl.ClearHand();
         Debug.Log(playerBuilding[cell.myPosition]);
     }

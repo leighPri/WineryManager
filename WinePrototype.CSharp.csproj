@@ -77,6 +77,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\Building.cs" />
     <Compile Include="Assets\Scripts\Control Scripts\BuildingCtrl.cs" />
+    <Compile Include="Assets\Scripts\Control Scripts\BuildingHolder.cs" />
     <Compile Include="Assets\Scripts\Control Scripts\ControlHolder.cs" />
     <Compile Include="Assets\Scripts\Control Scripts\GameControl.cs" />
     <Compile Include="Assets\Scripts\Control Scripts\InHandCtrl.cs" />
