@@ -10,7 +10,6 @@ GameObject:
   - 224: {fileID: 22426394}
   - 222: {fileID: 22299448}
   - 114: {fileID: 11482286}
-  - 114: {fileID: 11476572}
   m_Layer: 5
   m_Name: In Hand
   m_TagString: Untagged
@@ -235,7 +234,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 000000000g
+  m_Text: 4500g
 --- !u!114 &11433946
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -304,17 +303,6 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
---- !u!114 &11476572
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 134732}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4632fe55495131748abc099873dd777f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &11482286
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -347,7 +335,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 
+  m_Text: 'In Hand: '
 --- !u!222 &22273248
 CanvasRenderer:
   m_ObjectHideFlags: 1
