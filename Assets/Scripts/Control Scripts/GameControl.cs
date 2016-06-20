@@ -19,7 +19,8 @@ public class GameControl : MonoBehaviour {
 
         if (control == null) //if there is no GameControl object
         {
-            DontDestroyOnLoad(gameObject);
+            //commented out because the Controls parent object should persist this
+            //DontDestroyOnLoad(gameObject);
             control = this;
             //this instance becomes THE GameControl object that will persist through all scenes
         }

@@ -10,12 +10,14 @@ public class MoneyCtrl : MonoBehaviour {
 
     //the main money object, this holds current amount of money for the player
     public static int moneyOnHand;
-    
-    Text moneyDisplay;
+
+    public GameObject moneyDisplay;
+    Text moneyDisplayText;
 
     void Awake() {
         if (moneyCtrl == null) {
-            DontDestroyOnLoad(gameObject);
+            //commented out because the Controls parent object should persist this
+            //DontDestroyOnLoad(gameObject);
             moneyCtrl = this;
             //starting money for player, change or remove this line later for a better solution
             moneyOnHand = 5000;
@@ -27,13 +29,13 @@ public class MoneyCtrl : MonoBehaviour {
     // Use this for initialization
     void Start () {
         //gets Text component so that it can be modified in Update()
-        moneyDisplay = GetComponent<Text>();
+        moneyDisplayText = moneyDisplay.GetComponent<Text>();
     }
 	
 	// Update is called once per frame
 	void Update () {
         //displays money available
-        moneyDisplay.text = moneyOnHand.ToString() + "g";
+        moneyDisplayText.text = moneyOnHand.ToString() + "g";
     }
 
     public static bool CanAfford(int cost) {

@@ -7,7 +7,7 @@ public class InHandCtrl : MonoBehaviour {
 
     public static InHandCtrl inHandCtrl;
 
-    //public GameObject inHand;
+    public GameObject inHand;
     Text inHandText;
     
     //variables used to hold onto the "inhand" operators
@@ -16,14 +16,15 @@ public class InHandCtrl : MonoBehaviour {
 
     void Awake() {
         if (inHandCtrl == null) {
-            DontDestroyOnLoad(gameObject);
+            //commented out because the Controls parent object should persist this
+            //DontDestroyOnLoad(gameObject);
             inHandCtrl = this;
         } else if (inHandCtrl != this)
             Destroy(gameObject);
     }
 
     void Start() {
-        inHandText = GetComponent<Text>();
+        inHandText = inHand.GetComponent<Text>();
     }
 
     void Update() {
