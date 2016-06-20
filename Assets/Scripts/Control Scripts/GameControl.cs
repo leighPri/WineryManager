@@ -11,8 +11,7 @@ public class GameControl : MonoBehaviour {
     public static int w = 13; //grid width
     public static int h = 7; //grid height
     //holder of the actual grid data
-    public static Element[,] grid = new Element[w, h];
-
+    public static Element[] grid = new Element[w * h];
 
     void Awake()
     {

@@ -34,7 +34,7 @@ public class InHandCtrl : MonoBehaviour {
             inHandText.text = "In Hand: ";
     }
     
-    public static void clearHand() {
+    public static void ClearHand() {
         buildingInHand = null;
         isInHand = false;
     }
