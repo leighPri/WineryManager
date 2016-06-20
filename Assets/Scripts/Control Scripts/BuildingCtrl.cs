@@ -19,7 +19,7 @@ public class BuildingCtrl : MonoBehaviour {
     }
 
     // Use this for initialization
-    void Start () {
+    void OnLevelWasLoaded () {
         //loops through playerBuilding[] and, if a building is present, places a clone of it on 
         //the matching grid[] location
         for (int x = 0; x < playerBuilding.Length; x++) {
