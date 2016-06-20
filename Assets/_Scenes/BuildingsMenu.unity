@@ -1075,7 +1075,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11427988, guid: 536bc850868ba174e981332d11b85cb2, type: 2}
+      - m_Target: {fileID: 11475812, guid: 8ddc4e87372713047b71fb73c4b6303d, type: 2}
         m_MethodName: BuyBuilding
         m_Mode: 1
         m_Arguments:
