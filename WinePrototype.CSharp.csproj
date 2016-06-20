@@ -77,11 +77,11 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\Building.cs" />
     <Compile Include="Assets\Scripts\Control Scripts\BuildingCtrl.cs" />
+    <Compile Include="Assets\Scripts\Control Scripts\DontDestroy.cs" />
     <Compile Include="Assets\Scripts\Control Scripts\GameControl.cs" />
     <Compile Include="Assets\Scripts\Control Scripts\InHandCtrl.cs" />
     <Compile Include="Assets\Scripts\Control Scripts\MoneyCtrl.cs" />
     <Compile Include="Assets\Scripts\Control Scripts\UIControl.cs" />
-    <Compile Include="Assets\Scripts\DontDestroy.cs" />
     <Compile Include="Assets\Scripts\Element.cs" />
     <Compile Include="Assets\Scripts\LevelManager.cs" />
     <Compile Include="Assets\Scripts\SaveLoad.cs" />
