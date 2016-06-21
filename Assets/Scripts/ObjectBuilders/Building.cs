@@ -7,6 +7,9 @@ public class Building : MonoBehaviour {
     public string objectName;
     public string description;
     public int cost;
+    
+    public static bool isProcessing;
+    public static Grape grapeInProcessing;
 
     public void BuyBuilding () {
         if (MoneyCtrl.CanAfford(cost)) {
@@ -19,8 +22,26 @@ public class Building : MonoBehaviour {
             Debug.Log("Not enough cash on hand to buy " + objectName);
     }
 
+    public static void fillPress(Grape grape) {
+        isProcessing = true;
+        grapeInProcessing = grape;
+    }
+
+    public static void emptyBuilding() {
+        isProcessing = false;
+    }
+
     void OnMouseUpAsButton() {
-        Debug.Log(objectName);
+        if (isProcessing) {
+            if (objectName == "Wine Press") {
+                Debug.Log("Currently proccessing " + grapeInProcessing);
+            }
+        }
+        if (InHandCtrl.isInHand) {
+            if (InHandCtrl.typeOfObject == "grape") {
+                fillPress(InHandCtrl.grapeInHand);
+            }
+        }
     }
     
     public void DestroyBuilding() {
