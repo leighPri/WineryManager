@@ -47,6 +47,7 @@ MonoBehaviour:
   objectName: Wine Press
   description: place where grapes get squished
   cost: 500
+  objectType: press
 --- !u!212 &21262908
 SpriteRenderer:
   m_ObjectHideFlags: 1

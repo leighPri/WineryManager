@@ -44,6 +44,7 @@ MonoBehaviour:
   description: Light colored grapes that make white wine
   cost: 100
   objectType: grape
+  buildingNeeded: press
   outputs: []
 --- !u!1001 &100100000
 Prefab:

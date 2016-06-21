@@ -47,6 +47,7 @@ MonoBehaviour:
   objectName: Fermentation Shed
   description: place where wine ferments
   cost: 500
+  objectType: ferment
 --- !u!212 &21251406
 SpriteRenderer:
   m_ObjectHideFlags: 1

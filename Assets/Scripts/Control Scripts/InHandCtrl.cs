@@ -30,6 +30,9 @@ public class InHandCtrl : MonoBehaviour {
 
     void Start() {
         inHandText = inHand.GetComponent<Text>();
+        if (!isInHand) {
+            inHandText.text = "In Hand: ";
+        }
     }
 
     void Update() {

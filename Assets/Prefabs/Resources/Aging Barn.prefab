@@ -47,6 +47,7 @@ MonoBehaviour:
   objectName: Aging Barn
   description: Place where stuff ages
   cost: 500
+  objectType: aging
 --- !u!212 &21251476
 SpriteRenderer:
   m_ObjectHideFlags: 1
