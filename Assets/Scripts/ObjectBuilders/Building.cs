@@ -4,23 +4,23 @@ using System.Collections;
 
 public class Building : MonoBehaviour {
 
-    public string buildingName;
+    public string objectName;
     public string description;
     public int cost;
 
-    public void BuyBuilding() {
+    public void BuyBuilding () {
         if (MoneyCtrl.CanAfford(cost)) {
-            if (!InHandCtrl.IsInHand()) {
-                InHandCtrl.buildingInHand = this;
+            if (!InHandCtrl.isInHand) {
+                InHandCtrl.PutBuildingInHand(this);
                 MoneyCtrl.SubtractMoney(cost);
                 SceneManager.LoadScene("MainGame");
             }
         } else
-            Debug.Log("Not enough cash on hand to buy " + name);
+            Debug.Log("Not enough cash on hand to buy " + objectName);
     }
 
     void OnMouseUpAsButton() {
-        Debug.Log(name);
+        Debug.Log(objectName);
     }
     
     public void DestroyBuilding() {

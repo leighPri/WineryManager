@@ -7,10 +7,7 @@ public class Element : MonoBehaviour {
     //holders for this square's location info
     public int myPosition;
 
-    Renderer rend;
-
     void Start () {
-        rend = GetComponent<SpriteRenderer>();
         //squares register themselves to the Grid
         for (int i = 0; i < GameControl.grid.Length; i++) {
             if (GameControl.grid[i] == null) {
@@ -22,15 +19,11 @@ public class Element : MonoBehaviour {
     }
 
     void OnMouseUpAsButton() {
-        if (InHandCtrl.IsInHand())
-            BuildingCtrl.placeBuilding(this);
+        if (InHandCtrl.isInHand) {
+            if (InHandCtrl.typeOfObject == "building") {
+                BuildingCtrl.placeBuilding(this);
+            }
+        }
     }
-
-    public void Hide() {
-        rend.enabled = false;
-    }
-
-    public void Show() {
-        rend.enabled = true;
-    }
+    
 }

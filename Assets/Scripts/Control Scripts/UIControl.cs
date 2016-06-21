@@ -8,15 +8,16 @@ public class UIControl : MonoBehaviour {
     //public GameObject textHolder;
     //Canvas canvas;
     public Building[] buildingsAvailable;
+    public Grape[] grapesAvailable;
 
-    void Start() {
+    //void Start() {
         //canvas = FindObjectOfType<Canvas>();
         //DisplayAvailableBuildings();
-    }
+    //}
 
-    void Update() {
+    //void Update() {
         
-    }
+    //}
 
     //void DisplayAvailableBuildings() {
     //    float yOffset = 0.0f;

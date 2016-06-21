@@ -41,11 +41,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 194956}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dac1b8bc706d81f44a60d664e85931af, type: 3}
+  m_Script: {fileID: 11500000, guid: dbfc5de6201dee7479e182725ce5121f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buildingName: Aging Barn
-  description: This is where wines age to build character.
+  objectName: Aging Barn
+  description: Place where stuff ages
   cost: 500
 --- !u!212 &21251476
 SpriteRenderer:
@@ -92,6 +92,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0

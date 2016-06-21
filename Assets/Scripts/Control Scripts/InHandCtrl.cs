@@ -7,13 +7,17 @@ public class InHandCtrl : MonoBehaviour {
 
     public static InHandCtrl inHandCtrl;
 
+    //allows the name of the inHand object to be displayed
     public GameObject inHand;
     Text inHandText;
     
     //variables used to hold onto the "inhand" operators
-    //public static bool isInHand;
+    public static bool isInHand;
+    public static string typeOfObject; //stores the type of object that is in hand, used for conditionals
+
+    //the actual types of things that can be stored in hand
     public static Building buildingInHand;
-    static Building nullBuilding;
+    public static Grape grapeInHand;
 
     void Awake() {
         if (inHandCtrl == null) {
@@ -29,20 +33,32 @@ public class InHandCtrl : MonoBehaviour {
     }
 
     void Update() {
-        if (buildingInHand != null)
-            inHandText.text = "In Hand: " + buildingInHand.name;
-        else
+        if (isInHand) {
+            if (typeOfObject == "building") {
+                inHandText.text = "In Hand: " + buildingInHand.objectName;
+            } else if (typeOfObject == "grape") {
+                inHandText.text = "In Hand: " + grapeInHand.objectName;
+            }
+        } else
             inHandText.text = "In Hand: ";
     }
 
-    public static bool IsInHand() {
-        if (buildingInHand)
-            return true;
-        else
-            return false;
+    public static void PutBuildingInHand(Building building) {
+        buildingInHand = building;
+        isInHand = true;
+        typeOfObject = "building";
     }
-    
+
+    public static void PutGrapeInHand(Grape grape) {
+        grapeInHand = grape;
+        isInHand = true;
+        typeOfObject = "grape";
+    }
+
+    //does not actually clear the referenced object but sets the conditional checks back to reset so that
+    //the referenced object may be overwritten
     public static void ClearHand() {
-        buildingInHand = null;
+        isInHand = false;
+        typeOfObject = "";
     }
 }
