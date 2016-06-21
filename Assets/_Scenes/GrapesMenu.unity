@@ -505,7 +505,9 @@ MonoBehaviour:
   - {fileID: 11409744, guid: 085eddaf72881254790260d4ab8af842, type: 2}
   - {fileID: 11454390, guid: 0e7e15a42c4b68f46bcc09160b550951, type: 2}
   - {fileID: 11475812, guid: 8ddc4e87372713047b71fb73c4b6303d, type: 2}
-  grapesAvailable: []
+  grapesAvailable:
+  - {fileID: 11454722, guid: a648bf74fc984024daa0f92e3e0bcc4f, type: 2}
+  - {fileID: 11484966, guid: 80ebcab0a296fb04a8e09b0b165d1723, type: 2}
 --- !u!114 &809823454
 MonoBehaviour:
   m_ObjectHideFlags: 0

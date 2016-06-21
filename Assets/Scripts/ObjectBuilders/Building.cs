@@ -9,7 +9,7 @@ public class Building : MonoBehaviour {
     public int cost;
     
     public static bool isProcessing;
-    public static Grape grapeInProcessing;
+    public static Consumable grapeInProcessing;
 
     public void BuyBuilding () {
         if (MoneyCtrl.CanAfford(cost)) {
@@ -22,7 +22,8 @@ public class Building : MonoBehaviour {
             Debug.Log("Not enough cash on hand to buy " + objectName);
     }
 
-    public static void fillPress(Grape grape) {
+    public static void fillPress(Consumable grape)
+    {
         isProcessing = true;
         grapeInProcessing = grape;
     }
@@ -38,12 +39,12 @@ public class Building : MonoBehaviour {
             }
         }
         if (InHandCtrl.isInHand) {
-            if (InHandCtrl.typeOfObject == "grape") {
-                fillPress(InHandCtrl.grapeInHand);
+            if (InHandCtrl.typeOfObject == "grape" && objectName == "Wine Press") {
+                fillPress(InHandCtrl.consumableInHand);
             }
         }
     }
-    
+
     public void DestroyBuilding() {
         DestroyObject(this);
     }

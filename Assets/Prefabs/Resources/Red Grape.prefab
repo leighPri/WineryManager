@@ -43,6 +43,8 @@ MonoBehaviour:
   objectName: Red Grape
   description: Dark colored grapes that maked red wine
   cost: 100
+  objectType: grape
+  outputs: []
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

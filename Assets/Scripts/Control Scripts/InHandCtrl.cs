@@ -17,7 +17,7 @@ public class InHandCtrl : MonoBehaviour {
 
     //the actual types of things that can be stored in hand
     public static Building buildingInHand;
-    public static Grape grapeInHand;
+    public static Consumable consumableInHand;
 
     void Awake() {
         if (inHandCtrl == null) {
@@ -37,7 +37,7 @@ public class InHandCtrl : MonoBehaviour {
             if (typeOfObject == "building") {
                 inHandText.text = "In Hand: " + buildingInHand.objectName;
             } else if (typeOfObject == "grape") {
-                inHandText.text = "In Hand: " + grapeInHand.objectName;
+                inHandText.text = "In Hand: " + consumableInHand.objectName;
             }
         } else
             inHandText.text = "In Hand: ";
@@ -49,8 +49,8 @@ public class InHandCtrl : MonoBehaviour {
         typeOfObject = "building";
     }
 
-    public static void PutGrapeInHand(Grape grape) {
-        grapeInHand = grape;
+    public static void PutGrapeInHand(Consumable grape) {
+        consumableInHand = grape;
         isInHand = true;
         typeOfObject = "grape";
     }

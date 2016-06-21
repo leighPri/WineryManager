@@ -8,7 +8,7 @@ public class UIControl : MonoBehaviour {
     //public GameObject textHolder;
     //Canvas canvas;
     public Building[] buildingsAvailable;
-    public Grape[] grapesAvailable;
+    public Consumable[] grapesAvailable;
 
     //void Start() {
         //canvas = FindObjectOfType<Canvas>();

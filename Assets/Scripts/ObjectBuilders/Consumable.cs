@@ -2,11 +2,17 @@
 using UnityEngine.SceneManagement;
 using System.Collections;
 
-public class Grape : MonoBehaviour {
+public class Consumable : MonoBehaviour {
 
     public string objectName;
     public string description;
-    public int cost;
+    public int cost; //maybe also use for sell price
+
+    //valid inputs are: "grape" "mush" and "unaged"
+    //these will be used elsewhere for conditionals
+    public string objectType;
+
+    public Consumable[] outputs;
 
     public void BuyGrape () {
         if (MoneyCtrl.CanAfford(cost)) {
