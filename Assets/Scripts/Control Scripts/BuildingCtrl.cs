@@ -5,6 +5,7 @@ using System.Collections;
 public class BuildingCtrl : MonoBehaviour {
 
     public static BuildingCtrl buildingCtrl;
+    public GameObject buildingHolder;
 
     //holder of current buildings
     public static Building[] playerBuilding = new Building[GameControl.w * GameControl.h];
@@ -19,21 +20,30 @@ public class BuildingCtrl : MonoBehaviour {
     }
 
     // Use this for initialization
-    void OnLevelWasLoaded () {
-        //loops through playerBuilding[] and, if a building is present, places a clone of it on 
-        //the matching grid[] location
-        for (int x = 0; x < playerBuilding.Length; x++) {
-                if (playerBuilding[x] != null) {
-                    Debug.Log("thing exists");
-                    //playerBuilding[x, y] = Instantiate(playerBuilding[x,y], GameControl.grid[x,y].transform.position, Quaternion.identity) as Building;
-                }
+    void OnLevelWasLoaded (int level) {
+        if (level == 1) { 
+            //is supposed to instantiate buildings
+            for (int x = 0; x < playerBuilding.Length; x++) {
+                    if (playerBuilding[x] != null) {
+                        Debug.Log(playerBuilding[x].name + " exists at index location " + x);
+                        //playerBuilding[x, y] = Instantiate(playerBuilding[x,y], GameControl.grid[x,y].transform.position, Quaternion.identity) as Building;
+                    }
+            }
+            //shows and hides buildingHolder as having it on its own script doesn't work
+            //note that this only works because BuildingControl is being passed an instance of
+            //the BuildingHolder, not the BuildingHolder prefab itself
+            buildingHolder.SetActive(true);
+        }
+        else
+        {
+            buildingHolder.SetActive(false);
         }
     }
 
     public static void placeBuilding(Element cell) {
         playerBuilding[cell.myPosition] = Instantiate(InHandCtrl.buildingInHand, cell.transform.position, Quaternion.identity) as Building;
-        playerBuilding[cell.myPosition].transform.parent = BuildingHolder.buildingHolder.gameObject.transform;
+        playerBuilding[cell.myPosition].transform.SetParent(BuildingHolder.buildingHolder.gameObject.transform, false);
         InHandCtrl.ClearHand();
-        Debug.Log(playerBuilding[cell.myPosition]);
+        //Debug.Log(playerBuilding[cell.myPosition]);
     }
 }

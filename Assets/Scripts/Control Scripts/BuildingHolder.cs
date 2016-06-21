@@ -17,18 +17,5 @@ public class BuildingHolder : MonoBehaviour {
             Destroy(gameObject);
         }
     }
-
-    void OnLevelWasLoaded(int level)
-    {
-        if (level == 1)
-        {
-            //hide this object and its children
-            gameObject.SetActive(true);
-        }
-        else
-        {
-            //reveal object and its children
-            gameObject.SetActive(false);
-        }
-    }
+    
 }
