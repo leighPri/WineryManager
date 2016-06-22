@@ -44,11 +44,11 @@ public class BuildingCtrl : MonoBehaviour {
         //Debug.Log(playerBuilding[cell.myPosition]);
     }
 
-    public static void HideBuildingMenu() {
+    public void HideBuildingMenu() {
         BuildingMenuControl.buildingMenuCtrl.gameObject.SetActive(false);
     }
 
-    public static void ShowBuildingMenu() {
+    public void ShowBuildingMenu() {
         BuildingMenuControl.buildingMenuCtrl.gameObject.SetActive(true);
     }
 }

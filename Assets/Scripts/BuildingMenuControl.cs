@@ -30,15 +30,17 @@ public class BuildingMenuControl : MonoBehaviour {
     void Start() {
         buildingNameText = buildingName.GetComponent<Text>();
         statusText = status.GetComponent<Text>();
-        //displays option buttons only if the building is an aging barn
-        if (displayedBuilding.objectType != "aging") {
-            agingOptions.SetActive(false);
-        } else {
-            agingOptions.SetActive(true);
-        }
     }
 
-    void Update() {
+    void Update()
+    {
+        //displays option buttons only if the building is an aging barn AND only if the held item has more than one possible output
+        if (displayedBuilding.objectType != "aging") {
+            agingOptions.SetActive(false);
+        } else if (displayedBuilding.consumableInProcessing.outputs.Length > 1) {
+            agingOptions.SetActive(true);
+        }
+
         //sets elements to the specifics of the passed building
         buildingNameText.text = displayedBuilding.objectName;
 
@@ -60,7 +62,7 @@ public class BuildingMenuControl : MonoBehaviour {
     //places output in hand and hides the building menu
     public void GetOutput() {
         InHandCtrl.PutConsumableInHand(displayedBuilding.consumableInProcessing.finalOutput);
-        BuildingCtrl.HideBuildingMenu();
+        BuildingCtrl.buildingCtrl.HideBuildingMenu();
     }
 
     //lets the aging buttons set their desired outputs
