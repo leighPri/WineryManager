@@ -17,11 +17,10 @@ public class BuildingCtrl : MonoBehaviour {
         else if (buildingCtrl != this)
             Destroy(gameObject);
     }
-
-    // Use this for initialization
+    
     void OnLevelWasLoaded (int level) {
         if (level == 1) { 
-            //is supposed to instantiate buildings
+            //is supposed to instantiate buildings...currently does not
             for (int x = 0; x < playerBuilding.Length; x++) {
                     if (playerBuilding[x] != null) {
                         Debug.Log(playerBuilding[x].objectName + " exists at index location " + x);
@@ -33,8 +32,7 @@ public class BuildingCtrl : MonoBehaviour {
             //the BuildingHolder, not the BuildingHolder prefab itself
             BuildingHolder.buildingHolder.gameObject.SetActive(true);
         }
-        else
-        {
+        else {
             BuildingHolder.buildingHolder.gameObject.SetActive(false);
         }
     }
@@ -44,5 +42,13 @@ public class BuildingCtrl : MonoBehaviour {
         playerBuilding[cell.myPosition].transform.SetParent(BuildingHolder.buildingHolder.gameObject.transform, false);
         InHandCtrl.ClearHand();
         //Debug.Log(playerBuilding[cell.myPosition]);
+    }
+
+    public static void HideBuildingMenu() {
+        BuildingMenuControl.buildingMenuCtrl.gameObject.SetActive(false);
+    }
+
+    public static void ShowBuildingMenu() {
+        BuildingMenuControl.buildingMenuCtrl.gameObject.SetActive(true);
     }
 }

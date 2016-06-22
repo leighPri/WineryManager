@@ -4,7 +4,7 @@ using System.Collections;
 
 public class Consumable : MonoBehaviour {
 
-    public string objectName;
+    public string objectName; //the name that the player sees
     public string description;
     public int cost; //maybe also use for sell price
 
@@ -20,6 +20,7 @@ public class Consumable : MonoBehaviour {
     //0 = stainless steel, 1 = oak chips, 2 = oak barrel
     //for objects with only one outcome, ignore the above note
     public Consumable[] outputs;
+    public Consumable finalOutput;
 
     public void BuyGrape () {
         if (MoneyCtrl.CanAfford(cost)) {
@@ -40,11 +41,19 @@ public class Consumable : MonoBehaviour {
             return false;
     }
 
+    public void OutputSelect(int outputIndex) {
+        if (outputs.Length == 1) {
+            finalOutput = outputs[0];
+        } else {
+            finalOutput = outputs[outputIndex];
+        }
+    }
+
     void OnMouseUpAsButton() {
         Debug.Log(objectName);
     }
 
-    public void DestroyBuilding() {
+    public void DestroyObject() {
         DestroyObject(this);
     }
 }

@@ -69,6 +69,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\BuildingMenuControl.cs" />
     <Compile Include="Assets\Scripts\Control Scripts\BuildingCtrl.cs" />
     <Compile Include="Assets\Scripts\Control Scripts\BuildingHolder.cs" />
     <Compile Include="Assets\Scripts\Control Scripts\ControlHolder.cs" />
