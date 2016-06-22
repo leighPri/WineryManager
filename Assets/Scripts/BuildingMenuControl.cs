@@ -53,6 +53,16 @@ public class BuildingMenuControl : MonoBehaviour {
         }
     }
 
+    public void FinishButton() {
+        displayedBuilding.FinishedProcessing();
+    }
+
+    //places output in hand and hides the building menu
+    public void GetOutput() {
+        InHandCtrl.PutConsumableInHand(displayedBuilding.consumableInProcessing.finalOutput);
+        BuildingCtrl.HideBuildingMenu();
+    }
+
     //lets the aging buttons set their desired outputs
     public static void SetOutput(int output) {
         selectedOutput = output;

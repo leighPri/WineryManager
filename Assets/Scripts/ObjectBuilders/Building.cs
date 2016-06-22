@@ -33,6 +33,7 @@ public class Building : MonoBehaviour {
                 isProcessing = true;
                 finishedProcessing = false;
                 consumableInProcessing = InHandCtrl.consumableInHand;
+                InHandCtrl.ClearHand();
             } else {
                 Debug.Log("Cannot place " + InHandCtrl.consumableInHand.objectName + " in " + objectName + ", object requires a(n) " + InHandCtrl.consumableInHand.buildingNeeded + " to be processed.");
             }

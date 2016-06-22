@@ -39,7 +39,7 @@ public class InHandCtrl : MonoBehaviour {
         if (isInHand) {
             if (typeOfObject == "building") {
                 inHandText.text = "In Hand: " + buildingInHand.objectName;
-            } else if (typeOfObject == "grape") {
+            } else if (typeOfObject == "consumable") {
                 inHandText.text = "In Hand: " + consumableInHand.objectName;
             }
         } else
@@ -52,10 +52,10 @@ public class InHandCtrl : MonoBehaviour {
         typeOfObject = "building";
     }
 
-    public static void PutGrapeInHand(Consumable grape) {
-        consumableInHand = grape;
+    public static void PutConsumableInHand(Consumable consumable) {
+        consumableInHand = consumable;
         isInHand = true;
-        typeOfObject = "grape";
+        typeOfObject = "consumable";
     }
 
     //does not actually clear the referenced object but sets the conditional checks back to reset so that

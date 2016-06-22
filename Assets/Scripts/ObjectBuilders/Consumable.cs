@@ -25,7 +25,7 @@ public class Consumable : MonoBehaviour {
     public void BuyGrape () {
         if (MoneyCtrl.CanAfford(cost)) {
             if (!InHandCtrl.isInHand) {
-                InHandCtrl.PutGrapeInHand(this);
+                InHandCtrl.PutConsumableInHand(this);
                 MoneyCtrl.SubtractMoney(cost);
                 SceneManager.LoadScene("MainGame");
             }

@@ -45,7 +45,9 @@ MonoBehaviour:
   cost: 100
   objectType: grape
   buildingNeeded: press
-  outputs: []
+  outputs:
+  - {fileID: 11419674, guid: 2aba54d6b380c5041acf5e7b7d4a9fc3, type: 2}
+  finalOutput: {fileID: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
