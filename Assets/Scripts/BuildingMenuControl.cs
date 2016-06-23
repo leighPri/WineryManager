@@ -37,7 +37,7 @@ public class BuildingMenuControl : MonoBehaviour {
         //displays option buttons only if the building is an aging barn AND only if the held item has more than one possible output
         if (displayedBuilding.objectType != "aging") {
             agingOptions.SetActive(false);
-        } else if (displayedBuilding.consumableInProcessing.wineOutputs.Length > 1) {
+        } else {
             agingOptions.SetActive(true);
         }
 
@@ -76,8 +76,9 @@ public class BuildingMenuControl : MonoBehaviour {
     }
 
     //lets the aging buttons set their desired outputs
-    public  void SetOutput(int output) {
+    public void SetOutput(int output) {
         selectedOutput = output;
+        
     }
 
     public static void GetBuilding(Building building)  {
