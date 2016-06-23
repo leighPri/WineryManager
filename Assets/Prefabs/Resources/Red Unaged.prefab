@@ -43,11 +43,11 @@ MonoBehaviour:
   objectName: Red Unaged Wine
   description: Freshly fermented wine, not ready to drink
   cost: 0
-  objectType: unaged
   buildingNeeded: aging
-  outputs:
-  - {fileID: 0}
-  finalOutput: {fileID: 0}
+  wineOutputs:
+  - {fileID: 11427130, guid: 11388bf791a03eb4ab3c94a50c8cae16, type: 2}
+  - {fileID: 11427130, guid: 359af229469bb624ea46383208266c49, type: 2}
+  midpointOutput: {fileID: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

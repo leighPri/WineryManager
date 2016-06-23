@@ -7,10 +7,7 @@ public class Consumable : MonoBehaviour {
     public string objectName; //the name that the player sees
     public string description;
     public int cost; //maybe also use for sell price
-
-    //valid inputs are: "grape" "mush" and "unaged"
-    //these will be used elsewhere for conditionals
-    public string objectType;
+    
     //valid inputs are "press" "ferment" and "aging"
     //used for conditionals, must be correct
     public string buildingNeeded;
@@ -19,8 +16,13 @@ public class Consumable : MonoBehaviour {
     //For the sake of conditionals, multiple possibilities for aging must always be at the same index:
     //0 = stainless steel, 1 = oak chips, 2 = oak barrel
     //for objects with only one outcome, ignore the above note
-    public Consumable[] outputs;
-    public Consumable finalOutput;
+    public Wine[] wineOutputs;
+    public Consumable midpointOutput;
+
+    //TODO:
+    //outputs should be changed to Wine[] only, other single Consumable for mid-step outputs
+    //add logic to Building and BuildingMenuControl to account for this change, check for Aging Barn to determine which type of output to use
+    //change OutputSelect to be appropriate for wine selection
 
     public void BuyGrape () {
         if (MoneyCtrl.CanAfford(cost)) {
@@ -41,12 +43,11 @@ public class Consumable : MonoBehaviour {
             return false;
     }
 
-    public void OutputSelect(int outputIndex) {
-        if (outputs.Length == 1) {
-            finalOutput = outputs[0];
-        } else {
-            finalOutput = outputs[outputIndex];
-        }
+    public Wine WineSelect(int outputIndex) {
+        if (wineOutputs.Length == 1)
+            return wineOutputs[0];
+        else
+            return wineOutputs[outputIndex];
     }
 
     void OnMouseUpAsButton() {

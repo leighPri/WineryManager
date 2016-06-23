@@ -43,11 +43,9 @@ MonoBehaviour:
   objectName: Red Grape
   description: Dark colored grapes that maked red wine
   cost: 100
-  objectType: grape
   buildingNeeded: press
-  outputs:
-  - {fileID: 11419674, guid: dd644cd904d25394499d3b9094d5558f, type: 2}
-  finalOutput: {fileID: 0}
+  wineOutputs: []
+  midpointOutput: {fileID: 11419674, guid: dd644cd904d25394499d3b9094d5558f, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

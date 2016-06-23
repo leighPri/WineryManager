@@ -43,11 +43,9 @@ MonoBehaviour:
   objectName: White Squish
   description: Smashed white grapes
   cost: 0
-  objectType: mush
   buildingNeeded: ferment
-  outputs:
-  - {fileID: 11419674, guid: 6ab030ecac89fe140afe8fa113d8c76c, type: 2}
-  finalOutput: {fileID: 0}
+  wineOutputs: []
+  midpointOutput: {fileID: 11419674, guid: 6ab030ecac89fe140afe8fa113d8c76c, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

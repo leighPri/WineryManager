@@ -9,7 +9,7 @@ public class BuildingMenuControl : MonoBehaviour {
     public static Building displayedBuilding;
 
     //accepts 0, 1, or 2 used to pick an output from the Consumable output array
-    public static int selectedOutput;
+    public  int selectedOutput;
 
     public GameObject buildingName;
     Text buildingNameText;
@@ -37,9 +37,12 @@ public class BuildingMenuControl : MonoBehaviour {
         //displays option buttons only if the building is an aging barn AND only if the held item has more than one possible output
         if (displayedBuilding.objectType != "aging") {
             agingOptions.SetActive(false);
-        } else if (displayedBuilding.consumableInProcessing.outputs.Length > 1) {
+        } else if (displayedBuilding.consumableInProcessing.wineOutputs.Length > 1) {
             agingOptions.SetActive(true);
         }
+
+        //default display option
+        statusText.text = "Empty";
 
         //sets elements to the specifics of the passed building
         buildingNameText.text = displayedBuilding.objectName;
@@ -47,11 +50,12 @@ public class BuildingMenuControl : MonoBehaviour {
         if (displayedBuilding.isProcessing) {
             statusText.text = "Processing: " + displayedBuilding.consumableInProcessing.objectName;
         } else if (displayedBuilding.finishedProcessing) {
-            //selects final output and displays the name of it
-            displayedBuilding.consumableInProcessing.OutputSelect(selectedOutput);
-            statusText.text = "Finished processing: " + displayedBuilding.consumableInProcessing.finalOutput.objectName;
-        } else {
-            statusText.text = "Empty";
+            if (displayedBuilding.objectType == "aging") {
+                //selects final output and displays the name of it
+                statusText.text = "Finished processing: " + displayedBuilding.consumableInProcessing.WineSelect(selectedOutput).wineName;
+            } else {
+                statusText.text = "Finished processing: " + displayedBuilding.consumableInProcessing.midpointOutput.objectName;
+            }
         }
     }
 
@@ -61,12 +65,18 @@ public class BuildingMenuControl : MonoBehaviour {
 
     //places output in hand and hides the building menu
     public void GetOutput() {
-        InHandCtrl.PutConsumableInHand(displayedBuilding.consumableInProcessing.finalOutput);
+        if (displayedBuilding.objectType != "aging") {
+            InHandCtrl.PutConsumableInHand(displayedBuilding.consumableInProcessing.midpointOutput);
+        } else {
+            WineMaster.wineMaster.AddBottles(displayedBuilding.consumableInProcessing.WineSelect(selectedOutput).id);
+            Debug.Log("You now have " + WineMaster.wineMaster.winesOnHand[selectedOutput].bottlesOnHand + " bottles of " + WineMaster.wineMaster.winesOnHand[selectedOutput].wineName + " available to sell.");
+        }
+        displayedBuilding.EmptyBuilding();
         BuildingCtrl.buildingCtrl.HideBuildingMenu();
     }
 
     //lets the aging buttons set their desired outputs
-    public static void SetOutput(int output) {
+    public  void SetOutput(int output) {
         selectedOutput = output;
     }
 

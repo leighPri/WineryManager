@@ -15,7 +15,6 @@ public class Building : MonoBehaviour {
     public bool isProcessing;
     public bool finishedProcessing;
     public Consumable consumableInProcessing;
-    public Consumable outputConsumable;
 
     public void BuyBuilding () {
         if (MoneyCtrl.CanAfford(cost)) {
@@ -39,7 +38,7 @@ public class Building : MonoBehaviour {
             }
     }
 
-    public void emptyBuilding() {
+    public void EmptyBuilding() {
         isProcessing = false;
     }
 
