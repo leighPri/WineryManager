@@ -42,8 +42,9 @@ public class InHandCtrl : MonoBehaviour {
             } else if (typeOfObject == "consumable") {
                 inHandText.text = "In Hand: " + consumableInHand.objectName;
             }
-        } else
+        } else {
             inHandText.text = "In Hand: ";
+        }
     }
 
     public static void PutBuildingInHand(Building building) {
