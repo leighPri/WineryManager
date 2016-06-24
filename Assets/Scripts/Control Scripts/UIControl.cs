@@ -10,13 +10,21 @@ public class UIControl : MonoBehaviour {
     public Building[] buildingsAvailable;
     public Consumable[] grapesAvailable;
 
+    public void ShowPanel(GameObject panel) {
+        panel.gameObject.SetActive(true);
+    }
+
+    public void HidePanel(GameObject panel) {
+        panel.gameObject.SetActive(false);
+    }
+
     //void Start() {
-        //canvas = FindObjectOfType<Canvas>();
-        //DisplayAvailableBuildings();
+    //canvas = FindObjectOfType<Canvas>();
+    //DisplayAvailableBuildings();
     //}
 
     //void Update() {
-        
+
     //}
 
     //void DisplayAvailableBuildings() {
@@ -41,7 +49,7 @@ public class UIControl : MonoBehaviour {
     //        i++;
     //    }
     //}
-    
+
 
     //void OnGUI() {
     //    var yOffset = 0.0f;

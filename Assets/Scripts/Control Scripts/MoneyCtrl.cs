@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
 using System.Collections;
 
 //This class handles the static money object and its display behaviors
@@ -11,9 +10,6 @@ public class MoneyCtrl : MonoBehaviour {
     //the main money object, this holds current amount of money for the player
     public static int moneyOnHand;
 
-    public GameObject moneyDisplay;
-    Text moneyDisplayText;
-
     void Awake() {
         if (moneyCtrl == null) {
             //commented out because the Controls parent object should persist this
@@ -24,18 +20,6 @@ public class MoneyCtrl : MonoBehaviour {
         }
         else if (moneyCtrl != this)
             Destroy(gameObject);
-    }
-
-    // Use this for initialization
-    void Start () {
-        //gets Text component so that it can be modified in Update()
-        moneyDisplayText = moneyDisplay.GetComponent<Text>();
-    }
-	
-	// Update is called once per frame
-	void Update () {
-        //displays money available
-        moneyDisplayText.text = moneyOnHand.ToString() + "g";
     }
 
     public static bool CanAfford(int cost) {

@@ -51,7 +51,7 @@ public class Building : MonoBehaviour {
         if (!isProcessing && InHandCtrl.isInHand) {
             FillBuilding();
         } else {
-            BuildingCtrl.buildingCtrl.ShowBuildingMenu();
+            BuildingMenuControl.buildingMenuCtrl.gameObject.SetActive(true);
             //passes this building to the menu so that it can be populated 
             BuildingMenuControl.GetBuilding(this);
         }

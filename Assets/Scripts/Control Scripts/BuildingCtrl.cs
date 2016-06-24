@@ -31,8 +31,7 @@ public class BuildingCtrl : MonoBehaviour {
             //note that this only works because BuildingControl is being passed an instance of
             //the BuildingHolder, not the BuildingHolder prefab itself
             BuildingHolder.buildingHolder.gameObject.SetActive(true);
-        }
-        else {
+        } else {
             BuildingHolder.buildingHolder.gameObject.SetActive(false);
         }
     }
@@ -44,11 +43,11 @@ public class BuildingCtrl : MonoBehaviour {
         //Debug.Log(playerBuilding[cell.myPosition]);
     }
 
-    public void HideBuildingMenu() {
-        BuildingMenuControl.buildingMenuCtrl.gameObject.SetActive(false);
-    }
+    //public void HideBuildingMenu() {
+    //    BuildingMenuControl.buildingMenuCtrl.gameObject.SetActive(false);
+    //}
 
-    public void ShowBuildingMenu() {
-        BuildingMenuControl.buildingMenuCtrl.gameObject.SetActive(true);
-    }
+    //public void ShowBuildingMenu() {
+    //    BuildingMenuControl.buildingMenuCtrl.gameObject.SetActive(true);
+    //}
 }

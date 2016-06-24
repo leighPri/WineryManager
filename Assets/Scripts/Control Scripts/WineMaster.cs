@@ -5,7 +5,7 @@ public class WineMaster : MonoBehaviour {
 
     public static WineMaster wineMaster;
 
-    public Wine[] winesOnHand;
+    public static Wine[] winesOnHand;
 
     void Awake() {
         if(wineMaster == null) {
@@ -16,7 +16,7 @@ public class WineMaster : MonoBehaviour {
         }
     }
 
-    public void AddBottles(int wineID) {
+    public static void AddBottles(int wineID) {
         winesOnHand[wineID].bottlesOnHand += 100;
     }
 }

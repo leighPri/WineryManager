@@ -44,10 +44,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbfc5de6201dee7479e182725ce5121f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  uiControl: {fileID: 11422736, guid: 4961c1deb0d75ed408dd86a3152e7690, type: 2}
+  buildingMenuCtrl: {fileID: 11410038, guid: 1f9e4079e4fa02840ac643d38310d76f, type: 2}
   objectName: Fermentation Shed
   description: place where wine ferments
   cost: 500
   objectType: ferment
+  isProcessing: 0
+  finishedProcessing: 0
+  consumableInProcessing: {fileID: 0}
 --- !u!212 &21251406
 SpriteRenderer:
   m_ObjectHideFlags: 1

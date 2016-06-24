@@ -10,9 +10,10 @@ GameObject:
   - 224: {fileID: 22426394}
   - 222: {fileID: 22299448}
   - 114: {fileID: 11482286}
+  - 114: {fileID: 11428322}
   m_Layer: 5
   m_Name: In Hand
-  m_TagString: Untagged
+  m_TagString: inHandDisplay
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -46,7 +47,7 @@ GameObject:
   - 114: {fileID: 11431786}
   m_Layer: 5
   m_Name: Money
-  m_TagString: Untagged
+  m_TagString: moneyDisplay
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -135,6 +136,17 @@ MonoBehaviour:
   grapesAvailable:
   - {fileID: 11454722, guid: a648bf74fc984024daa0f92e3e0bcc4f, type: 2}
   - {fileID: 11484966, guid: 80ebcab0a296fb04a8e09b0b165d1723, type: 2}
+--- !u!114 &11428322
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 134732}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06d72f1ce8497504bbeb5edb1f049c90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11431786
 MonoBehaviour:
   m_ObjectHideFlags: 1

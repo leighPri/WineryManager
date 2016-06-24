@@ -6,10 +6,6 @@ using System.Collections;
 public class InHandCtrl : MonoBehaviour {
 
     public static InHandCtrl inHandCtrl;
-
-    //allows the name of the inHand object to be displayed
-    public GameObject inHand;
-    Text inHandText;
     
     //variables used to hold onto the "inhand" operators
     public static bool isInHand;
@@ -26,25 +22,6 @@ public class InHandCtrl : MonoBehaviour {
             inHandCtrl = this;
         } else if (inHandCtrl != this)
             Destroy(gameObject);
-    }
-
-    void Start() {
-        inHandText = inHand.GetComponent<Text>();
-        if (!isInHand) {
-            inHandText.text = "In Hand: ";
-        }
-    }
-
-    void Update() {
-        if (isInHand) {
-            if (typeOfObject == "building") {
-                inHandText.text = "In Hand: " + buildingInHand.objectName;
-            } else if (typeOfObject == "consumable") {
-                inHandText.text = "In Hand: " + consumableInHand.objectName;
-            }
-        } else {
-            inHandText.text = "In Hand: ";
-        }
     }
 
     public static void PutBuildingInHand(Building building) {
