@@ -19,11 +19,6 @@ public class Consumable : MonoBehaviour {
     public Wine[] wineOutputs;
     public Consumable midpointOutput;
 
-    //TODO:
-    //outputs should be changed to Wine[] only, other single Consumable for mid-step outputs
-    //add logic to Building and BuildingMenuControl to account for this change, check for Aging Barn to determine which type of output to use
-    //change OutputSelect to be appropriate for wine selection
-
     public void BuyGrape () {
         if (MoneyCtrl.CanAfford(cost)) {
             if (!InHandCtrl.isInHand) {

@@ -41,7 +41,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 3
-  wineName: Merlot
+  wineName: Pinot Noir
   bottlesOnHand: 0
   baseSellValue: 50
 --- !u!1001 &100100000

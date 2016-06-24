@@ -32,8 +32,7 @@ public class BuildingMenuControl : MonoBehaviour {
         statusText = status.GetComponent<Text>();
     }
 
-    void Update()
-    {
+    void Update() {
         //displays option buttons only if the building is an aging barn AND only if the held item has more than one possible output
         if (displayedBuilding.objectType != "aging") {
             agingOptions.SetActive(false);
@@ -68,8 +67,9 @@ public class BuildingMenuControl : MonoBehaviour {
         if (displayedBuilding.objectType != "aging") {
             InHandCtrl.PutConsumableInHand(displayedBuilding.consumableInProcessing.midpointOutput);
         } else {
-            WineMaster.wineMaster.AddBottles(displayedBuilding.consumableInProcessing.WineSelect(selectedOutput).id);
-            Debug.Log("You now have " + WineMaster.wineMaster.winesOnHand[selectedOutput].bottlesOnHand + " bottles of " + WineMaster.wineMaster.winesOnHand[selectedOutput].wineName + " available to sell.");
+            int wineID = displayedBuilding.consumableInProcessing.WineSelect(selectedOutput).id;
+            WineMaster.wineMaster.AddBottles(wineID);
+            Debug.Log("You now have " + WineMaster.wineMaster.winesOnHand[wineID].bottlesOnHand + " bottles of " + WineMaster.wineMaster.winesOnHand[wineID].wineName + " available to sell.");
         }
         displayedBuilding.EmptyBuilding();
         BuildingCtrl.buildingCtrl.HideBuildingMenu();
@@ -78,7 +78,6 @@ public class BuildingMenuControl : MonoBehaviour {
     //lets the aging buttons set their desired outputs
     public void SetOutput(int output) {
         selectedOutput = output;
-        
     }
 
     public static void GetBuilding(Building building)  {

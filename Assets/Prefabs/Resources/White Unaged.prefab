@@ -47,6 +47,7 @@ MonoBehaviour:
   wineOutputs:
   - {fileID: 11427130, guid: c8b50ee75cacf8146af2453364ff8db4, type: 2}
   - {fileID: 11427130, guid: b6d3294ecc0be7e4e868c5075899bad3, type: 2}
+  - {fileID: 11427130, guid: e587ac34cab0c7046b683cd4745c1641, type: 2}
   midpointOutput: {fileID: 0}
 --- !u!1001 &100100000
 Prefab:

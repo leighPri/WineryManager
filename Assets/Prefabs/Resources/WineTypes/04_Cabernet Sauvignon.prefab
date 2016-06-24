@@ -10,7 +10,7 @@ GameObject:
   - 4: {fileID: 411628}
   - 114: {fileID: 11427130}
   m_Layer: 0
-  m_Name: 02_Pinot Grigio
+  m_Name: 04_Cabernet Sauvignon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -40,8 +40,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 245efb89f3430b6449877ed27698041f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 2
-  wineName: Pinot Grigio
+  id: 4
+  wineName: Cabernet Sauvignon
   bottlesOnHand: 0
   baseSellValue: 50
 --- !u!1001 &100100000
