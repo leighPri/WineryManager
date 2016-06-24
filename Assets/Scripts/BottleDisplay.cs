@@ -4,6 +4,8 @@ using System.Collections;
 
 public class BottleDisplay : MonoBehaviour {
 
+    public WineMaster wineMaster;
+
     public Wine wine;
 
     Text numBottles; 
@@ -15,6 +17,6 @@ public class BottleDisplay : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        numBottles.text = WineMaster.winesOnHand[wine.id].bottlesOnHand.ToString();
+        numBottles.text = WineMaster.wineMaster.winesOnHand[wine.id].bottlesOnHand.ToString();
     }
 }

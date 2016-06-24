@@ -68,8 +68,8 @@ public class BuildingMenuControl : MonoBehaviour {
             InHandCtrl.PutConsumableInHand(displayedBuilding.consumableInProcessing.midpointOutput);
         } else {
             int wineID = displayedBuilding.consumableInProcessing.WineSelect(selectedOutput).id;
-            WineMaster.AddBottles(wineID);
-            Debug.Log("You now have " + WineMaster.winesOnHand[wineID].bottlesOnHand + " bottles of " + WineMaster.winesOnHand[wineID].wineName + " available to sell.");
+            WineMaster.wineMaster.AddBottles(wineID);
+            Debug.Log("You now have " + WineMaster.wineMaster.winesOnHand[wineID].bottlesOnHand + " bottles of " + WineMaster.wineMaster.winesOnHand[wineID].wineName + " available to sell.");
         }
         displayedBuilding.EmptyBuilding();
         gameObject.SetActive(false);
