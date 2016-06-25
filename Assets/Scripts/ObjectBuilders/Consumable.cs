@@ -30,6 +30,11 @@ public class Consumable : MonoBehaviour {
             Debug.Log("Not enough cash on hand to buy " + objectName);
     }
 
+    public void SellBackConsumable()
+    {
+        MoneyCtrl.AddMoney(cost);
+    }
+
     //to be run on a building, checks to see if this building is valid for this consumable type
     public bool CanBePlaced(Building building) {
         if (buildingNeeded == building.objectType)

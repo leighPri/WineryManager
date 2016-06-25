@@ -5,6 +5,8 @@ using System.Collections.Generic;
 
 public class UIControl : MonoBehaviour {
 
+    public GameObject cancelButton;
+
     //public GameObject textHolder;
     //Canvas canvas;
     public Building[] buildingsAvailable;
@@ -16,6 +18,21 @@ public class UIControl : MonoBehaviour {
 
     public void HidePanel(GameObject panel) {
         panel.gameObject.SetActive(false);
+    }
+
+    void Update()
+    {
+        if (cancelButton != null)
+        {
+            if (InHandCtrl.isInHand)
+            {
+                ShowPanel(cancelButton);
+            }
+            else if (!InHandCtrl.isInHand)
+            {
+                HidePanel(cancelButton);
+            }
+        }
     }
 
     //void Start() {

@@ -42,4 +42,16 @@ public class InHandCtrl : MonoBehaviour {
         isInHand = false;
         typeOfObject = "";
     }
+
+    public void CancelInHand()
+    {
+        if (typeOfObject == "consumable")
+            consumableInHand.SellBackConsumable();
+        else if (typeOfObject == "building")
+            buildingInHand.SellBackBuilding();
+
+        ClearHand();
+
+        
+    }
 }

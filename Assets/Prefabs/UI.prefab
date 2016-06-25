@@ -45,6 +45,8 @@ GameObject:
   - 224: {fileID: 22461090}
   - 222: {fileID: 22273248}
   - 114: {fileID: 11431786}
+  - 114: {fileID: 11458532}
+  - 114: {fileID: 11419120}
   m_Layer: 5
   m_Name: Money
   m_TagString: moneyDisplay
@@ -102,6 +104,17 @@ MonoBehaviour:
   m_InputActionsPerSecond: 10
   m_RepeatDelay: 0.5
   m_ForceModuleActive: 0
+--- !u!114 &11419120
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 157928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d0a2cded3da01c47920f0f1d2eb140d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11421542
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -129,6 +142,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ce21898d53251c489b30806777f63bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cancelButton: {fileID: 119330, guid: d47da00d783636e42928222e68d8b5bc, type: 2}
   buildingsAvailable:
   - {fileID: 11409744, guid: 085eddaf72881254790260d4ab8af842, type: 2}
   - {fileID: 11454390, guid: 0e7e15a42c4b68f46bcc09160b550951, type: 2}
@@ -180,6 +194,17 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 5000g
+--- !u!114 &11458532
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 157928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d0a2cded3da01c47920f0f1d2eb140d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11468348
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -294,8 +319,8 @@ RectTransform:
   m_RootOrder: 1
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -78.000015, y: 131}
-  m_SizeDelta: {x: 356.5, y: 29}
+  m_AnchoredPosition: {x: -170.4, y: 132.4}
+  m_SizeDelta: {x: 171.7, y: 26.3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &22456362
 RectTransform:

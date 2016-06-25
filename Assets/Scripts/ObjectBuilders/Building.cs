@@ -27,6 +27,11 @@ public class Building : MonoBehaviour {
             Debug.Log("Not enough cash on hand to buy " + objectName);
     }
 
+    public void SellBackBuilding()
+    {
+        MoneyCtrl.AddMoney(cost);
+    }
+
     public void FillBuilding() {
             if (InHandCtrl.consumableInHand.CanBePlaced(this)) {
                 isProcessing = true;
