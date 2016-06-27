@@ -58,15 +58,20 @@ public class Building : MonoBehaviour {
     void OnMouseUpAsButton() {
         if (!isProcessing && InHandCtrl.isInHand) {
             FillBuilding();
-        } else {
-            BuildingMenuControl.buildingMenuCtrl.gameObject.SetActive(true);
-            if (objectType == "aging")
-                BuildingMenuControl.DisplayAgingOptions(true);
-            else
-                BuildingMenuControl.DisplayAgingOptions(false);
-            //passes this building to the menu so that it can be populated 
-            BuildingMenuControl.GetBuilding(this);
+            ShowBuildingMenu();
+        } else if (!InHandCtrl.isInHand) {
+            ShowBuildingMenu();
         }
+    }
+
+    void ShowBuildingMenu() {
+        BuildingMenuControl.buildingMenuCtrl.gameObject.SetActive(true);
+        if (objectType == "aging")
+            BuildingMenuControl.DisplayAgingOptions(true);
+        else
+            BuildingMenuControl.DisplayAgingOptions(false);
+        //passes this building to the menu so that it can be populated 
+        BuildingMenuControl.GetBuilding(this);
     }
 
     public void DestroyObject() {
