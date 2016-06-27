@@ -34,12 +34,6 @@ public class BuildingMenuControl : MonoBehaviour {
     }
 
     void Update() {
-        //displays option buttons only if the building is an aging barn AND only if the held item has more than one possible output
-        if (displayedBuilding.objectType != "aging") {
-            agingOptions.SetActive(false);
-        } else {
-            agingOptions.SetActive(true);
-        }
 
         //default display option
         statusText.text = "Empty";
@@ -57,6 +51,13 @@ public class BuildingMenuControl : MonoBehaviour {
                 statusText.text = "Finished processing: " + displayedBuilding.consumableInProcessing.midpointOutput.objectName;
             }
         }
+    }
+
+    public static void DisplayAgingOptions(bool toDisplay) {
+        if (toDisplay)
+            buildingMenuCtrl.agingOptions.SetActive(true);
+        else
+            buildingMenuCtrl.agingOptions.SetActive(false);
     }
 
     public void FinishButton() {
@@ -95,6 +96,8 @@ public class BuildingMenuControl : MonoBehaviour {
     //lets the aging buttons set their desired outputs
     public void SetOutput(int output) {
         selectedOutput = output;
+        //hides the whole set once a button is clicked as the user should only be able to select one option
+        DisplayAgingOptions(false);
     }
 
     public static void GetBuilding(Building building) {

@@ -60,6 +60,10 @@ public class Building : MonoBehaviour {
             FillBuilding();
         } else {
             BuildingMenuControl.buildingMenuCtrl.gameObject.SetActive(true);
+            if (objectType == "aging")
+                BuildingMenuControl.DisplayAgingOptions(true);
+            else
+                BuildingMenuControl.DisplayAgingOptions(false);
             //passes this building to the menu so that it can be populated 
             BuildingMenuControl.GetBuilding(this);
         }
