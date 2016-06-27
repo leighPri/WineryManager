@@ -13,24 +13,20 @@ public class UIControl : MonoBehaviour {
     public Consumable[] grapesAvailable;
 
     public void ShowPanel(GameObject panel) {
-        panel.gameObject.SetActive(true);
+        if (!InHandCtrl.isInHand)
+            panel.gameObject.SetActive(true);
     }
 
     public void HidePanel(GameObject panel) {
-        panel.gameObject.SetActive(false);
+            panel.gameObject.SetActive(false);
     }
 
-    void Update()
-    {
-        if (cancelButton != null)
-        {
-            if (InHandCtrl.isInHand)
-            {
-                ShowPanel(cancelButton);
-            }
-            else if (!InHandCtrl.isInHand)
-            {
-                HidePanel(cancelButton);
+    void Update() {
+        if (cancelButton != null) { 
+            if (InHandCtrl.isInHand) {
+                cancelButton.SetActive(true);
+            } else if (!InHandCtrl.isInHand) {
+                cancelButton.SetActive(false);
             }
         }
     }
