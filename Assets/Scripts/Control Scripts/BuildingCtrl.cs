@@ -21,12 +21,12 @@ public class BuildingCtrl : MonoBehaviour {
     void OnLevelWasLoaded (int level) {
         if (level == 1) { 
             //is supposed to instantiate buildings...currently does not
-            for (int x = 0; x < playerBuilding.Length; x++) {
-                    if (playerBuilding[x] != null) {
-                        Debug.Log(playerBuilding[x].objectName + " exists at index location " + x);
-                        //playerBuilding[x, y] = Instantiate(playerBuilding[x,y], GameControl.grid[x,y].transform.position, Quaternion.identity) as Building;
-                    }
-            }
+            //for (int x = 0; x < playerBuilding.Length; x++) {
+            //        if (playerBuilding[x] != null) {
+            //            Debug.Log(playerBuilding[x].objectName + " exists at index location " + x);
+            //            //playerBuilding[x, y] = Instantiate(playerBuilding[x,y], GameControl.grid[x,y].transform.position, Quaternion.identity) as Building;
+            //        }
+            //}
             //shows and hides buildingHolder as having it on its own script doesn't work
             //note that this only works because BuildingControl is being passed an instance of
             //the BuildingHolder, not the BuildingHolder prefab itself

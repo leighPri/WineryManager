@@ -38,13 +38,16 @@ public class Building : MonoBehaviour {
                 finishedProcessing = false;
                 consumableInProcessing = InHandCtrl.consumableInHand;
                 InHandCtrl.ClearHand();
+            //clears previously-used building if applicable (see BuildingMenuControl.CanClearPrev() comments for breakdown of conditionals)
+            if (BuildingMenuControl.CanClearPrev(this))
+                BuildingMenuControl.previousBuilding.EmptyBuilding();
             } else {
                 Debug.Log("Cannot place " + InHandCtrl.consumableInHand.objectName + " in " + objectName + ", object requires a(n) " + InHandCtrl.consumableInHand.buildingNeeded + " to be processed.");
             }
     }
 
     public void EmptyBuilding() {
-        isProcessing = false;
+        finishedProcessing = false;
     }
 
     public void FinishedProcessing() {
