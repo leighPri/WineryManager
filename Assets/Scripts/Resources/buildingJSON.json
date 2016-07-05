@@ -1,0 +1,21 @@
+{
+		"Building":[
+		{
+			"id": 0,
+			"objectName": "Basic Wine Press",
+			"description": "A simple press to make some wine",
+			"cost": 1000
+		},
+		{
+			"id": 1,
+			"objectName": "Basic Fermentation Shed",
+			"description": "A bucket to ferment wine in",
+			"cost": 1000
+		},
+		{
+			"id": 2,
+			"objectName": "Basic Aging Barn",
+			"description": "A place for wine to age",
+			"cost": 1000
+		}]
+}

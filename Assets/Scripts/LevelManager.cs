@@ -12,10 +12,10 @@ public class LevelManager : MonoBehaviour {
     public void CallIfNotInHand(string sceneName) {
         if (!InHandCtrl.isInHand)
             SceneManager.LoadScene(sceneName);
-        else if (InHandCtrl.typeOfObject == "building") {
-            Debug.Log("Cannot change scenes while " + InHandCtrl.buildingInHand.name + " is in hand.");
-        } else if (InHandCtrl.typeOfObject == "consumable") {
-            Debug.Log("Cannot change scenes while " + InHandCtrl.consumableInHand.name + " is in hand.");
+        else if (InHandCtrl.typeOfObject == (int)ObjectMaster.listType.Building) {
+            Debug.Log("Cannot change scenes while " + ObjectMaster.buildingList[InHandCtrl.objectInHand].objectName + " is in hand.");
+        } else if (InHandCtrl.typeOfObject == (int)ObjectMaster.listType.Consumable) {
+            Debug.Log("Cannot change scenes while " + ObjectMaster.consumableList[InHandCtrl.objectInHand].objectName + " is in hand.");
         }
     }
 

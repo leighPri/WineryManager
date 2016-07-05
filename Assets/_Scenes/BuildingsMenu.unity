@@ -585,13 +585,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11454390, guid: 0e7e15a42c4b68f46bcc09160b550951, type: 2}
+      - m_Target: {fileID: 11429554, guid: 46b80a758d6d3e04c90714ae85eb2f83, type: 2}
         m_MethodName: BuyBuilding
-        m_Mode: 1
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -829,13 +829,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11475812, guid: 8ddc4e87372713047b71fb73c4b6303d, type: 2}
+      - m_Target: {fileID: 11429554, guid: 46b80a758d6d3e04c90714ae85eb2f83, type: 2}
         m_MethodName: BuyBuilding
-        m_Mode: 1
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -957,9 +957,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11409744, guid: 085eddaf72881254790260d4ab8af842, type: 2}
+      - m_Target: {fileID: 11429554, guid: 46b80a758d6d3e04c90714ae85eb2f83, type: 2}
         m_MethodName: BuyBuilding
-        m_Mode: 1
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

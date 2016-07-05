@@ -190,7 +190,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4632fe55495131748abc099873dd777f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inHand: {fileID: 134732, guid: 4961c1deb0d75ed408dd86a3152e7690, type: 2}
+  buildingInHand: {fileID: 11429554, guid: 46b80a758d6d3e04c90714ae85eb2f83, type: 2}
+  consumableInHand: {fileID: 11464088, guid: 096c7869dd34dcb4d873a1498d135655, type: 2}
 --- !u!114 &11416694
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -202,7 +203,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 966ae178ffcfd19429e24dc976320f2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moneyDisplay: {fileID: 157928, guid: 4961c1deb0d75ed408dd86a3152e7690, type: 2}
 --- !u!114 &11417552
 MonoBehaviour:
   m_ObjectHideFlags: 1

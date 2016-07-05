@@ -20,11 +20,11 @@ public class InHandLabel : MonoBehaviour {
     // Update is called once per frame
     void Update () {
         if (InHandCtrl.isInHand) {
-            if (InHandCtrl.typeOfObject == "building") {
-                inHandText.text = "In Hand: " + InHandCtrl.buildingInHand.objectName;
+            if (InHandCtrl.typeOfObject == (int)ObjectMaster.listType.Building) {
+                inHandText.text = "In Hand: " + ObjectMaster.buildingList[InHandCtrl.objectInHand].objectName; 
             }
-            else if (InHandCtrl.typeOfObject == "consumable") {
-                inHandText.text = "In Hand: " + InHandCtrl.consumableInHand.objectName;
+            else if (InHandCtrl.typeOfObject == (int)ObjectMaster.listType.Consumable) {
+                inHandText.text = "In Hand: " + ObjectMaster.consumableList[InHandCtrl.objectInHand].objectName;
             }
         }  else  {
             inHandText.text = "In Hand: ";

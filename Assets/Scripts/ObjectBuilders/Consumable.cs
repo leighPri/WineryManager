@@ -1,9 +1,11 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Consumable : MonoBehaviour {
 
+    public int id;
     public string objectName; //the name that the player sees
     public string description;
     public int cost;
@@ -12,6 +14,8 @@ public class Consumable : MonoBehaviour {
     //used for conditionals, must be correct
     public string buildingNeeded;
 
+    public int outputID; //the ID of the object output by this Consumable
+
     //sets possible outcomes of this consumable
     //For the sake of conditionals, multiple possibilities for aging must always be at the same index:
     //0 = stainless steel, 1 = oak chips, 2 = oak barrel
@@ -19,15 +23,26 @@ public class Consumable : MonoBehaviour {
     public Wine[] wineOutputs;
     public Consumable midpointOutput;
 
-    public void BuyGrape () {
-        if (MoneyCtrl.CanAfford(cost)) {
+    //used to set an instance of a Consumable to the details from the relevant template on the BuildingTemplate list
+    public void SetParamsByID(int templateID) {
+        id = ObjectMaster.consumableList[templateID].id;
+        objectName = ObjectMaster.consumableList[templateID].objectName;
+        description = ObjectMaster.consumableList[templateID].description;
+        cost = ObjectMaster.consumableList[templateID].cost;
+        buildingNeeded = ObjectMaster.consumableList[templateID].buildingNeeded;
+    }
+
+    //the int passed in in the inspector should be the object ID from ObjectMaster.consumableList
+    public void BuyGrape(int ID) {
+        if (MoneyCtrl.CanAfford(ObjectMaster.consumableList[ID].cost)) {
             if (!InHandCtrl.isInHand) {
                 InHandCtrl.PutConsumableInHand(this);
-                MoneyCtrl.SubtractMoney(cost);
+                //InHandCtrl.PutConsumableInHand(ID); //replace the above with this eventually
+                MoneyCtrl.SubtractMoney(ObjectMaster.consumableList[ID].cost);
                 SceneManager.LoadScene("MainGame");
             }
         } else
-            Debug.Log("Not enough cash on hand to buy " + objectName);
+            Debug.Log("Not enough cash on hand to buy " + ObjectMaster.buildingList[ID].objectName);
     }
 
     public void SellBackConsumable()
