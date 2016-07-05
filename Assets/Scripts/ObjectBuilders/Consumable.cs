@@ -6,7 +6,7 @@ public class Consumable : MonoBehaviour {
 
     public string objectName; //the name that the player sees
     public string description;
-    public int cost; //maybe also use for sell price
+    public int cost;
     
     //valid inputs are "press" "ferment" and "aging"
     //used for conditionals, must be correct
