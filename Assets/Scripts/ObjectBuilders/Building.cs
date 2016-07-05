@@ -38,7 +38,7 @@ public class Building : MonoBehaviour {
         objectName = ObjectMaster.buildingList[templateID].objectName;
         description = ObjectMaster.buildingList[templateID].description;
         cost = ObjectMaster.buildingList[templateID].cost;
-        objectType = ObjectMaster.buildingList[templateID].objectName;
+        objectType = ObjectMaster.buildingList[templateID].objectType;
     }
 
     //the int passed in in the inspector should be the object ID from ObjectMaster.buildingList
@@ -85,10 +85,8 @@ public class Building : MonoBehaviour {
     void OnMouseUpAsButton() {
         if (!isProcessing && InHandCtrl.isInHand) {
             FillBuilding();
-            ShowBuildingMenu();
-        } else if (!InHandCtrl.isInHand) {
-            ShowBuildingMenu();
         }
+            ShowBuildingMenu();
     }
 
     void ShowBuildingMenu() {

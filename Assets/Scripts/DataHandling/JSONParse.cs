@@ -47,7 +47,8 @@ public class JSONParse : MonoBehaviour {
             tempBuild = new BuildingTemplate(int.Parse(jsonObj[i]["id"].Value),
                                      int.Parse(jsonObj[i]["cost"].Value),
                                      jsonObj[i]["objectName"].Value,
-                                     jsonObj[i]["description"].Value);
+                                     jsonObj[i]["description"].Value,
+                                     jsonObj[i]["objectType"].Value);
             buildList.Add(tempBuild);
             buildList[i].ExampleCall();
         }

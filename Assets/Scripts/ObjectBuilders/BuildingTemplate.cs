@@ -6,13 +6,15 @@ public class BuildingTemplate {
     public int id;
     public string objectName; //the name that the player sees
     public string description;
+    public string objectType;
     public int cost;
 
-    public BuildingTemplate(int newID, int newCost, string newObjectName, string newDescription) {
+    public BuildingTemplate(int newID, int newCost, string newObjectName, string newDescription, string newObjectType) {
         id = newID;
         cost = newCost;
         objectName = newObjectName;
         description = newDescription;
+        objectType = newObjectType;
     }
 
     public void ExampleCall() {
