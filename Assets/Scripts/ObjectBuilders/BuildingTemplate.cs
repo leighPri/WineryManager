@@ -8,6 +8,7 @@ public class BuildingTemplate {
     public string description;
     public string objectType;
     public int cost;
+    public int canProcess;
 
     public BuildingTemplate(int newID, int newCost, string newObjectName, string newDescription, string newObjectType) {
         id = newID;
@@ -15,6 +16,10 @@ public class BuildingTemplate {
         objectName = newObjectName;
         description = newDescription;
         objectType = newObjectType;
+    }
+
+    public void SellBackBuilding() {
+        MoneyCtrl.AddMoney(cost);
     }
 
     public void ExampleCall() {

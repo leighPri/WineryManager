@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class ConsumableTemplate {
@@ -22,13 +23,41 @@ public class ConsumableTemplate {
         cost = newCost;
         buildingNeeded = newBuildingNeeded;
     }
+    
+    //to be run on a building, checks to see if this building is valid for this consumable type
+    //public bool CanBePlaced(Building building) {
+    //    if (buildingNeeded == building.objectType)
+    //        return true;
+    //    else
+    //        return false;
+    //}
 
-    //sets possible outcomes of this consumable
-    //For the sake of conditionals, multiple possibilities for aging must always be at the same index:
-    //0 = stainless steel, 1 = oak chips, 2 = oak barrel
-    //for objects with only one outcome, ignore the above note
-    //public Wine[] wineOutputs;
-    //public Consumable midpointOutput;
+    //to be run on a building, checks to see if this building is valid for this consumable type
+    //public bool CanBePlaced(Building building) {
+    //    if (building.canProcess == (int)ObjectMaster.listType.Consumable)
+    //        return true;
+    //    else
+    //        return false;
+    //}
+
+    public void SellBackConsumable() {
+        MoneyCtrl.AddMoney(cost);
+    }
+
+    //to be run on a building, checks to see if this building is valid for this consumable type
+    //public bool CanBePlaced(Building building) {
+    //    if (buildingNeeded == building.objectType)
+    //        return true;
+    //    else
+    //        return false;
+    //}
+
+    //public Wine WineSelect(int outputIndex) {
+    //    if (wineOutputs.Length == 1)
+    //        return wineOutputs[0];
+    //    else
+    //        return wineOutputs[outputIndex];
+    //}
 
     public void ExampleCall() {
         Debug.Log("My name is " + objectName + " and my ID is " + id.ToString());

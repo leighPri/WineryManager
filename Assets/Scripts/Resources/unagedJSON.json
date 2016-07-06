@@ -1,0 +1,17 @@
+{
+		"Unaged":[
+		{
+			"id": 0,
+			"objectName": "Unaged Red Wine",
+			"description": "Freshly fermented wine",
+			"buildingNeeded": "aging",
+			"outputID": [0,1,2]
+		},
+		{
+			"id": 1,
+			"objectName": "Unaged White Wine",
+			"description": "Freshly fermented wine",
+			"buildingNeeded": "aging",
+			"outputID": [3,4,5]
+		}]
+}

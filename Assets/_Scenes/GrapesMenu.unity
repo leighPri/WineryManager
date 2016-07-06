@@ -161,13 +161,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11484966, guid: 80ebcab0a296fb04a8e09b0b165d1723, type: 2}
+      - m_Target: {fileID: 11464088, guid: 096c7869dd34dcb4d873a1498d135655, type: 2}
         m_MethodName: BuyGrape
-        m_Mode: 1
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -546,9 +546,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11454722, guid: a648bf74fc984024daa0f92e3e0bcc4f, type: 2}
+      - m_Target: {fileID: 11464088, guid: 096c7869dd34dcb4d873a1498d135655, type: 2}
         m_MethodName: BuyGrape
-        m_Mode: 1
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

@@ -5,11 +5,23 @@ using System.Collections.Generic;
 
 public class Consumable : MonoBehaviour {
 
+    //the int passed in in the inspector should be the object ID from ObjectMaster.consumableList
+    public void BuyGrape(int ID) {
+        if (MoneyCtrl.CanAfford(ObjectMaster.consumableList[ID].cost)) {
+            if (!InHandCtrl.isInHand) {
+                InHandCtrl.PutConsumableInHand(ID); //replace the above with this eventually
+                MoneyCtrl.SubtractMoney(ObjectMaster.consumableList[ID].cost);
+                SceneManager.LoadScene("MainGame");
+            }
+        } else
+            Debug.Log("Not enough cash on hand to buy " + ObjectMaster.buildingList[ID].objectName);
+    }
+
     public int id;
     public string objectName; //the name that the player sees
     public string description;
     public int cost;
-    
+
     //valid inputs are "press" "ferment" and "aging"
     //used for conditionals, must be correct
     public string buildingNeeded;
@@ -32,21 +44,20 @@ public class Consumable : MonoBehaviour {
         buildingNeeded = ObjectMaster.consumableList[templateID].buildingNeeded;
     }
 
-    //the int passed in in the inspector should be the object ID from ObjectMaster.consumableList
-    public void BuyGrape(int ID) {
-        if (MoneyCtrl.CanAfford(ObjectMaster.consumableList[ID].cost)) {
-            if (!InHandCtrl.isInHand) {
-                InHandCtrl.PutConsumableInHand(this);
-                //InHandCtrl.PutConsumableInHand(ID); //replace the above with this eventually
-                MoneyCtrl.SubtractMoney(ObjectMaster.consumableList[ID].cost);
-                SceneManager.LoadScene("MainGame");
-            }
-        } else
-            Debug.Log("Not enough cash on hand to buy " + ObjectMaster.buildingList[ID].objectName);
-    }
+    ////the int passed in in the inspector should be the object ID from ObjectMaster.consumableList
+    //public void BuyGrape(int ID) {
+    //    if (MoneyCtrl.CanAfford(ObjectMaster.consumableList[ID].cost)) {
+    //        if (!InHandCtrl.isInHand) {
+    //            InHandCtrl.PutConsumableInHand(this);
+    //            //InHandCtrl.PutConsumableInHand(ID); //replace the above with this eventually
+    //            MoneyCtrl.SubtractMoney(ObjectMaster.consumableList[ID].cost);
+    //            SceneManager.LoadScene("MainGame");
+    //        }
+    //    } else
+    //        Debug.Log("Not enough cash on hand to buy " + ObjectMaster.buildingList[ID].objectName);
+    //}
 
-    public void SellBackConsumable()
-    {
+    public void SellBackConsumable() {
         MoneyCtrl.AddMoney(cost);
     }
 

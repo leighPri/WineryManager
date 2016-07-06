@@ -1,0 +1,17 @@
+{
+		"Midpoint":[
+		{
+			"id": 0,
+			"objectName": "Red Squish",
+			"description": "Squish that is red",
+			"buildingNeeded": "ferment",
+			"outputID": 0
+		},
+		{
+			"id": 1,
+			"objectName": "White Squish",
+			"description": "Squish that is white",
+			"buildingNeeded": "ferment",
+			"outputID": 1
+		}]
+}

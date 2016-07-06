@@ -6,7 +6,7 @@
 			"description": "Grapes that are red",
 			"cost": 100,
 			"buildingNeeded": "press",
-			"outputID": 2
+			"outputID": 0
 		},
 		{
 			"id": 1,
@@ -14,22 +14,6 @@
 			"description": "Grapes that are white",
 			"cost": 100,
 			"buildingNeeded": "press",
-			"outputID": 3
-		},
-		{
-			"id": 2,
-			"objectName": "Red Squish",
-			"description": "Squish that is red",
-			"cost": 100,
-			"buildingNeeded": "ferment",
-			"outputID": 1
-		},
-		{
-			"id": 3,
-			"objectName": "White Squish",
-			"description": "Squish that is white",
-			"cost": 100,
-			"buildingNeeded": "ferment",
 			"outputID": 1
 		}]
 }

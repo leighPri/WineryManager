@@ -16,15 +16,29 @@ public class Building : MonoBehaviour {
 
     public bool isProcessing;
     public bool finishedProcessing;
+
     public Consumable consumableInProcessing;
+    public int canProcess; //use the ObjectMaster enum list
+    public int consumableIDInProcessing;
 
     public Sprite[] spriteArray;
     SpriteRenderer spriteRenderer;
 
     void Start() {
+        SetEnum();
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
-        
     }
+
+    public void SetEnum() {
+        if (objectType == "press") {
+            canProcess = (int)ObjectMaster.listType.Consumable;
+        } else if (objectType == "ferment") {
+            canProcess = (int)ObjectMaster.listType.Midpoint;
+        } else if (objectType == "aging") {
+            canProcess = (int)ObjectMaster.listType.Unaged;
+        }
+    }
+    
     void Update() {
         if (spriteRenderer.sprite == null) {
             //enables visual sprite if an instance of this object has been populated
@@ -54,27 +68,41 @@ public class Building : MonoBehaviour {
             Debug.Log("Not enough cash on hand to buy " + ObjectMaster.buildingList[ID].objectName);
     }
 
-    public void SellBackBuilding()
-    {
-        MoneyCtrl.AddMoney(cost);
-    }
+    //public void FillBuilding() {
+    //    if (InHandCtrl.inHandCtrl.consumableInHand.CanBePlaced(this)) {
+    //        isProcessing = true;
+    //        finishedProcessing = false;
+    //        consumableInProcessing = InHandCtrl.inHandCtrl.consumableInHand;
+    //        InHandCtrl.ClearHand();
+    //        //clears previously-used building if applicable (see BuildingMenuControl.CanClearPrev() comments for breakdown of conditionals)
+    //        if (BuildingMenuControl.CanClearPrev(this))
+    //            BuildingMenuControl.previousBuilding.EmptyBuilding();
+    //    } else {
+    //        Debug.Log("Cannot place " + InHandCtrl.inHandCtrl.consumableInHand.objectName + " in " + objectName + ", object requires a(n) " + InHandCtrl.inHandCtrl.consumableInHand.buildingNeeded + " to be processed.");
+    //    }
+    //}
 
     public void FillBuilding() {
-            if (InHandCtrl.inHandCtrl.consumableInHand.CanBePlaced(this)) {
-                isProcessing = true;
-                finishedProcessing = false;
-                consumableInProcessing = InHandCtrl.inHandCtrl.consumableInHand;
-                InHandCtrl.ClearHand();
+        Debug.Log("CanProcess equals " + canProcess + " and InHand's enum equals " + InHandCtrl.typeOfObject);
+        if (canProcess == InHandCtrl.typeOfObject) {
+        //if (InHandCtrl.inHandCtrl.consumableInHand.CanBePlaced(this)) {
+            isProcessing = true;
+            finishedProcessing = false;
+            consumableIDInProcessing = InHandCtrl.objectInHand;
+            //consumableInProcessing = InHandCtrl.inHandCtrl.consumableInHand;
+            InHandCtrl.ClearHand();
             //clears previously-used building if applicable (see BuildingMenuControl.CanClearPrev() comments for breakdown of conditionals)
             if (BuildingMenuControl.CanClearPrev(this))
                 BuildingMenuControl.previousBuilding.EmptyBuilding();
-            } else {
-                Debug.Log("Cannot place " + InHandCtrl.inHandCtrl.consumableInHand.objectName + " in " + objectName + ", object requires a(n) " + InHandCtrl.inHandCtrl.consumableInHand.buildingNeeded + " to be processed.");
-            }
+        } 
+        //else {
+        //    Debug.Log("Cannot place " + InHandCtrl.inHandCtrl.consumableInHand.objectName + " in " + objectName + ", object requires a(n) " + InHandCtrl.inHandCtrl.consumableInHand.buildingNeeded + " to be processed.");
+        //}
     }
 
     public void EmptyBuilding() {
         finishedProcessing = false;
+        isProcessing = false; //This is redundant on purpose, isProcessing should be set to false by FinishedProcessing().
     }
 
     public void FinishedProcessing() {

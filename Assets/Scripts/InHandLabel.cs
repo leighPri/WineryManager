@@ -11,8 +11,7 @@ public class InHandLabel : MonoBehaviour {
     }
 
     void Start() {
-        if (!InHandCtrl.isInHand)
-        {
+        if (!InHandCtrl.isInHand) {
             inHandText.text = "In Hand: ";
         }
     }
@@ -22,9 +21,12 @@ public class InHandLabel : MonoBehaviour {
         if (InHandCtrl.isInHand) {
             if (InHandCtrl.typeOfObject == (int)ObjectMaster.listType.Building) {
                 inHandText.text = "In Hand: " + ObjectMaster.buildingList[InHandCtrl.objectInHand].objectName; 
-            }
-            else if (InHandCtrl.typeOfObject == (int)ObjectMaster.listType.Consumable) {
+            } else if (InHandCtrl.typeOfObject == (int)ObjectMaster.listType.Consumable) {
                 inHandText.text = "In Hand: " + ObjectMaster.consumableList[InHandCtrl.objectInHand].objectName;
+            } else if (InHandCtrl.typeOfObject == (int)ObjectMaster.listType.Midpoint) {
+                inHandText.text = "In Hand: " + ObjectMaster.midpointList[InHandCtrl.objectInHand].objectName;
+            } else if (InHandCtrl.typeOfObject == (int)ObjectMaster.listType.Unaged) {
+                inHandText.text = "In Hand: " + ObjectMaster.unagedList[InHandCtrl.objectInHand].objectName;
             }
         }  else  {
             inHandText.text = "In Hand: ";

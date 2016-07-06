@@ -34,7 +34,6 @@ public class BuildingMenuControl : MonoBehaviour {
     }
 
     void Update() {
-
         //default display option
         statusText.text = "Empty";
 
@@ -42,15 +41,41 @@ public class BuildingMenuControl : MonoBehaviour {
         buildingNameText.text = displayedBuilding.objectName;
 
         if (displayedBuilding.isProcessing) {
-            statusText.text = "Processing: " + displayedBuilding.consumableInProcessing.objectName;
+            statusText.text = "Processing: " + DisplayInProcessing();
+            //statusText.text = "Processing: " + displayedBuilding.consumableInProcessing.objectName;
         } else if (displayedBuilding.finishedProcessing) {
-            if (displayedBuilding.objectType == "aging") {
-                //selects final output and displays the name of it
-                statusText.text = "Finished processing: " + displayedBuilding.consumableInProcessing.WineSelect(selectedOutput).wineName;
-            } else {
-                statusText.text = "Finished processing: " + displayedBuilding.consumableInProcessing.midpointOutput.objectName;
-            }
+            statusText.text = "Finished processing: " + DisplayFinishedProduct();
+            //if (displayedBuilding.objectType == "aging") {
+            //    //selects final output and displays the name of it
+            //    statusText.text = "Finished processing: " + displayedBuilding.consumableInProcessing.WineSelect(selectedOutput).wineName;
+            //} else {
+            //    statusText.text = "Finished processing: " + displayedBuilding.consumableInProcessing.midpointOutput.objectName;
+            //}
         }
+    }
+
+    string DisplayInProcessing() {
+        if (displayedBuilding.canProcess == (int)ObjectMaster.listType.Consumable) {
+            return ThisConsumable().objectName;
+        } else if (displayedBuilding.canProcess == (int)ObjectMaster.listType.Midpoint) {
+            return ThisMidpoint().objectName;
+        } else if (displayedBuilding.canProcess == (int)ObjectMaster.listType.Unaged) {
+            return ThisUnagedWine().objectName;
+        } else {
+            return "InProcessing but no consumable found";
+        }
+    }
+
+    string DisplayFinishedProduct() {
+        if (displayedBuilding.canProcess == (int)ObjectMaster.listType.Consumable)
+            return ThisMidpoint().objectName;
+        else if (displayedBuilding.canProcess == (int)ObjectMaster.listType.Midpoint)
+            return ThisUnagedWine().objectName;
+        else if (displayedBuilding.canProcess == (int)ObjectMaster.listType.Unaged)
+            return WineMaster.winesOnHand[ThisUnagedWine().outputID[selectedOutput]].wineName;
+        //return ThisUnagedWine().objectName;
+        else
+            return "Done Processing but no product found";
     }
 
     public static void DisplayAgingOptions(bool toDisplay) {
@@ -60,6 +85,19 @@ public class BuildingMenuControl : MonoBehaviour {
             buildingMenuCtrl.agingOptions.SetActive(false);
     }
 
+    //these are used just to shorten code elsewhere
+    public ConsumableTemplate ThisConsumable() {
+        return ObjectMaster.consumableList[displayedBuilding.consumableIDInProcessing];
+    }
+
+    public MidpointTemplate ThisMidpoint() {
+        return ObjectMaster.midpointList[displayedBuilding.consumableIDInProcessing];
+    }
+
+    public UnagedTemplate ThisUnagedWine() {
+        return ObjectMaster.unagedList[displayedBuilding.consumableIDInProcessing];
+    }
+
     public void FinishButton() {
         displayedBuilding.FinishedProcessing();
     }
@@ -67,14 +105,24 @@ public class BuildingMenuControl : MonoBehaviour {
     //places output in hand and hides the building menu
     public void GetOutput() {
         if (displayedBuilding.finishedProcessing) {
-            if (displayedBuilding.objectType != "aging") {
-                InHandCtrl.PutConsumableInHand(displayedBuilding.consumableInProcessing.midpointOutput);
-            } else {
-                int wineID = displayedBuilding.consumableInProcessing.WineSelect(selectedOutput).id;
-                WineMaster.wineMaster.AddBottles(wineID);
-                Debug.Log("You now have " + WineMaster.wineMaster.winesOnHand[wineID].bottlesOnHand + " bottles of " + WineMaster.wineMaster.winesOnHand[wineID].wineName + " available to sell.");
+            if (displayedBuilding.canProcess == (int)ObjectMaster.listType.Consumable) {
+                InHandCtrl.PutMidpointInHand(ThisConsumable().outputID);
+            } else if (displayedBuilding.canProcess == (int)ObjectMaster.listType.Midpoint) {
+                InHandCtrl.PutUnagedWineInHand(ThisMidpoint().outputID);
+            } else if (displayedBuilding.canProcess == (int)ObjectMaster.listType.Unaged) {
+                int wineID = ThisUnagedWine().outputID[selectedOutput];
+                WineMaster.AddBottles(wineID);
+                Debug.Log("You now have " + WineMaster.winesOnHand[wineID].bottlesOnHand + " bottles of " + WineMaster.winesOnHand[wineID].wineName + " available to sell.");
                 displayedBuilding.EmptyBuilding(); //aging barns clear themselves because there is nowhere else for wines to go except into storage (currently)
             }
+            //if (displayedBuilding.objectType != "aging") {
+            //    InHandCtrl.PutConsumableInHand(displayedBuilding.consumableInProcessing.midpointOutput);
+            //} else {
+            //    int wineID = displayedBuilding.consumableInProcessing.WineSelect(selectedOutput).id;
+            //    WineMaster.wineMaster.AddBottles(wineID);
+            //    Debug.Log("You now have " + WineMaster.wineMaster.winesOnHand[wineID].bottlesOnHand + " bottles of " + WineMaster.wineMaster.winesOnHand[wineID].wineName + " available to sell.");
+            //    displayedBuilding.EmptyBuilding(); //aging barns clear themselves because there is nowhere else for wines to go except into storage (currently)
+            //}
             previousBuilding = displayedBuilding;
             //displayedBuilding.EmptyBuilding();
             gameObject.SetActive(false);

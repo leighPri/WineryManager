@@ -93,6 +93,8 @@
     <Compile Include="Assets\Scripts\ObjectBuilders\BuildingTemplate.cs" />
     <Compile Include="Assets\Scripts\ObjectBuilders\Consumable.cs" />
     <Compile Include="Assets\Scripts\ObjectBuilders\ConsumableTemplate.cs" />
+    <Compile Include="Assets\Scripts\ObjectBuilders\MidpointTemplate.cs" />
+    <Compile Include="Assets\Scripts\ObjectBuilders\UnagedTemplate.cs" />
     <Compile Include="Assets\Scripts\ObjectBuilders\Wine.cs" />
     <Compile Include="Assets\Scripts\ObjectMaster.cs" />
   </ItemGroup>
