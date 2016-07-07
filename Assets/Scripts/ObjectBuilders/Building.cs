@@ -18,8 +18,7 @@ public class Building : MonoBehaviour {
     public bool isProcessing;
     public bool finishedProcessing;
     public bool hasSelectedOutput;
-
-    public Consumable consumableInProcessing;
+    
     public int canProcess; //use the ObjectMaster enum list
     public int consumableIDInProcessing;
 
@@ -43,8 +42,7 @@ public class Building : MonoBehaviour {
     
     void Update() {
         if (spriteRenderer.sprite == null) {
-            //enables visual sprite if an instance of this object has been populated
-            spriteRenderer.sprite = spriteArray[id];
+            spriteRenderer.sprite = spriteArray[id]; //enables visual sprite if an instance of this object has been populated
         }
     }
 
@@ -61,8 +59,7 @@ public class Building : MonoBehaviour {
     public void BuyBuilding (int ID) {
         if (MoneyCtrl.CanAfford(ObjectMaster.buildingList[ID].cost)) {
             if (!InHandCtrl.isInHand) {
-                //InHandCtrl.PutBuildingInHand(this);
-                InHandCtrl.PutBuildingInHand(ID); //replace the above with this eventually
+                InHandCtrl.PutBuildingInHand(ID);
                 MoneyCtrl.SubtractMoney(ObjectMaster.buildingList[ID].cost);
                 SceneManager.LoadScene("MainGame");
             }
@@ -70,40 +67,21 @@ public class Building : MonoBehaviour {
             Debug.Log("Not enough cash on hand to buy " + ObjectMaster.buildingList[ID].objectName);
     }
 
-    //public void FillBuilding() {
-    //    if (InHandCtrl.inHandCtrl.consumableInHand.CanBePlaced(this)) {
-    //        isProcessing = true;
-    //        finishedProcessing = false;
-    //        consumableInProcessing = InHandCtrl.inHandCtrl.consumableInHand;
-    //        InHandCtrl.ClearHand();
-    //        //clears previously-used building if applicable (see BuildingMenuControl.CanClearPrev() comments for breakdown of conditionals)
-    //        if (BuildingMenuControl.CanClearPrev(this))
-    //            BuildingMenuControl.previousBuilding.EmptyBuilding();
-    //    } else {
-    //        Debug.Log("Cannot place " + InHandCtrl.inHandCtrl.consumableInHand.objectName + " in " + objectName + ", object requires a(n) " + InHandCtrl.inHandCtrl.consumableInHand.buildingNeeded + " to be processed.");
-    //    }
-    //}
-
     public void FillBuilding() {
         if (canProcess == InHandCtrl.typeOfObject) {
-        //if (InHandCtrl.inHandCtrl.consumableInHand.CanBePlaced(this)) {
             isProcessing = true;
             finishedProcessing = false;
             consumableIDInProcessing = InHandCtrl.objectInHand;
-            //consumableInProcessing = InHandCtrl.inHandCtrl.consumableInHand;
             InHandCtrl.ClearHand();
             //clears previously-used building if applicable (see BuildingMenuControl.CanClearPrev() comments for breakdown of conditionals)
             if (BuildingMenuControl.CanClearPrev(this))
                 BuildingMenuControl.previousBuilding.EmptyBuilding();
-        } 
-        //else {
-        //    Debug.Log("Cannot place " + InHandCtrl.inHandCtrl.consumableInHand.objectName + " in " + objectName + ", object requires a(n) " + InHandCtrl.inHandCtrl.consumableInHand.buildingNeeded + " to be processed.");
-        //}
+        }
     }
 
     public void EmptyBuilding() {
         finishedProcessing = false;
-        isProcessing = false; //This is redundant on purpose, isProcessing should be set to false by FinishedProcessing().
+        isProcessing = false; //This is redundant on purpose, isProcessing should be set to false by FinishedProcessing()
         hasSelectedOutput = false;
     }
 
@@ -115,10 +93,9 @@ public class Building : MonoBehaviour {
     }
 
     void OnMouseUpAsButton() {
-        if (!isProcessing && InHandCtrl.isInHand) {
+        if (!isProcessing && InHandCtrl.isInHand)
             FillBuilding();
-        }
-            ShowBuildingMenu();
+        ShowBuildingMenu();
     }
 
     void ShowBuildingMenu() {
@@ -129,9 +106,6 @@ public class Building : MonoBehaviour {
             BuildingMenuControl.DisplayAgingOptions(false);
         //passes this building to the menu so that it can be populated 
         BuildingMenuControl.GetBuilding(this);
-    }
-
-    public void DestroyObject() {
-        DestroyObject(this);
+        BuildingHolder.HideBuildingHolder(true); //hides buildingholder so the buildings don't interfere with clicks
     }
 }

@@ -13,20 +13,11 @@ public class GameControl : MonoBehaviour {
     //holder of the actual grid data
     public static Element[] grid = new Element[w * h];
 
-    void Awake()
-    {
-
-        if (control == null) //if there is no GameControl object
-        {
-            //commented out because the Controls parent object should persist this
-            //DontDestroyOnLoad(gameObject);
+    void Awake() {
+        if (control == null)
             control = this;
-            //this instance becomes THE GameControl object that will persist through all scenes
-        }
-        else if (control != this) //Destroys any instances that are not THE GameControl
-        {
+        else if (control != this)
             Destroy(gameObject);
-        }
     }
     
 }

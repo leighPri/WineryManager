@@ -9,11 +9,8 @@ public class ControlHolder : MonoBehaviour {
         if (controlHolder == null) {
             DontDestroyOnLoad(gameObject);
             controlHolder = this;
-        }
-        else if (controlHolder != this)
-        {
+        } else if (controlHolder != this)
             Destroy(gameObject);
-        }
     }
     
 }

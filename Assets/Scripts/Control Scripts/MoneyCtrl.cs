@@ -12,13 +12,9 @@ public class MoneyCtrl : MonoBehaviour {
 
     void Awake() {
         if (moneyCtrl == null) {
-            //commented out because the Controls parent object should persist this
-            //DontDestroyOnLoad(gameObject);
             moneyCtrl = this;
-            //starting money for player, change or remove this line later for a better solution
-            moneyOnHand = 5000;
-        }
-        else if (moneyCtrl != this)
+            moneyOnHand = 5000; //starting money for player, change or remove this line later for a better solution
+        } else if (moneyCtrl != this)
             Destroy(gameObject);
     }
 
