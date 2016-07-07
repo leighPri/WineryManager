@@ -17,6 +17,6 @@ public class BottleDisplay : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        numBottles.text = WineMaster.winesOnHand[wine.id].bottlesOnHand.ToString();
+        numBottles.text = ObjectMaster.winesOnHand[wine.id].bottlesOnHand.ToString();
     }
 }

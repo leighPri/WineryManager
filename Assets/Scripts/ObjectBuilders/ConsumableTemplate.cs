@@ -12,6 +12,7 @@ public class ConsumableTemplate {
     //valid inputs are "press" "ferment" and "aging"
     //used for conditionals, must be correct
     public string buildingNeeded;
+    public int parentList = (int)ObjectMaster.listType.Consumable;
 
     public int outputID; //the ID of the object output by this Consumable
 

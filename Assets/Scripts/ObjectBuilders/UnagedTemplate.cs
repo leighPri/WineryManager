@@ -7,7 +7,8 @@ public class UnagedTemplate {
     public int id;
     public string objectName; //the name that the player sees
     public string description;
-    public string objectType = "Unaged";
+    //public string objectType = "Unaged";
+    public int parentList = (int)ObjectMaster.listType.Unaged;
 
     //valid inputs are "press" "ferment" and "aging"
     //used for conditionals, must be correct

@@ -88,9 +88,9 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 409110}
-  - 114: {fileID: 11425134}
+  - 114: {fileID: 11426002}
   m_Layer: 0
-  m_Name: WineMaster
+  m_Name: ObjectMaster
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -191,7 +191,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buildingInHand: {fileID: 11429554, guid: 46b80a758d6d3e04c90714ae85eb2f83, type: 2}
-  consumableInHand: {fileID: 11464088, guid: 096c7869dd34dcb4d873a1498d135655, type: 2}
 --- !u!114 &11416694
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -214,7 +213,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d178d1ce81830e4b97a5535b6fddcea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &11425134
+--- !u!114 &11426002
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -222,16 +221,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 198096}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af6d72aafd1dde74692b35cea4b5f7ed, type: 3}
+  m_Script: {fileID: 11500000, guid: cd35a51ad9a3c8c429638d9a347edde7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  winesOnHand:
-  - {fileID: 11427130, guid: 11388bf791a03eb4ab3c94a50c8cae16, type: 2}
-  - {fileID: 11427130, guid: c8b50ee75cacf8146af2453364ff8db4, type: 2}
-  - {fileID: 11427130, guid: b6d3294ecc0be7e4e868c5075899bad3, type: 2}
-  - {fileID: 11427130, guid: 359af229469bb624ea46383208266c49, type: 2}
-  - {fileID: 11427130, guid: afb2b46c065ce3148af71bca69699408, type: 2}
-  - {fileID: 11427130, guid: e587ac34cab0c7046b683cd4745c1641, type: 2}
 --- !u!114 &11439378
 MonoBehaviour:
   m_ObjectHideFlags: 1

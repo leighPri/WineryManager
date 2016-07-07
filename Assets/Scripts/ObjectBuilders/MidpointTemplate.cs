@@ -10,6 +10,7 @@ public class MidpointTemplate {
     //valid inputs are "press" "ferment" and "aging"
     //used for conditionals, must be correct
     public string buildingNeeded;
+    public int parentList = (int)ObjectMaster.listType.Midpoint;
 
     public int outputID;
 

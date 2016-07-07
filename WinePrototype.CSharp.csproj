@@ -79,6 +79,7 @@
     <Compile Include="Assets\Scripts\Control Scripts\GameControl.cs" />
     <Compile Include="Assets\Scripts\Control Scripts\InHandCtrl.cs" />
     <Compile Include="Assets\Scripts\Control Scripts\MoneyCtrl.cs" />
+    <Compile Include="Assets\Scripts\Control Scripts\ObjectMaster.cs" />
     <Compile Include="Assets\Scripts\Control Scripts\UIControl.cs" />
     <Compile Include="Assets\Scripts\Control Scripts\WineMaster.cs" />
     <Compile Include="Assets\Scripts\DataHandling\JSONParse.cs" />
@@ -96,7 +97,7 @@
     <Compile Include="Assets\Scripts\ObjectBuilders\MidpointTemplate.cs" />
     <Compile Include="Assets\Scripts\ObjectBuilders\UnagedTemplate.cs" />
     <Compile Include="Assets\Scripts\ObjectBuilders\Wine.cs" />
-    <Compile Include="Assets\Scripts\ObjectMaster.cs" />
+    <Compile Include="Assets\Scripts\ObjectBuilders\WineTemplate.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
 </Project>

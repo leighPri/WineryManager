@@ -8,6 +8,9 @@ public class ObjectMaster : MonoBehaviour {
     public static List<BuildingTemplate> buildingList = new List<BuildingTemplate>();
     public static List<MidpointTemplate> midpointList = new List<MidpointTemplate>();
     public static List<UnagedTemplate> unagedList = new List<UnagedTemplate>();
+    public static List<WineTemplate> wineList = new List<WineTemplate>();
+    
+    public static List<WineTemplate> winesOnHand = new List<WineTemplate>();
 
     public enum listType { Building, Consumable, Midpoint, Unaged };
 

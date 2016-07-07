@@ -161,8 +161,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11425134, guid: e98d5cb961d367b468d30a8dd7e9523a, type: 2}
-        m_MethodName: SellBottles
+      - m_Target: {fileID: 198096, guid: e98d5cb961d367b468d30a8dd7e9523a, type: 2}
+        m_MethodName: 
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -328,8 +328,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11425134, guid: e98d5cb961d367b468d30a8dd7e9523a, type: 2}
-        m_MethodName: SellBottles
+      - m_Target: {fileID: 198096, guid: e98d5cb961d367b468d30a8dd7e9523a, type: 2}
+        m_MethodName: 
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -427,7 +427,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ccf041b602c6f14488c8bb819f633e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wineMaster: {fileID: 11425134, guid: e98d5cb961d367b468d30a8dd7e9523a, type: 2}
+  wineMaster: {fileID: 0}
   wine: {fileID: 11427130, guid: b6d3294ecc0be7e4e868c5075899bad3, type: 2}
 --- !u!114 &99382932
 MonoBehaviour:
@@ -677,8 +677,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11425134, guid: e98d5cb961d367b468d30a8dd7e9523a, type: 2}
-        m_MethodName: SellBottles
+      - m_Target: {fileID: 198096, guid: e98d5cb961d367b468d30a8dd7e9523a, type: 2}
+        m_MethodName: 
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -979,8 +979,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11425134, guid: e98d5cb961d367b468d30a8dd7e9523a, type: 2}
-        m_MethodName: SellBottles
+      - m_Target: {fileID: 198096, guid: e98d5cb961d367b468d30a8dd7e9523a, type: 2}
+        m_MethodName: 
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1197,8 +1197,7 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 11424666, guid: e98d5cb961d367b468d30a8dd7e9523a, type: 2}
+    m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e98d5cb961d367b468d30a8dd7e9523a, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &959652595
@@ -1375,7 +1374,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ccf041b602c6f14488c8bb819f633e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wineMaster: {fileID: 11425134, guid: e98d5cb961d367b468d30a8dd7e9523a, type: 2}
+  wineMaster: {fileID: 0}
   wine: {fileID: 11427130, guid: 11388bf791a03eb4ab3c94a50c8cae16, type: 2}
 --- !u!114 &1001587703
 MonoBehaviour:
@@ -1463,7 +1462,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ccf041b602c6f14488c8bb819f633e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wineMaster: {fileID: 11425134, guid: e98d5cb961d367b468d30a8dd7e9523a, type: 2}
+  wineMaster: {fileID: 0}
   wine: {fileID: 11427130, guid: 359af229469bb624ea46383208266c49, type: 2}
 --- !u!114 &1166409409
 MonoBehaviour:
@@ -1899,7 +1898,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ccf041b602c6f14488c8bb819f633e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wineMaster: {fileID: 11425134, guid: e98d5cb961d367b468d30a8dd7e9523a, type: 2}
+  wineMaster: {fileID: 0}
   wine: {fileID: 11427130, guid: afb2b46c065ce3148af71bca69699408, type: 2}
 --- !u!114 &1536911411
 MonoBehaviour:
@@ -2016,8 +2015,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11425134, guid: e98d5cb961d367b468d30a8dd7e9523a, type: 2}
-        m_MethodName: SellBottles
+      - m_Target: {fileID: 198096, guid: e98d5cb961d367b468d30a8dd7e9523a, type: 2}
+        m_MethodName: 
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2144,8 +2143,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11425134, guid: e98d5cb961d367b468d30a8dd7e9523a, type: 2}
-        m_MethodName: SellBottles
+      - m_Target: {fileID: 198096, guid: e98d5cb961d367b468d30a8dd7e9523a, type: 2}
+        m_MethodName: 
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2495,7 +2494,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ccf041b602c6f14488c8bb819f633e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wineMaster: {fileID: 11425134, guid: e98d5cb961d367b468d30a8dd7e9523a, type: 2}
+  wineMaster: {fileID: 0}
   wine: {fileID: 11427130, guid: e587ac34cab0c7046b683cd4745c1641, type: 2}
 --- !u!114 &1700773185
 MonoBehaviour:
@@ -2629,7 +2628,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ccf041b602c6f14488c8bb819f633e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wineMaster: {fileID: 11425134, guid: e98d5cb961d367b468d30a8dd7e9523a, type: 2}
+  wineMaster: {fileID: 0}
   wine: {fileID: 11427130, guid: c8b50ee75cacf8146af2453364ff8db4, type: 2}
 --- !u!114 &1789599279
 MonoBehaviour:

@@ -9,6 +9,7 @@ public class BuildingTemplate {
     public string objectType;
     public int cost;
     public int canProcess;
+    public int parentList = (int)ObjectMaster.listType.Building;
 
     public BuildingTemplate(int newID, int newCost, string newObjectName, string newDescription, string newObjectType) {
         id = newID;

@@ -13,6 +13,7 @@ public class Building : MonoBehaviour {
     //valid inputs are "press" "ferment" and "aging"
     //used for conditionals, must be correct
     public string objectType;
+    public int parentList = (int)ObjectMaster.listType.Building;
 
     public bool isProcessing;
     public bool finishedProcessing;
@@ -83,7 +84,6 @@ public class Building : MonoBehaviour {
     //}
 
     public void FillBuilding() {
-        Debug.Log("CanProcess equals " + canProcess + " and InHand's enum equals " + InHandCtrl.typeOfObject);
         if (canProcess == InHandCtrl.typeOfObject) {
         //if (InHandCtrl.inHandCtrl.consumableInHand.CanBePlaced(this)) {
             isProcessing = true;
