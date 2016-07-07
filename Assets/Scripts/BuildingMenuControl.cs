@@ -135,7 +135,7 @@ public class BuildingMenuControl : MonoBehaviour {
         //if previous building is finished processing
         //if the next building is currently processing (i.e., has been passed a consumable but has not processed it)
         //if the two consumables are the same (end product for one, starting product for the other)
-        if (previousBuilding != null && displayedBuilding != null && previousBuilding != nextBuild && previousBuilding.finishedProcessing && nextBuild.isProcessing && previousBuilding.consumableInProcessing.midpointOutput == nextBuild.consumableInProcessing)
+        if (previousBuilding != null && displayedBuilding != null && previousBuilding != nextBuild && previousBuilding.finishedProcessing && nextBuild.isProcessing)
             return true;
         else
             return false;

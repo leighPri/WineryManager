@@ -106,8 +106,11 @@ public class Building : MonoBehaviour {
     }
 
     public void FinishedProcessing() {
-        finishedProcessing = true;
-        isProcessing = false;
+        if (isProcessing)
+        {
+            finishedProcessing = true;
+            isProcessing = false;
+        }
     }
 
     void OnMouseUpAsButton() {
