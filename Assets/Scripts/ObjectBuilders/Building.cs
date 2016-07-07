@@ -17,6 +17,7 @@ public class Building : MonoBehaviour {
 
     public bool isProcessing;
     public bool finishedProcessing;
+    public bool hasSelectedOutput;
 
     public Consumable consumableInProcessing;
     public int canProcess; //use the ObjectMaster enum list
@@ -103,11 +104,11 @@ public class Building : MonoBehaviour {
     public void EmptyBuilding() {
         finishedProcessing = false;
         isProcessing = false; //This is redundant on purpose, isProcessing should be set to false by FinishedProcessing().
+        hasSelectedOutput = false;
     }
 
     public void FinishedProcessing() {
-        if (isProcessing)
-        {
+        if (isProcessing) {
             finishedProcessing = true;
             isProcessing = false;
         }
@@ -122,7 +123,7 @@ public class Building : MonoBehaviour {
 
     void ShowBuildingMenu() {
         BuildingMenuControl.buildingMenuCtrl.gameObject.SetActive(true);
-        if (objectType == "aging")
+        if (objectType == "aging" && !hasSelectedOutput)
             BuildingMenuControl.DisplayAgingOptions(true);
         else
             BuildingMenuControl.DisplayAgingOptions(false);

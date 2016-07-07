@@ -142,10 +142,14 @@ public class BuildingMenuControl : MonoBehaviour {
     }
 
     //lets the aging buttons set their desired outputs
+    //does not function if there is not something currently being processed
     public void SetOutput(int output) {
-        selectedOutput = output;
-        //hides the whole set once a button is clicked as the user should only be able to select one option
-        DisplayAgingOptions(false);
+        if (displayedBuilding.isProcessing) {
+            selectedOutput = output;
+            displayedBuilding.hasSelectedOutput = true;
+            //hides the whole set once a button is clicked as the user should only be able to select one option
+            DisplayAgingOptions(false);
+        }
     }
 
     public static void GetBuilding(Building building) {
