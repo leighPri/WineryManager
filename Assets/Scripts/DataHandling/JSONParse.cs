@@ -12,6 +12,7 @@ public class JSONParse : MonoBehaviour {
     JSONNode buildingJSON;
     JSONNode midpointJSON;
     JSONNode unagedJSON;
+    JSONNode wineJSON;
 
     // Use this for initialization
     void Awake () {
@@ -24,6 +25,8 @@ public class JSONParse : MonoBehaviour {
         MidpointCreator(midpointJSON["Midpoint"], ObjectMaster.midpointList);
         unagedJSON = JSON.Parse((Resources.Load("unagedJSON") as TextAsset).text); //see above
         UnagedCreator(unagedJSON["Unaged"], ObjectMaster.unagedList);
+        wineJSON = JSON.Parse((Resources.Load("wineJSON") as TextAsset).text); //see above
+        WineCreator(wineJSON["Wine"], ObjectMaster.wineList);
     }
     
     public void ConsumableCreator(JSONNode jsonObj, List<ConsumableTemplate> consList) {
@@ -82,5 +85,17 @@ public class JSONParse : MonoBehaviour {
             //buildList[i].ExampleCall();
         }
     }
+
+    public void WineCreator(JSONNode jsonObj, List<WineTemplate> wineList) {
+        for (int i = 0; i < jsonObj.Count; i++) {
+            WineTemplate tempWine;
+            tempWine = new WineTemplate(int.Parse(jsonObj[i]["id"]),
+                                      int.Parse(jsonObj[i]["baseSellValue"]),
+                                      jsonObj[i]["wineName"].Value);
+            wineList.Add(tempWine);
+            //consList[i].ExampleCall();
+        }
+    }
+
 
 }

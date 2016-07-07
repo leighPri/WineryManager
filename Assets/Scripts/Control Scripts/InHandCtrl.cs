@@ -34,21 +34,21 @@ public class InHandCtrl : MonoBehaviour {
     public static void PutConsumableInHand(int ID) {
         isInHand = true;
         typeOfObject = (int)ObjectMaster.listType.Consumable;
-        Debug.Log("My enum type is " + typeOfObject);
+        //Debug.Log("My enum type is " + typeOfObject);
         objectInHand = ID;
     }
 
     public static void PutMidpointInHand(int ID) {
         isInHand = true;
         typeOfObject = (int)ObjectMaster.listType.Midpoint;
-        Debug.Log("My enum type is " + typeOfObject);
+        //Debug.Log("My enum type is " + typeOfObject);
         objectInHand = ID;
     }
 
     public static void PutUnagedWineInHand(int ID) {
         isInHand = true;
         typeOfObject = (int)ObjectMaster.listType.Unaged;
-        Debug.Log("My enum type is " + typeOfObject);
+        //Debug.Log("My enum type is " + typeOfObject);
         objectInHand = ID;
     }
 

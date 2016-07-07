@@ -34,36 +34,26 @@ public class BuildingMenuControl : MonoBehaviour {
     }
 
     void Update() {
-        //default display option
-        statusText.text = "Empty";
-
         //sets elements to the specifics of the passed building
         buildingNameText.text = displayedBuilding.objectName;
 
         if (displayedBuilding.isProcessing) {
             statusText.text = "Processing: " + DisplayInProcessing();
-            //statusText.text = "Processing: " + displayedBuilding.consumableInProcessing.objectName;
         } else if (displayedBuilding.finishedProcessing) {
             statusText.text = "Finished processing: " + DisplayFinishedProduct();
-            //if (displayedBuilding.objectType == "aging") {
-            //    //selects final output and displays the name of it
-            //    statusText.text = "Finished processing: " + displayedBuilding.consumableInProcessing.WineSelect(selectedOutput).wineName;
-            //} else {
-            //    statusText.text = "Finished processing: " + displayedBuilding.consumableInProcessing.midpointOutput.objectName;
-            //}
-        }
+        } else
+            statusText.text = "Empty"; //default display option
     }
 
     string DisplayInProcessing() {
-        if (displayedBuilding.canProcess == (int)ObjectMaster.listType.Consumable) {
+        if (displayedBuilding.canProcess == (int)ObjectMaster.listType.Consumable) 
             return ThisConsumable().objectName;
-        } else if (displayedBuilding.canProcess == (int)ObjectMaster.listType.Midpoint) {
+        else if (displayedBuilding.canProcess == (int)ObjectMaster.listType.Midpoint)
             return ThisMidpoint().objectName;
-        } else if (displayedBuilding.canProcess == (int)ObjectMaster.listType.Unaged) {
+        else if (displayedBuilding.canProcess == (int)ObjectMaster.listType.Unaged)
             return ThisUnagedWine().objectName;
-        } else {
-            return "InProcessing but no consumable found";
-        }
+        else
+            return "InProcessing but no consumable found"; //this should never run
     }
 
     string DisplayFinishedProduct() {
@@ -72,10 +62,9 @@ public class BuildingMenuControl : MonoBehaviour {
         else if (displayedBuilding.canProcess == (int)ObjectMaster.listType.Midpoint)
             return ThisUnagedWine().objectName;
         else if (displayedBuilding.canProcess == (int)ObjectMaster.listType.Unaged)
-            return WineMaster.winesOnHand[ThisUnagedWine().outputID[selectedOutput]].wineName;
-        //return ThisUnagedWine().objectName;
+            return ObjectMaster.wineList[ThisUnagedWine().outputID[selectedOutput]].wineName;
         else
-            return "Done Processing but no product found";
+            return "Done Processing but no product found"; //this should never run
     }
 
     public static void DisplayAgingOptions(bool toDisplay) {
@@ -99,7 +88,9 @@ public class BuildingMenuControl : MonoBehaviour {
     }
 
     public void FinishButton() {
-        displayedBuilding.FinishedProcessing();
+        //this conditional is to keep aging barns from being able to "finish" without something being selected
+        if (displayedBuilding.objectType != "aging" || displayedBuilding.hasSelectedOutput)
+            displayedBuilding.FinishedProcessing();
     }
 
     //places output in hand and hides the building menu
@@ -111,8 +102,9 @@ public class BuildingMenuControl : MonoBehaviour {
                 InHandCtrl.PutUnagedWineInHand(ThisMidpoint().outputID);
             } else if (displayedBuilding.canProcess == (int)ObjectMaster.listType.Unaged) {
                 int wineID = ThisUnagedWine().outputID[selectedOutput];
-                WineMaster.AddBottles(wineID);
-                Debug.Log("You now have " + WineMaster.winesOnHand[wineID].bottlesOnHand + " bottles of " + WineMaster.winesOnHand[wineID].wineName + " available to sell.");
+                ObjectMaster.AddBottles(wineID);
+                //WineMaster.AddBottles(wineID);
+                Debug.Log("You now have " + ObjectMaster.wineList[wineID].bottlesOnHand + " bottles of " + ObjectMaster.wineList[wineID].wineName + " available to sell.");
                 displayedBuilding.EmptyBuilding(); //aging barns clear themselves because there is nowhere else for wines to go except into storage (currently)
             }
             //if (displayedBuilding.objectType != "aging") {
@@ -124,7 +116,6 @@ public class BuildingMenuControl : MonoBehaviour {
             //    displayedBuilding.EmptyBuilding(); //aging barns clear themselves because there is nowhere else for wines to go except into storage (currently)
             //}
             previousBuilding = displayedBuilding;
-            //displayedBuilding.EmptyBuilding();
             gameObject.SetActive(false);
         }
     }
@@ -134,7 +125,6 @@ public class BuildingMenuControl : MonoBehaviour {
         //if the upcoming building is not the exact same instance as the one currently stored in previousBuilding
         //if previous building is finished processing
         //if the next building is currently processing (i.e., has been passed a consumable but has not processed it)
-        //if the two consumables are the same (end product for one, starting product for the other)
         if (previousBuilding != null && displayedBuilding != null && previousBuilding != nextBuild && previousBuilding.finishedProcessing && nextBuild.isProcessing)
             return true;
         else

@@ -17,5 +17,12 @@ public class BuildingHolder : MonoBehaviour {
             Destroy(gameObject);
         }
     }
+
+    public static void HideBuildingHolder(bool toHide) {
+        if (toHide)
+            buildingHolder.gameObject.SetActive(false);
+        else
+            buildingHolder.gameObject.SetActive(true);
+    }
     
 }

@@ -13,12 +13,15 @@ public class UIControl : MonoBehaviour {
     public Consumable[] grapesAvailable;
 
     public void ShowPanel(GameObject panel) {
-        if (!InHandCtrl.isInHand)
+        if (!InHandCtrl.isInHand) {
             panel.gameObject.SetActive(true);
+            BuildingHolder.HideBuildingHolder(true);
+        }
     }
 
     public void HidePanel(GameObject panel) {
-            panel.gameObject.SetActive(false);
+        panel.gameObject.SetActive(false);
+        BuildingHolder.HideBuildingHolder(false);
     }
 
     void Update() {
