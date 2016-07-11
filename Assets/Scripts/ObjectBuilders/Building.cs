@@ -26,6 +26,12 @@ public class Building : MonoBehaviour {
     public Sprite[] spriteArray;
     SpriteRenderer spriteRenderer;
 
+    //These values are used for timing
+    public float timeConsumableIsPlaced;  //marks time consumable is placed on building
+    public float tempTimerValue = 5f;  //this is a placeholder and should be filled with the JSON value of how long a consumable takes to process
+    public float timeRemainingTilComplete;
+    public bool timeConsumableTimerComplete = false;
+
     void Start() {
         SetEnum();
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
@@ -44,6 +50,9 @@ public class Building : MonoBehaviour {
     void Update() {
         if (spriteRenderer.sprite == null) {
             spriteRenderer.sprite = spriteArray[id]; //enables visual sprite if an instance of this object has been populated
+        }
+        if (isProcessing && !timeConsumableTimerComplete) {
+                TimerCheck();
         }
     }
 
@@ -90,13 +99,14 @@ public class Building : MonoBehaviour {
         if (canProcess == InHandCtrl.typeOfObject) {
             isProcessing = true;
             finishedProcessing = false;
+            timeConsumableIsPlaced = Time.time;
             consumableIDInProcessing = InHandCtrl.objectInHand;
             InHandCtrl.ClearHand();
             //clears previously-used building if applicable (see BuildingMenuControl.CanClearPrev() comments for breakdown of conditionals)
             if (BuildingMenuControl.CanClearPrev(this))
                 BuildingMenuControl.previousBuilding.EmptyBuilding();
         }
-        SaveLoad.Save();
+        //SaveLoad.Save();
     }
 
     public void EmptyBuilding() {
@@ -127,5 +137,21 @@ public class Building : MonoBehaviour {
         //passes this building to the menu so that it can be populated 
         BuildingMenuControl.GetBuilding(this);
         BuildingHolder.HideBuildingHolder(true); //hides buildingholder so the buildings don't interfere with clicks
+    }
+
+    //disregard for now, just testing
+    public void TimerCheck() {
+        //gets how much time has elapsed since consumable placed
+        float timeCheck = Time.time - timeConsumableIsPlaced;
+
+        timeRemainingTilComplete = tempTimerValue - timeCheck;
+
+        Debug.Log("Time remaining til complete: " + timeRemainingTilComplete);
+
+        if (timeRemainingTilComplete <= 0) {
+            timeConsumableTimerComplete = true;
+            finishedProcessing = true;
+            isProcessing = false;
+        }
     }
 }

@@ -22,7 +22,7 @@ public class Element : MonoBehaviour {
         if (InHandCtrl.isInHand)
             if (InHandCtrl.typeOfObject == (int)ObjectMaster.listType.Building) {
                 BuildingCtrl.placeBuilding(this);
-                SaveLoad.Save();
+                //SaveLoad.Save();
             }
     }
     

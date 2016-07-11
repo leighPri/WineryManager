@@ -80,6 +80,7 @@
     <Compile Include="Assets\Scripts\Control Scripts\InHandCtrl.cs" />
     <Compile Include="Assets\Scripts\Control Scripts\MoneyCtrl.cs" />
     <Compile Include="Assets\Scripts\Control Scripts\ObjectMaster.cs" />
+    <Compile Include="Assets\Scripts\Control Scripts\TimerControl.cs" />
     <Compile Include="Assets\Scripts\Control Scripts\UIControl.cs" />
     <Compile Include="Assets\Scripts\DataHandling\JSONParse.cs" />
     <Compile Include="Assets\Scripts\DataHandling\SaveLoad.cs" />

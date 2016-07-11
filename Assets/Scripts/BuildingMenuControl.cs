@@ -17,6 +17,8 @@ public class BuildingMenuControl : MonoBehaviour {
     public GameObject status;
     public static Text statusText;
     public GameObject agingOptions;
+    public GameObject getProduct;
+    public static Text getProductText;
 
     void Awake() {
         if (buildingMenuCtrl == null)
@@ -31,9 +33,16 @@ public class BuildingMenuControl : MonoBehaviour {
             buildingNameText = buildingName.GetComponent<Text>();
         if (statusText == null)
             statusText = status.GetComponent<Text>();
+        if (getProductText == null)
+            getProductText = getProduct.GetComponent<Text>();
     }
 
     void Update() {
+
+        //if (displayedBuilding.isProcessing && displayedBuilding.timeRemainingTilComplete <= 0) {
+        //    getProductText.text = "";
+        //}
+
         buildingNameText.text = displayedBuilding.objectName; //sets elements to the specifics of the passed building
 
         if (displayedBuilding.isProcessing) //shows the details of the object in processing
@@ -90,6 +99,11 @@ public class BuildingMenuControl : MonoBehaviour {
     }
 
     public void FinishButton() {
+        //for testing only, take out later
+        if (!displayedBuilding.timeConsumableTimerComplete) {
+            displayedBuilding.timeRemainingTilComplete = 0;
+            displayedBuilding.timeConsumableTimerComplete = true;
+        }
         if (displayedBuilding.objectType != "aging" || displayedBuilding.hasSelectedOutput) //this conditional is to keep aging barns from being able to "finish" without an option being selected
             displayedBuilding.FinishedProcessing();
     }
