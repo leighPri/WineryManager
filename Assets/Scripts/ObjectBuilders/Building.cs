@@ -21,6 +21,7 @@ public class Building : MonoBehaviour {
     
     public int canProcess; //use the ObjectMaster enum list
     public int consumableIDInProcessing;
+    public Vector3 myPos;
 
     public Sprite[] spriteArray;
     SpriteRenderer spriteRenderer;
@@ -53,6 +54,24 @@ public class Building : MonoBehaviour {
         description = ObjectMaster.buildingList[templateID].description;
         cost = ObjectMaster.buildingList[templateID].cost;
         objectType = ObjectMaster.buildingList[templateID].objectType;
+
+        myPos = gameObject.transform.position;
+    }
+
+    public void SetParamsByID(int templateID, BuildingTemplate[] buildList) {
+        id = buildList[templateID].id;
+        objectName = buildList[templateID].objectName;
+        description = buildList[templateID].description;
+        cost = buildList[templateID].cost;
+        objectType = buildList[templateID].objectType;
+
+        //status variables
+        isProcessing = buildList[templateID].isProcessing;
+        finishedProcessing = buildList[templateID].finishedProcessing;
+        hasSelectedOutput = buildList[templateID].hasSelectedOutput;
+        consumableIDInProcessing = buildList[templateID].consumableIDInProcessing;
+
+        myPos = buildList[templateID].myPos;
     }
 
     //the int passed in in the inspector should be the object ID from ObjectMaster.buildingList
@@ -77,6 +96,7 @@ public class Building : MonoBehaviour {
             if (BuildingMenuControl.CanClearPrev(this))
                 BuildingMenuControl.previousBuilding.EmptyBuilding();
         }
+        SaveLoad.Save();
     }
 
     public void EmptyBuilding() {

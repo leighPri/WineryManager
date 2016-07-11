@@ -17,7 +17,7 @@ public class BuildingCtrl : MonoBehaviour {
     }
     
     void OnLevelWasLoaded (int level) {
-        if (level == 1)
+        if (level == 1 || level == 2)
             BuildingHolder.buildingHolder.gameObject.SetActive(true);
         else
             BuildingHolder.buildingHolder.gameObject.SetActive(false);

@@ -19,5 +19,14 @@ public class GameControl : MonoBehaviour {
         else if (control != this)
             Destroy(gameObject);
     }
+
+    //hides and shows grid depending on what scene is active. 1 (loading screen) so that buildings can be reinitialized if relevant, 2 (main game) for the actual game
+    void OnLevelWasLoaded(int level) {
+        if (level == 1 || level == 2) {
+            Grid.grid.gameObject.SetActive(true);
+        } else {
+            Grid.grid.gameObject.SetActive(false);
+        }
+    }
     
 }

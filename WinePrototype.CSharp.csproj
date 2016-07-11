@@ -85,8 +85,10 @@
     <Compile Include="Assets\Scripts\DataHandling\SaveLoad.cs" />
     <Compile Include="Assets\Scripts\DataHandling\SimpleJSON.cs" />
     <Compile Include="Assets\Scripts\Element.cs" />
+    <Compile Include="Assets\Scripts\Grid.cs" />
     <Compile Include="Assets\Scripts\InHandLabel.cs" />
     <Compile Include="Assets\Scripts\LevelManager.cs" />
+    <Compile Include="Assets\Scripts\LoadingScene.cs" />
     <Compile Include="Assets\Scripts\MoneyDisplayLabel.cs" />
     <Compile Include="Assets\Scripts\ObjectBuilders\Building.cs" />
     <Compile Include="Assets\Scripts\ObjectBuilders\BuildingTemplate.cs" />
