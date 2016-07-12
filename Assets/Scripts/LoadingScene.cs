@@ -9,9 +9,9 @@ public class LoadingScene : MonoBehaviour {
         //Loads information if there is an existing save file
         try {
             SaveLoad.Load();
-        } catch {
+        } catch (System.Exception e) {
             //SaveLoad.DeleteSave();
-            Debug.Log("Save file corrupt, starting new game");
+            Debug.Log("Error: " + e);
             SceneManager.LoadScene("MainGame");
         }
     }

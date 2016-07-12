@@ -13,7 +13,8 @@ public class MoneyCtrl : MonoBehaviour {
     void Awake() {
         if (moneyCtrl == null) {
             moneyCtrl = this;
-            moneyOnHand = 5000; //starting money for player, change or remove this line later for a better solution
+            if (moneyOnHand == 0) //if not set via load function. Also this is bad logic, replace later
+                moneyOnHand = 5000; //starting money for player, change or remove this line later for a better solution
         } else if (moneyCtrl != this)
             Destroy(gameObject);
     }

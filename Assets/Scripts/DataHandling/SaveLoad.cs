@@ -7,7 +7,7 @@ using System.IO;
 
 public static class SaveLoad {
 
-    public static bool finishedLoading;
+    public static bool finishedLoading = false;
 
     //saves data out to a file, can be called by other objects using GameControl.Save() because class is static and self-referential
     public static void Save() {
@@ -15,22 +15,19 @@ public static class SaveLoad {
         BinaryFormatter bf = new BinaryFormatter();
         //Creates actual file that can be written to
         //this DOES WORK on iOS and Android
-        FileStream file = File.Create(Application.persistentDataPath + "/playerInfo.dat");
+        FileStream file = File.Open(Application.persistentDataPath + "/playerInfo.dat", FileMode.OpenOrCreate);
 
         //creates holder for data to be saved
         PlayerData data = new PlayerData();
-        //copies data from GameControl using this syntax:
-        //data.health = health;
+        //copies data using this syntax:
         data.money = MoneyCtrl.moneyOnHand;
         SaveBuildings(data);
         for (int i = 0; i < data.bottleSaver.Length; i++) {
             data.bottleSaver[i] = ObjectMaster.wineList[i];
         }
 
-
         //takes the Serializable class, data, and writes it out to file
         bf.Serialize(file, data);
-        Debug.Log(Application.persistentDataPath + "/playerInfo.dat");
         //stops editing playerInfo.dat
         file.Close();
     }
@@ -50,7 +47,6 @@ public static class SaveLoad {
 
             //takes information from PlayerData instance and loads them into the game using this syntax:
             MoneyCtrl.moneyOnHand = data.money;
-            //BuildingCtrl.playerBuilding = data.playerBuildings;
             LoadBuildings(data, data.playerBuildings);
             for (int i = 0; i < data.bottleSaver.Length; i++) {
                 if (data.bottleSaver[i].bottlesOnHand != 0)
@@ -60,19 +56,27 @@ public static class SaveLoad {
         finishedLoading = true;
     }
 
+    public static void DeleteSave() {
+        File.Delete(Application.persistentDataPath + "/playerInfo.dat");
+    }
+
     public static void LoadBuildings(PlayerData data, BuildingTemplate[] buildTemplateArray) {
         for (int i = 0; i < data.playerBuildings.Length; i++) {
             if (data.playerBuildings[i] != null) {
-                BuildingCtrl.playerBuilding[i] = GameObject.Instantiate(InHandCtrl.inHandCtrl.buildingInHand, data.playerBuildings[i].myPos, Quaternion.identity) as Building;
-                BuildingCtrl.playerBuilding[i].SetParamsByID(data.playerBuildings[i].id, buildTemplateArray); //populates details of above building instance
+                BuildingCtrl.playerBuilding[i] = GameObject.Instantiate(InHandCtrl.inHandCtrl.buildingInHand, new Vector3(data.playerBuildings[i].myPos[0], data.playerBuildings[i].myPos[1], data.playerBuildings[i].myPos[2]), Quaternion.identity) as Building;
+                BuildingCtrl.playerBuilding[i].SetParams(data.playerBuildings[i]); //populates details of above building instance
                 BuildingCtrl.playerBuilding[i].transform.SetParent(BuildingHolder.buildingHolder.gameObject.transform, false);
             }
         }
     }
 
     public static void SaveBuildings(PlayerData data) {
-        for (int i = 0; i < data.playerBuildings.Length; i++) {
-            data.playerBuildings[i] = new BuildingTemplate(BuildingCtrl.playerBuilding[i].id, BuildingCtrl.playerBuilding[i].cost, BuildingCtrl.playerBuilding[i].objectName, BuildingCtrl.playerBuilding[i].description, BuildingCtrl.playerBuilding[i].objectType, BuildingCtrl.playerBuilding[i].isProcessing, BuildingCtrl.playerBuilding[i].finishedProcessing, BuildingCtrl.playerBuilding[i].hasSelectedOutput, BuildingCtrl.playerBuilding[i].myPos, BuildingCtrl.playerBuilding[i].consumableIDInProcessing);
+        for (int i = 0; i < BuildingCtrl.playerBuilding.Length; i++) {
+            if (BuildingCtrl.playerBuilding[i] != null) {
+                BuildingTemplate tempBuildTempl;
+                tempBuildTempl = new BuildingTemplate(BuildingCtrl.playerBuilding[i].id, BuildingCtrl.playerBuilding[i].cost, BuildingCtrl.playerBuilding[i].objectName, BuildingCtrl.playerBuilding[i].description, BuildingCtrl.playerBuilding[i].objectType, BuildingCtrl.playerBuilding[i].isProcessing, BuildingCtrl.playerBuilding[i].finishedProcessing, BuildingCtrl.playerBuilding[i].hasSelectedOutput, BuildingCtrl.playerBuilding[i].myPos.x, BuildingCtrl.playerBuilding[i].myPos.y, BuildingCtrl.playerBuilding[i].myPos.z, BuildingCtrl.playerBuilding[i].consumableIDInProcessing);
+                data.playerBuildings[i] = tempBuildTempl;
+            }
         }
     }
 }

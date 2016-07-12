@@ -29,6 +29,7 @@ public class ObjectMaster : MonoBehaviour {
     //needs to be static
     public static void AddBottles(int wineID) {
         wineList[wineID].bottlesOnHand += 100;
+        SaveLoad.Save();
     }
     
     //cannot be static because the buttons don't like it

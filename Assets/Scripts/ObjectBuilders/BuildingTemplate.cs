@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[System.Serializable]
 public class BuildingTemplate {
 
     public int id;
@@ -15,7 +16,7 @@ public class BuildingTemplate {
     public bool isProcessing;
     public bool finishedProcessing;
     public bool hasSelectedOutput;
-    public Vector3 myPos;
+    public float[] myPos = new float[3]; //used to store Vector3s in a serializable format. 0 should be x, 1 should be y, and 2 should be z
     public int consumableIDInProcessing;
 
     public BuildingTemplate(int newID, int newCost, string newObjectName, string newDescription, string newObjectType) {
@@ -28,7 +29,7 @@ public class BuildingTemplate {
 
     //to be used for building versions of BuildingTemplate for saving/loading
     public BuildingTemplate(int newID, int newCost, string newObjectName, string newDescription, string newObjectType, 
-                            bool newIsProcessing, bool newFinishedProcessing, bool newHasSelectedOutput, Vector3 newMyPos, int newConsumableIDInProcessing) {
+                            bool newIsProcessing, bool newFinishedProcessing, bool newHasSelectedOutput, float newMyPosx, float newMyPosy, float newMyPosz, int newConsumableIDInProcessing) {
         id = newID;
         cost = newCost;
         objectName = newObjectName;
@@ -38,7 +39,9 @@ public class BuildingTemplate {
         isProcessing = newIsProcessing;
         finishedProcessing = newFinishedProcessing;
         hasSelectedOutput = newHasSelectedOutput;
-        myPos = newMyPos;
+        myPos[0] = newMyPosx;
+        myPos[1] = newMyPosy;
+        myPos[2] = newMyPosz;
         consumableIDInProcessing = newConsumableIDInProcessing;
     }
 

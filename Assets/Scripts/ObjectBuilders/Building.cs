@@ -67,20 +67,20 @@ public class Building : MonoBehaviour {
         myPos = gameObject.transform.position;
     }
 
-    public void SetParamsByID(int templateID, BuildingTemplate[] buildList) {
-        id = buildList[templateID].id;
-        objectName = buildList[templateID].objectName;
-        description = buildList[templateID].description;
-        cost = buildList[templateID].cost;
-        objectType = buildList[templateID].objectType;
+    public void SetParams(BuildingTemplate buildTempl) {
+        id = buildTempl.id;
+        objectName = buildTempl.objectName;
+        description = buildTempl.description;
+        cost = buildTempl.cost;
+        objectType = buildTempl.objectType;
 
         //status variables
-        isProcessing = buildList[templateID].isProcessing;
-        finishedProcessing = buildList[templateID].finishedProcessing;
-        hasSelectedOutput = buildList[templateID].hasSelectedOutput;
-        consumableIDInProcessing = buildList[templateID].consumableIDInProcessing;
+        isProcessing = buildTempl.isProcessing;
+        finishedProcessing = buildTempl.finishedProcessing;
+        hasSelectedOutput = buildTempl.hasSelectedOutput;
+        consumableIDInProcessing = buildTempl.consumableIDInProcessing;
 
-        myPos = buildList[templateID].myPos;
+        myPos = new Vector3(buildTempl.myPos[0], buildTempl.myPos[1], buildTempl.myPos[2]);
     }
 
     //the int passed in in the inspector should be the object ID from ObjectMaster.buildingList
@@ -106,7 +106,7 @@ public class Building : MonoBehaviour {
             if (BuildingMenuControl.CanClearPrev(this))
                 BuildingMenuControl.previousBuilding.EmptyBuilding();
         }
-        //SaveLoad.Save();
+        SaveLoad.Save();
     }
 
     public void EmptyBuilding() {
