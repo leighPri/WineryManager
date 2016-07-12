@@ -48,12 +48,10 @@ public class Building : MonoBehaviour {
     }
     
     void Update() {
-        if (spriteRenderer.sprite == null) {
+        if (spriteRenderer.sprite == null)
             spriteRenderer.sprite = spriteArray[id]; //enables visual sprite if an instance of this object has been populated
-        }
-        if (isProcessing && !timeConsumableTimerComplete) {
+        if (isProcessing && !timeConsumableTimerComplete)
                 TimerCheck();
-        }
     }
 
     //used to set an instance of a Building to the details from the relevant template on the BuildingTemplate list
