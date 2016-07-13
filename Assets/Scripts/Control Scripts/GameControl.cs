@@ -8,8 +8,10 @@ public class GameControl : MonoBehaviour {
     public static GameControl control;
 
     //declare variables to be persisted here
-    public static int w = 13; //grid width
-    public static int h = 7; //grid height
+    public static int w = 18; //grid width
+    //public static int w = 26; //grid width for huge grid
+    public static int h = 20; //grid height
+    //public static int h = 29; //grid height for huge grid
     //holder of the actual grid data
     public static Element[] grid = new Element[w * h];
 
