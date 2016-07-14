@@ -102,7 +102,8 @@ public class Building : MonoBehaviour {
     }
 
     public void FillBuilding() {
-        if (canProcess == InHandCtrl.typeOfObject) {
+        //fills only if the object in hand is compatible and if this building is not currently processing anything and if it's not holding a finished product waiting to be picked up
+        if (canProcess == InHandCtrl.typeOfObject && isProcessing == false && finishedProcessing == false) {
             isProcessing = true;
             finishedProcessing = false;
             timeConsumableIsPlaced = Time.time;
@@ -111,8 +112,8 @@ public class Building : MonoBehaviour {
             //clears previously-used building if applicable (see BuildingMenuControl.CanClearPrev() comments for breakdown of conditionals)
             if (BuildingMenuControl.CanClearPrev(this))
                 BuildingMenuControl.previousBuilding.EmptyBuilding();
+            SaveLoad.Save();
         }
-        SaveLoad.Save();
     }
 
     public void EmptyBuilding() {
@@ -122,6 +123,7 @@ public class Building : MonoBehaviour {
 
         if(canProcess == (int)ObjectMaster.listType.Vine) {
             isProcessing = true;
+            timeConsumableIsPlaced = Time.time;
         }
     }
 
