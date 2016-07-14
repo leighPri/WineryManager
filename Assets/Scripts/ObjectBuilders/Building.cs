@@ -148,7 +148,6 @@ public class Building : MonoBehaviour {
             BuildingMenuControl.DisplayAgingOptions(false);
         //passes this building to the menu so that it can be populated 
         BuildingMenuControl.GetBuilding(this);
-        //BuildingHolder.HideBuildingHolder(true); //hides buildingholder so the buildings don't interfere with clicks
     }
 
     //disregard for now, just testing
