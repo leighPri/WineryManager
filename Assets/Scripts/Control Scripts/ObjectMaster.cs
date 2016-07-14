@@ -11,9 +11,10 @@ public class ObjectMaster : MonoBehaviour {
     public static List<BuildingTemplate> buildingList = new List<BuildingTemplate>();
     public static List<MidpointTemplate> midpointList = new List<MidpointTemplate>();
     public static List<UnagedTemplate> unagedList = new List<UnagedTemplate>();
+    public static List<VineTemplate> vineList = new List<VineTemplate>();
     public static List<WineTemplate> wineList = new List<WineTemplate>();
 
-    public enum listType { Building, Consumable, Midpoint, Unaged };
+    public enum listType { Building, Consumable, Midpoint, Unaged, Vine };
 
     public void BuyGrape(int ID) {
         if (MoneyCtrl.CanAfford(consumableList[ID].cost)) {
@@ -22,8 +23,20 @@ public class ObjectMaster : MonoBehaviour {
                 MoneyCtrl.SubtractMoney(consumableList[ID].cost);
                 SceneManager.LoadScene("MainGame");
             }
-        } else
-            Debug.Log("Not enough cash on hand to buy " + ObjectMaster.buildingList[ID].objectName);
+        } 
+    }
+
+    public void BuyVine(int ID)
+    {
+        if (MoneyCtrl.CanAfford(vineList[ID].cost))
+        {
+            if (!InHandCtrl.isInHand)
+            {
+                InHandCtrl.PutVineInHand(ID);
+                MoneyCtrl.SubtractMoney(vineList[ID].cost);
+                SceneManager.LoadScene("MainGame");
+            }
+        }
     }
 
     //needs to be static

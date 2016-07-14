@@ -14,11 +14,18 @@
 			"cost": 1000,
 			"objectType" : "ferment"
 		},
+      {
+        "id": 2,
+        "objectName": "Basic Aging Barn",
+        "description": "A place for wine to age",
+        "cost": 1000,
+        "objectType": "aging"
+      },
 		{
-			"id": 2,
-			"objectName": "Basic Aging Barn",
-			"description": "A place for wine to age",
-			"cost": 1000,
-			"objectType" : "aging"
+			"id": 3,
+			"objectName": "Vineyard",
+			"description": "A vineyard to produce grapes",
+			"cost": 250,
+			"objectType" : "vineyard"
 		}]
 }

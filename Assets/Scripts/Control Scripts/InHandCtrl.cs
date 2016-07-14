@@ -35,6 +35,13 @@ public class InHandCtrl : MonoBehaviour {
         objectInHand = ID;
     }
 
+    public static void PutVineInHand(int ID)
+    {
+        isInHand = true;
+        typeOfObject = (int)ObjectMaster.listType.Vine;
+        objectInHand = ID;
+    }
+
     public static void PutMidpointInHand(int ID) {
         isInHand = true;
         typeOfObject = (int)ObjectMaster.listType.Midpoint;

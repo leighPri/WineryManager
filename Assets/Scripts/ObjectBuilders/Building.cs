@@ -44,6 +44,8 @@ public class Building : MonoBehaviour {
             canProcess = (int)ObjectMaster.listType.Midpoint;
         } else if (objectType == "aging") {
             canProcess = (int)ObjectMaster.listType.Unaged;
+        } else if (objectType == "vineyard") {
+            canProcess = (int)ObjectMaster.listType.Vine;
         }
     }
     
@@ -111,6 +113,10 @@ public class Building : MonoBehaviour {
         finishedProcessing = false;
         isProcessing = false; //This is redundant on purpose, isProcessing should be set to false by FinishedProcessing()
         hasSelectedOutput = false;
+
+        if(canProcess == (int)ObjectMaster.listType.Vine) {
+            isProcessing = true;
+        }
     }
 
     public void FinishedProcessing() {

@@ -1,0 +1,19 @@
+{
+		"Vine":[
+		{
+			"id": 0,
+			"objectName": "Red Grapes",
+			"description": "Grapes that are red",
+			"cost": 250,
+			"buildingNeeded": "vineyard",
+			"outputID": 0
+		},
+		{
+			"id": 1,
+			"objectName": "White Grapes",
+			"description": "Grapes that are white",
+			"cost": 250,
+			"buildingNeeded": "vineyard",
+			"outputID": 1
+		}]
+}

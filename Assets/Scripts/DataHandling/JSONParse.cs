@@ -11,6 +11,7 @@ public class JSONParse : MonoBehaviour {
     JSONNode midpointJSON;
     JSONNode unagedJSON;
     JSONNode wineJSON;
+    JSONNode vineJSON;
 
     // Use this for initialization
     void Awake () {
@@ -28,6 +29,10 @@ public class JSONParse : MonoBehaviour {
 
         wineJSON = JSON.Parse((Resources.Load("wineJSON") as TextAsset).text); //see above
         WineCreator(wineJSON["Wine"], ObjectMaster.wineList);
+
+        vineJSON = JSON.Parse((Resources.Load("vineJSON") as TextAsset).text); //loads the text of the JSON file as a TextAsset and passes it to the Parser to initialize a JSONNode object
+        VineCreator(vineJSON["Vine"], ObjectMaster.vineList);
+
     }
 
     //each of these fills the lists found in ObjectMaster.cs with their appropriate data from the parsed JSON objects
@@ -93,5 +98,18 @@ public class JSONParse : MonoBehaviour {
         }
     }
 
+    public void VineCreator(JSONNode jsonObj, List<VineTemplate> vineList)
+    {
+        for (int i = 0; i < jsonObj.Count; i++)
+        {
+            VineTemplate tempVines;
+            tempVines = new VineTemplate(int.Parse(jsonObj[i]["id"]),
+                                             int.Parse(jsonObj[i]["cost"]),
+                                             int.Parse(jsonObj[i]["outputID"]),
+                                             jsonObj[i]["objectName"].Value,
+                                             jsonObj[i]["description"].Value);
+            vineList.Add(tempVines);
+        }
+    }
 
 }

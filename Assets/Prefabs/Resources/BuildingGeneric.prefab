@@ -72,6 +72,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: b4fac150b20fdd245a97d29651112c66, type: 3}
   - {fileID: 21300000, guid: 129fda61625042c4d99a09f1281f8938, type: 3}
   - {fileID: 21300000, guid: 0fc7cd3528e295f449f6a6afc980d2fc, type: 3}
+  - {fileID: 21300000, guid: 6d7dd46784449f945a4a7d38f710062f, type: 3}
   timeConsumableIsPlaced: 0
   tempTimerValue: 5
   timeRemainingTilComplete: 0

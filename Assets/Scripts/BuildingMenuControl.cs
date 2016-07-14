@@ -61,6 +61,8 @@ public class BuildingMenuControl : MonoBehaviour {
             return ThisMidpoint().objectName;
         else if (displayedBuilding.canProcess == (int)ObjectMaster.listType.Unaged)
             return ThisUnagedWine().objectName;
+        else if (displayedBuilding.canProcess == (int)ObjectMaster.listType.Vine)
+            return ThisVine().objectName;
         else
             return "InProcessing but no consumable found"; //this should never run
     }
@@ -73,6 +75,8 @@ public class BuildingMenuControl : MonoBehaviour {
             return ThisUnagedWine().objectName;
         else if (displayedBuilding.canProcess == (int)ObjectMaster.listType.Unaged)
             return ObjectMaster.wineList[ThisUnagedWine().outputID[selectedOutput]].wineName;
+        else if (displayedBuilding.canProcess == (int)ObjectMaster.listType.Vine)
+            return ThisConsumable().objectName;
         else
             return "Done Processing but no product found"; //this should never run
     }
@@ -96,6 +100,11 @@ public class BuildingMenuControl : MonoBehaviour {
 
     public UnagedTemplate ThisUnagedWine() {
         return ObjectMaster.unagedList[displayedBuilding.consumableIDInProcessing];
+    }
+
+    public VineTemplate ThisVine()
+    {
+        return ObjectMaster.vineList[displayedBuilding.consumableIDInProcessing];
     }
 
     public void FinishButton() {
@@ -122,7 +131,10 @@ public class BuildingMenuControl : MonoBehaviour {
                 Debug.Log("You now have " + ObjectMaster.wineList[ThisUnagedWine().outputID[selectedOutput]].bottlesOnHand + " bottles of " + ObjectMaster.wineList[ThisUnagedWine().outputID[selectedOutput]].wineName + " available to sell.");
                 displayedBuilding.EmptyBuilding(); //aging barns clear themselves because there is nowhere else for wines to go except into storage (currently)
             }
-
+            else if (displayedBuilding.canProcess == (int)ObjectMaster.listType.Vine) { //if vineyard
+                InHandCtrl.PutConsumableInHand(ThisConsumable().outputID);
+            }
+            
             previousBuilding = displayedBuilding;
             BuildingHolder.HideBuildingHolder(false); //shows BuildingHolder again
             gameObject.SetActive(false); //hides the Building Menu

@@ -15,3 +15,5 @@ EditorBuildSettings:
     path: Assets/_Scenes/BuildingsMenu.unity
   - enabled: 1
     path: Assets/_Scenes/GrapesMenu.unity
+  - enabled: 1
+    path: Assets/_Scenes/VineMenu.unity
