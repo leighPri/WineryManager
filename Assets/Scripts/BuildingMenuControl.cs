@@ -136,7 +136,6 @@ public class BuildingMenuControl : MonoBehaviour {
             }
             
             previousBuilding = displayedBuilding;
-            BuildingHolder.HideBuildingHolder(false); //shows BuildingHolder again
             gameObject.SetActive(false); //hides the Building Menu
         }
     }
