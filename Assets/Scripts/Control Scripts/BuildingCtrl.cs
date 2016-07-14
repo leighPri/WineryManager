@@ -24,9 +24,11 @@ public class BuildingCtrl : MonoBehaviour {
     }
 
     public static void placeBuilding(Element cell) {
-        playerBuilding[cell.myPosition] = Instantiate(InHandCtrl.inHandCtrl.buildingInHand, cell.transform.position, Quaternion.identity) as Building;
-        playerBuilding[cell.myPosition].SetParamsByID(InHandCtrl.objectInHand); //populates details of above building instance
-        playerBuilding[cell.myPosition].transform.SetParent(BuildingHolder.buildingHolder.gameObject.transform, false);
-        InHandCtrl.ClearHand();
+        if (playerBuilding[cell.myPosition] == null) { //only place a building if there is not one already there
+            playerBuilding[cell.myPosition] = Instantiate(InHandCtrl.inHandCtrl.buildingInHand, cell.transform.position, Quaternion.identity) as Building;
+            playerBuilding[cell.myPosition].SetParamsByID(InHandCtrl.objectInHand); //populates details of above building instance
+            playerBuilding[cell.myPosition].transform.SetParent(BuildingHolder.buildingHolder.gameObject.transform, false);
+            InHandCtrl.ClearHand();
+        }
     }
 }

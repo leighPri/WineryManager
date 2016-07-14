@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class Element : MonoBehaviour {
 
@@ -16,6 +17,14 @@ public class Element : MonoBehaviour {
                 break;
             }
         }
+    }
+
+    void Update() {
+        //enables and disables colliders based on whether or not the BuildingMenu is active (only on MainGame)
+        if (SceneManager.GetActiveScene().buildIndex == 2 && BuildingMenuControl.buildingMenuCtrl.gameObject.activeSelf)
+            GetComponent<PolygonCollider2D>().enabled = false;
+        else
+            GetComponent<PolygonCollider2D>().enabled = true;
     }
 
     void OnMouseUpAsButton() {

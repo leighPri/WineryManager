@@ -50,6 +50,12 @@ public class Building : MonoBehaviour {
     }
     
     void Update() {
+        //enables and disables colliders based on whether or not the BuildingMenu is active (only on MainGame)
+        if ((SceneManager.GetActiveScene().buildIndex == 2 && BuildingMenuControl.buildingMenuCtrl.gameObject.activeSelf) || (InHandCtrl.isInHand && InHandCtrl.typeOfObject == (int)ObjectMaster.listType.Building))
+            GetComponent<BoxCollider2D>().enabled = false;
+        else
+            GetComponent<BoxCollider2D>().enabled = true;
+
         if (spriteRenderer.sprite == null)
             spriteRenderer.sprite = spriteArray[id]; //enables visual sprite if an instance of this object has been populated
         if (isProcessing && !timeConsumableTimerComplete)
