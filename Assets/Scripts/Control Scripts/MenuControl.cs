@@ -11,8 +11,6 @@ public class MenuControl : MonoBehaviour {
     public GameObject exampleMenuObject;
     public GameObject[] menuObjects;
 
-    private bool onSellMenu;
-
     void OnLevelWasLoaded(int level) {
         if (level == 3)
             FillMenuWithBuildings();
@@ -39,7 +37,6 @@ public class MenuControl : MonoBehaviour {
             menuObjects[i].gameObject.transform.GetChild(0).gameObject.GetComponent<Text>().text = ObjectMaster.buildingList[i].cost.ToString() + "g";
             //enables button functionality
             menuObjects[i].gameObject.AddComponent<Button>().onClick.AddListener(delegate() { buildingGeneric.BuyBuilding(tempID); });
-            //menuObjects[i].GetComponent<Button>().onClick.AddListener(delegate { Building.staticBuilding.BuyBuilding(ObjectMaster.buildingList[i].id); });
             //stores initialPos over again so that the offsets are maintained
             initialPos = new Vector3(initialPos.x, //x
                                     initialPos.y - yOffset, //y, with an offset
@@ -61,7 +58,6 @@ public class MenuControl : MonoBehaviour {
             menuObjects[i].gameObject.transform.GetChild(0).gameObject.GetComponent<Text>().text = ObjectMaster.consumableList[i].cost.ToString() + "g";
             //enables button functionality
             menuObjects[i].gameObject.AddComponent<Button>().onClick.AddListener(delegate () { objMaster.BuyGrape(tempID); });
-            //menuObjects[i].GetComponent<Button>().onClick.AddListener(delegate { Building.staticBuilding.BuyBuilding(ObjectMaster.buildingList[i].id); });
             //stores initialPos over again so that the offsets are maintained
             initialPos = new Vector3(initialPos.x, //x
                                     initialPos.y - yOffset, //y, with an offset
@@ -69,8 +65,7 @@ public class MenuControl : MonoBehaviour {
         }
     }
 
-    private void SellMenu() {
-        onSellMenu = true;
+    private void SellMenu() { 
         menuObjects = new GameObject[ObjectMaster.wineList.Count];
         Vector3 initialPos = new Vector3(-171, 143, 0);
         float yOffset = 29.4f;
@@ -84,20 +79,12 @@ public class MenuControl : MonoBehaviour {
                 //displays number of bottles available
                 menuObjects[i].gameObject.transform.GetChild(0).gameObject.GetComponent<Text>().text = ObjectMaster.wineList[i].bottlesOnHand.ToString();
                 //enables button functionality
-                menuObjects[i].gameObject.AddComponent<Button>().onClick.AddListener(delegate () { objMaster.SellBottles(tempID); });
-                //menuObjects[i].GetComponent<Button>().onClick.AddListener(delegate { Building.staticBuilding.BuyBuilding(ObjectMaster.buildingList[i].id); });
+                menuObjects[i].gameObject.AddComponent<Button>().onClick.AddListener(delegate () { objMaster.SellBottles(tempID); menuObjects[tempID].gameObject.transform.GetChild(0).gameObject.GetComponent<Text>().text = ObjectMaster.wineList[tempID].bottlesOnHand.ToString(); });
                 //stores initialPos over again so that the offsets are maintained
                 initialPos = new Vector3(initialPos.x, //x
                                         initialPos.y - yOffset, //y, with an offset
                                          initialPos.z); //z
             }
-        }
-    }
-
-    private void UpdateBottlesOnHand() {
-        for (int i = 0; i < ObjectMaster.wineList.Count; i++) {
-            if (menuObjects[i] != null)
-                menuObjects[i].gameObject.transform.GetChild(0).gameObject.GetComponent<Text>().text = ObjectMaster.wineList[i].bottlesOnHand.ToString();
         }
     }
 
