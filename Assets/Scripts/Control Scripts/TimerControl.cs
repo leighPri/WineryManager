@@ -17,13 +17,13 @@ public class TimerControl : MonoBehaviour {
             Destroy(gameObject);
         }
 
-        startTime = Time.time;
+        startTime = Time.time;  //get total time since start of scene.  Might need to be re-worked for loading games.  Maybe store the value and fetch it here for when game is loaded?
     }
 
     void Update() {
-        totalElapsedTime = Time.time - startTime;
-        totalElapsedMinutes = (int)totalElapsedTime / 60;
-        totalElapsedSeconds = (int)totalElapsedTime % 60;
-        totalElapsedTimeRounded = (int)totalElapsedTime;
+        totalElapsedTime = Time.time - startTime;  //time elapsed since start of game
+        totalElapsedMinutes = (int)totalElapsedTime / 60;  //minutes elapsed (for UI display purposes)
+        totalElapsedSeconds = (int)totalElapsedTime % 60;  //seconds elapsed (for UI display purposes)
+        totalElapsedTimeRounded = (int)totalElapsedTime; //same as totalElapsedTime but the fractional seconds will be rounded down/off (ie: 23.897 becomes 23)
     }
 }

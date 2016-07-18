@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -31,6 +32,7 @@ public class Building : MonoBehaviour {
     public float tempTimerValue = 5f;  //this is a placeholder and should be filled with the JSON value of how long a consumable takes to process
     public float timeRemainingTilComplete;
     public bool timeConsumableTimerComplete = false;
+    public int roundedTimeTilComplete;
 
     void Start() {
         SetEnum();
@@ -108,6 +110,7 @@ public class Building : MonoBehaviour {
             finishedProcessing = false;
             timeConsumableIsPlaced = Time.time;
             consumableIDInProcessing = InHandCtrl.objectInHand;
+            
             InHandCtrl.ClearHand();
             //clears previously-used building if applicable (see BuildingMenuControl.CanClearPrev() comments for breakdown of conditionals)
             if (BuildingMenuControl.CanClearPrev(this))
@@ -149,15 +152,15 @@ public class Building : MonoBehaviour {
         //passes this building to the menu so that it can be populated 
         BuildingMenuControl.GetBuilding(this);
     }
+    
 
-    //disregard for now, just testing
     public void TimerCheck() {
         //gets how much time has elapsed since consumable placed
         float timeCheck = Time.time - timeConsumableIsPlaced;
 
         timeRemainingTilComplete = tempTimerValue - timeCheck;
 
-        Debug.Log("Time remaining til complete: " + timeRemainingTilComplete);
+        roundedTimeTilComplete = (int)timeRemainingTilComplete;
 
         if (timeRemainingTilComplete <= 0) {
             timeConsumableTimerComplete = true;

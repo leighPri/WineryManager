@@ -77,6 +77,9 @@ MonoBehaviour:
   tempTimerValue: 5
   timeRemainingTilComplete: 0
   timeConsumableTimerComplete: 0
+  roundedTimeTilComplete: 0
+  finishButton: {fileID: 128410, guid: 1f9e4079e4fa02840ac643d38310d76f, type: 2}
+  getProductButton: {fileID: 155918, guid: 1f9e4079e4fa02840ac643d38310d76f, type: 2}
 --- !u!212 &21205610
 SpriteRenderer:
   m_ObjectHideFlags: 1

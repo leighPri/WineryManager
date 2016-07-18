@@ -20,12 +20,17 @@ public class BuildingMenuControl : MonoBehaviour {
     public GameObject getProduct;
     public static Text getProductText;
 
+    public GameObject finishButton;
+    public GameObject getProductButton;
+
     void Awake() {
         if (buildingMenuCtrl == null)
             buildingMenuCtrl = this;
         else if (buildingMenuCtrl != this)
             Destroy(gameObject);
         gameObject.SetActive(false); //sets active by default but allows it to be recovered via script
+        finishButton.gameObject.SetActive(false);
+        getProductButton.gameObject.SetActive(false);
     }
 
     void Start() {
@@ -47,14 +52,22 @@ public class BuildingMenuControl : MonoBehaviour {
 
         if (displayedBuilding.isProcessing) //shows the details of the object in processing
             statusText.text = "Processing: " + DisplayInProcessing();
-        else if (displayedBuilding.finishedProcessing) //shows the details of the finished product
+        else if (displayedBuilding.finishedProcessing) {//shows the details of the finished product
             statusText.text = "Finished processing: " + DisplayFinishedProduct();
-        else
+            getProductButton.gameObject.SetActive(true);
+        }
+        else {
             statusText.text = "Empty"; //default display option
+            finishButton.gameObject.SetActive(false);
+        }
     }
 
     //used to choose what to display in Update() based on the building type
     string DisplayInProcessing() {
+
+        finishButton.gameObject.SetActive(true);
+        getProductButton.gameObject.SetActive(false);
+        finishButton.GetComponentInChildren<Text>().text = displayedBuilding.roundedTimeTilComplete.ToString();
         if (displayedBuilding.canProcess == (int)ObjectMaster.listType.Consumable) 
             return ThisConsumable().objectName;
         else if (displayedBuilding.canProcess == (int)ObjectMaster.listType.Midpoint)
@@ -69,6 +82,9 @@ public class BuildingMenuControl : MonoBehaviour {
 
     //used to choose what to display in Update() based on the building type
     string DisplayFinishedProduct() {
+        finishButton.gameObject.SetActive(false);
+        getProductButton.gameObject.SetActive(true);
+        finishButton.GetComponentInChildren<Text>().text = "Processing Complete";
         if (displayedBuilding.canProcess == (int)ObjectMaster.listType.Consumable)
             return ThisMidpoint().objectName;
         else if (displayedBuilding.canProcess == (int)ObjectMaster.listType.Midpoint)
@@ -115,6 +131,7 @@ public class BuildingMenuControl : MonoBehaviour {
         }
         if (displayedBuilding.objectType != "aging" || displayedBuilding.hasSelectedOutput) //this conditional is to keep aging barns from being able to "finish" without an option being selected
             displayedBuilding.FinishedProcessing();
+        
     }
 
     //places output in hand and hides the building menu
