@@ -2,16 +2,261 @@
 		"Midpoint":[
 		{
 			"id": 0,
-			"objectName": "Red Squish",
-			"description": "Squish that is red",
-			"buildingNeeded": "ferment",
+			"objectName": "Bottom Barrel Red Must",
+			"description": "Slightly bruised grapes that make a cheap red wine",
+			"buildingNeeded": "press",
 			"outputID": 0
 		},
 		{
 			"id": 1,
-			"objectName": "White Squish",
-			"description": "Squish that is white",
-			"buildingNeeded": "ferment",
+			"objectName": "Bordeaux Cabernet Sauvignon Must",
+			"description": "These grapes came all the way from the cool and damp Bordeaux region of France",
+			"buildingNeeded": "press",
 			"outputID": 1
+		},
+		{
+			"id": 2,
+			"objectName": "California Cabernet Sauvignon Must",
+			"description": "Grapes that grew up in a hotter, more arid climate than their French cousins",
+			"buildingNeeded": "press",
+			"outputID": 2
+		},
+		{
+			"id": 3,
+			"objectName": "Garnacha Must",
+			"description": "Grapes with a high sugar content that result in higher-than-usual alcohol levels",
+			"buildingNeeded": "press",
+			"outputID": 3
+		},
+		{
+			"id": 4,
+			"objectName": "Grenache Must",
+			"description": "Cool-grown grapes that turn into a subtle wine",
+			"buildingNeeded": "press",
+			"outputID": 4
+		},
+		{
+			"id": 5,
+			"objectName": "Argentine Malbec Must",
+			"description": "Though originally from France, Argentina is where Malbec grapes found their true home",
+			"buildingNeeded": "press",
+			"outputID": 5
+		},
+		{
+			"id": 6,
+			"objectName": "French Malbec Must",
+			"description": "These grapes result in a tart wine that is primarily used for blending",
+			"buildingNeeded": "press",
+			"outputID": 6
+		},
+		{
+			"id": 7,
+			"objectName": "Bordeaux Merlot Must",
+			"description": "An earthy wine similar to Cabernet Sauvignon is the end product of these grapes",
+			"buildingNeeded": "press",
+			"outputID": 7
+		},
+		{
+			"id": 8,
+			"objectName": "Napa Merlot Must",
+			"description": "The warmer California climate makes these grapes give a fruitier wine",
+			"buildingNeeded": "press",
+			"outputID": 8
+		},
+		{
+			"id": 9,
+			"objectName": "Italian Nebbiolo Must",
+			"description": "Named after the Italian word for fog, nebbia, these grapes grow all over the Piedmont wine region",
+			"buildingNeeded": "press",
+			"outputID": 9
+		},
+		{
+			"id": 10,
+			"objectName": "Mexican Nebbiolo Must",
+			"description": "Baja California is one of the few places outside of Italy where this grape thrives",
+			"buildingNeeded": "press",
+			"outputID": 10
+		},
+		{
+			"id": 11,
+			"objectName": "Burgundy Pinot Noir Must",
+			"description": "One of the most well-known varieties of this grape",
+			"buildingNeeded": "press",
+			"outputID": 11
+		},
+		{
+			"id": 12,
+			"objectName": "Sonoma Pinot Noir Must",
+			"description": "These grapes result in a more intensely flavored wine than their French cousins",
+			"buildingNeeded": "press",
+			"outputID": 12
+		},
+		{
+			"id": 13,
+			"objectName": "Sangiovese Must",
+			"description": "Almost all sangiovese grapes come from Italy and can result in several different wine flavors",
+			"buildingNeeded": "press",
+			"outputID": 13
+		},
+		{
+			"id": 14,
+			"objectName": "Shiraz Must",
+			"description": "This syrah variety of grapes makes a fruity wine",
+			"buildingNeeded": "press",
+			"outputID": 14
+		},
+		{
+			"id": 15,
+			"objectName": "Syrah Must",
+			"description": "The wines made from these grapes tend to be earthier than their New World cousins",
+			"buildingNeeded": "press",
+			"outputID": 15
+		},
+		{
+			"id": 16,
+			"objectName": "Tempranillo Must",
+			"description": "Grown in Spain for over a thousand years, wines made from these grapes are often aged in oak to bring out a variety of flavors",
+			"buildingNeeded": "press",
+			"outputID": 16
+		},
+		{
+			"id": 17,
+			"objectName": "Tinta Roriz Must",
+			"description": "These grapes are the Portuguese relatives of Tempranillo",
+			"buildingNeeded": "press",
+			"outputID": 17
+		},
+		{
+			"id": 18,
+			"objectName": "Bottom Barrel White Must",
+			"description": "Slightly bruised grapes that make a cheap white wine",
+			"buildingNeeded": "press",
+			"outputID": 18
+		},
+		{
+			"id": 19,
+			"objectName": "Napa Chardonnay Must",
+			"description": "These warm climate grapes create a buttery wine when aged in oak",
+			"buildingNeeded": "press",
+			"outputID": 19
+		},
+		{
+			"id": 20,
+			"objectName": "Burgundy Chardonnay Must",
+			"description": "Grown in a cooler climate than their American counterparts, these grapes make a light wine",
+			"buildingNeeded": "press",
+			"outputID": 20
+		},
+		{
+			"id": 21,
+			"objectName": "Chenin Blanc Must",
+			"description": "These grapes are often used to make sparkling dessert wines",
+			"buildingNeeded": "press",
+			"outputID": 21
+		},
+		{
+			"id": 22,
+			"objectName": "Steen Must",
+			"description": "Grapes used to make a drier Chenin Blanc than the French variety",
+			"buildingNeeded": "press",
+			"outputID": 22
+		},
+		{
+			"id": 23,
+			"objectName": "Gewürztraminer d'Alsace Must",
+			"description": "A mutation of Savagnin blanc, these grapes are usually used for dessert wines",
+			"buildingNeeded": "press",
+			"outputID": 23
+		},
+		{
+			"id": 24,
+			"objectName": "German Gewürztraminer Must",
+			"description": "This variety is typically used for a dry wine",
+			"buildingNeeded": "press",
+			"outputID": 24
+		},
+		{
+			"id": 25,
+			"objectName": "Muscat Blanc Must",
+			"description": "Often used to make a sparkling Moscato d'Asti",
+			"buildingNeeded": "press",
+			"outputID": 25
+		},
+		{
+			"id": 26,
+			"objectName": "Moscatel Must",
+			"description": "Usually used to make a still dessert variety of Moscato",
+			"buildingNeeded": "press",
+			"outputID": 26
+		},
+		{
+			"id": 27,
+			"objectName": "Pinot Grigio Must",
+			"description": "This Italian variety of grape makes a dry, acidic wine",
+			"buildingNeeded": "press",
+			"outputID": 27
+		},
+		{
+			"id": 28,
+			"objectName": "Pinot Gris Must",
+			"description": "The Pinot Gris grape variety tends to be sweeter than its cousins",
+			"buildingNeeded": "press",
+			"outputID": 28
+		},
+		{
+			"id": 29,
+			"objectName": "Riesling d’Alsace Must",
+			"description": "Creates a dry variety of riesling",
+			"buildingNeeded": "press",
+			"outputID": 29
+		},
+		{
+			"id": 30,
+			"objectName": "German Riesling Must",
+			"description": "Rarely oaked, this grape variety these warm climate grapes tend to have a higher alcohol contente",
+			"buildingNeeded": "press",
+			"outputID": 30
+		},
+		{
+			"id": 31,
+			"objectName": "Bordeaux Sauvignon Blanc Must",
+			"description": "These French grapes make a light, herbaceous wine",
+			"buildingNeeded": "press",
+			"outputID": 31
+		},
+		{
+			"id": 32,
+			"objectName": "Marlborough Sauvignon Blanc Must",
+			"description": "The New Zealand region of Marlborough tends to grow a slightly sweeter grape",
+			"buildingNeeded": "press",
+			"outputID": 32
+		},
+		{
+			"id": 33,
+			"objectName": "South Australian Semillon Must",
+			"description": "Wines made from these grapes tend to be fruity and are often oaked",
+			"buildingNeeded": "press",
+			"outputID": 33
+		},
+		{
+			"id": 34,
+			"objectName": "Bordeaux Semillon Must",
+			"description": "Typically left unoaked, the wine made from these grapes are typically acidic",
+			"buildingNeeded": "press",
+			"outputID": 34
+		},
+		{
+			"id": 35,
+			"objectName": "Eden Valley Viognier Must",
+			"description": "These Australian grapes are often used in Shiraz blends",
+			"buildingNeeded": "press",
+			"outputID": 35
+		},
+		{
+			"id": 36,
+			"objectName": "Rhone Valley Viognier Must",
+			"description": "These grapes make wines that trend from creamy and rich with oak aging to fruity and acidic without",
+			"buildingNeeded": "press",
+			"outputID": 36
 		}]
 }

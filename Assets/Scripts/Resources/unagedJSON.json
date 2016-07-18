@@ -2,16 +2,261 @@
 		"Unaged":[
 		{
 			"id": 0,
-			"objectName": "Unaged Red Wine",
-			"description": "Freshly fermented wine",
+			"objectName": "Unaged Bottom Barrel Red",
+			"description": "Slightly bruised grapes that make a cheap red wine",
 			"buildingNeeded": "aging",
-			"outputID": [0,1,2]
+			"outputID": [0,0,0]
 		},
 		{
 			"id": 1,
-			"objectName": "Unaged White Wine",
-			"description": "Freshly fermented wine",
+			"objectName": "Unaged Bordeaux Cabernet Sauvignon",
+			"description": "These grapes came all the way from the cool and damp Bordeaux region of France",
 			"buildingNeeded": "aging",
-			"outputID": [3,4,5]
+			"outputID": [1,2,3]
+		},
+		{
+			"id": 2,
+			"objectName": "Unaged California Cabernet Sauvignon",
+			"description": "Grapes that grew up in a hotter, more arid climate than their French cousins",
+			"buildingNeeded": "aging",
+			"outputID": [4,5,6]
+		},
+		{
+			"id": 3,
+			"objectName": "Unaged Garnacha",
+			"description": "Grapes with a high sugar content that result in higher-than-usual alcohol levels",
+			"buildingNeeded": "aging",
+			"outputID": [7,8,9]
+		},
+		{
+			"id": 4,
+			"objectName": "Unaged Grenache",
+			"description": "Cool-grown grapes that turn into a subtle wine",
+			"buildingNeeded": "aging",
+			"outputID": [10,11,12]
+		},
+		{
+			"id": 5,
+			"objectName": "Unaged Argentine Malbec",
+			"description": "Though originally from France, Argentina is where Malbec grapes found their true home",
+			"buildingNeeded": "aging",
+			"outputID": [13,14,15]
+		},
+		{
+			"id": 6,
+			"objectName": "Unaged French Malbec",
+			"description": "These grapes result in a tart wine that is primarily used for blending",
+			"buildingNeeded": "aging",
+			"outputID": [16,17,18]
+		},
+		{
+			"id": 7,
+			"objectName": "Unaged Bordeaux Merlot",
+			"description": "An earthy wine similar to Cabernet Sauvignon is the end product of these grapes",
+			"buildingNeeded": "aging",
+			"outputID": [19,20,21]
+		},
+		{
+			"id": 8,
+			"objectName": "Unaged Napa Merlot",
+			"description": "The warmer California climate makes these grapes give a fruitier wine",
+			"buildingNeeded": "aging",
+			"outputID": [22,23,24]
+		},
+		{
+			"id": 9,
+			"objectName": "Unaged Italian Nebbiolo",
+			"description": "Named after the Italian word for fog, nebbia, these grapes grow all over the Piedmont wine region",
+			"buildingNeeded": "aging",
+			"outputID": [25,26,27]
+		},
+		{
+			"id": 10,
+			"objectName": "Unaged Mexican Nebbiolo",
+			"description": "Baja California is one of the few places outside of Italy where this grape thrives",
+			"buildingNeeded": "aging",
+			"outputID": [28,29,30]
+		},
+		{
+			"id": 11,
+			"objectName": "Unaged Burgundy Pinot Noir",
+			"description": "One of the most well-known varieties of this grape",
+			"buildingNeeded": "aging",
+			"outputID": [31,32,33]
+		},
+		{
+			"id": 12,
+			"objectName": "Unaged Sonoma Pinot Noir",
+			"description": "These grapes result in a more intensely flavored wine than their French cousins",
+			"buildingNeeded": "aging",
+			"outputID": [34,35,36]
+		},
+		{
+			"id": 13,
+			"objectName": "Unaged Sangiovese",
+			"description": "Almost all sangiovese grapes come from Italy and can result in several different wine flavors",
+			"buildingNeeded": "aging",
+			"outputID": [37,38,39]
+		},
+		{
+			"id": 14,
+			"objectName": "Unaged Shiraz",
+			"description": "This syrah variety of grapes makes a fruity wine",
+			"buildingNeeded": "aging",
+			"outputID": [40,41,42]
+		},
+		{
+			"id": 15,
+			"objectName": "Unaged Syrah",
+			"description": "The wines made from these grapes tend to be earthier than their New World cousins",
+			"buildingNeeded": "aging",
+			"outputID": [43,44,45]
+		},
+		{
+			"id": 16,
+			"objectName": "Unaged Tempranillo",
+			"description": "Grown in Spain for over a thousand years, wines made from these grapes are often aged in oak to bring out a variety of flavors",
+			"buildingNeeded": "aging",
+			"outputID": [46,47,48]
+		},
+		{
+			"id": 17,
+			"objectName": "Unaged Tinta Roriz",
+			"description": "These grapes are the Portuguese relatives of Tempranillo",
+			"buildingNeeded": "aging",
+			"outputID": [49,50,51]
+		},
+		{
+			"id": 18,
+			"objectName": "Unaged Bottom Barrel White",
+			"description": "Slightly bruised grapes that make a cheap white wine",
+			"buildingNeeded": "aging",
+			"outputID": [52,52,52]
+		},
+		{
+			"id": 19,
+			"objectName": "Unaged Napa Chardonnay",
+			"description": "These warm climate grapes create a buttery wine when aged in oak",
+			"buildingNeeded": "aging",
+			"outputID": [53,54,55]
+		},
+		{
+			"id": 20,
+			"objectName": "Unaged Burgundy Chardonnay",
+			"description": "Grown in a cooler climate than their American counterparts, these grapes make a light wine",
+			"buildingNeeded": "aging",
+			"outputID": [56,57,58]
+		},
+		{
+			"id": 21,
+			"objectName": "Unaged Chenin Blanc",
+			"description": "These grapes are often used to make sparkling dessert wines",
+			"buildingNeeded": "aging",
+			"outputID": [59,60,61]
+		},
+		{
+			"id": 22,
+			"objectName": "Unaged Steen",
+			"description": "Grapes used to make a drier Chenin Blanc than the French variety",
+			"buildingNeeded": "aging",
+			"outputID": [62,63,64]
+		},
+		{
+			"id": 23,
+			"objectName": "Unaged Gewürztraminer d'Alsace",
+			"description": "A mutation of Savagnin blanc, these grapes are usually used for dessert wines",
+			"buildingNeeded": "aging",
+			"outputID": [65,66,67]
+		},
+		{
+			"id": 24,
+			"objectName": "Unaged German Gewürztraminer",
+			"description": "This variety is typically used for a dry wine",
+			"buildingNeeded": "aging",
+			"outputID": [68,69,70]
+		},
+		{
+			"id": 25,
+			"objectName": "Unaged Moscato d'Asti",
+			"description": "Often used to make a sparkling Moscato d'Asti",
+			"buildingNeeded": "aging",
+			"outputID": [71,72,73]
+		},
+		{
+			"id": 26,
+			"objectName": "Unaged Moscato",
+			"description": "Usually used to make a still dessert variety of Moscato",
+			"buildingNeeded": "aging",
+			"outputID": [74,75,76]
+		},
+		{
+			"id": 27,
+			"objectName": "Unaged Pinot Grigio",
+			"description": "This Italian variety of grape makes a dry, acidic wine",
+			"buildingNeeded": "aging",
+			"outputID": [77,78,79]
+		},
+		{
+			"id": 28,
+			"objectName": "Unaged Pinot Gris",
+			"description": "The Pinot Gris grape variety tends to be sweeter than its cousins",
+			"buildingNeeded": "aging",
+			"outputID": [80,81,82]
+		},
+		{
+			"id": 29,
+			"objectName": "Unaged Riesling d’Alsace",
+			"description": "Creates a dry variety of riesling",
+			"buildingNeeded": "aging",
+			"outputID": [83,84,85]
+		},
+		{
+			"id": 30,
+			"objectName": "Unaged German Riesling",
+			"description": "Rarely oaked, this grape variety these warm climate grapes tend to have a higher alcohol contente",
+			"buildingNeeded": "aging",
+			"outputID": [86,87,88]
+		},
+		{
+			"id": 31,
+			"objectName": "Unaged Bordeaux Sauvignon Blanc",
+			"description": "These French grapes make a light, herbaceous wine",
+			"buildingNeeded": "aging",
+			"outputID": [89,90,91]
+		},
+		{
+			"id": 32,
+			"objectName": "Unaged Marlborough Sauvignon Blanc",
+			"description": "The New Zealand region of Marlborough tends to grow a slightly sweeter grape",
+			"buildingNeeded": "aging",
+			"outputID": [92,93,94]
+		},
+		{
+			"id": 33,
+			"objectName": "Unaged South Australian Semillon",
+			"description": "Wines made from these grapes tend to be fruity and are often oaked",
+			"buildingNeeded": "aging",
+			"outputID": [95,96,97]
+		},
+		{
+			"id": 34,
+			"objectName": "Unaged Bordeaux Semillon",
+			"description": "Typically left unoaked, the wine made from these grapes are typically acidic",
+			"buildingNeeded": "aging",
+			"outputID": [98,99,100]
+		},
+		{
+			"id": 35,
+			"objectName": "Unaged Eden Valley Viognier",
+			"description": "These Australian grapes are often used in Shiraz blends",
+			"buildingNeeded": "aging",
+			"outputID": [101,102,103]
+		},
+		{
+			"id": 36,
+			"objectName": "Unaged Rhone Valley Viognier",
+			"description": "These grapes make wines that trend from creamy and rich with oak aging to fruity and acidic without",
+			"buildingNeeded": "aging",
+			"outputID": [104,105,106]
 		}]
 }
