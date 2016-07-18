@@ -6,6 +6,8 @@ using System.Collections.Generic;
 
 public class Building : MonoBehaviour {
 
+    public static Building staticBuilding;
+
     public int id;
     public string objectName; //the name that the player sees
     public string description;

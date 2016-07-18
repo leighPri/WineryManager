@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 895a81c91f0a8f04184f55c11bfab682
+timeCreated: 1468875231
+licenseType: Free
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - buildingGeneric: {fileID: 11429554, guid: 46b80a758d6d3e04c90714ae85eb2f83, type: 2}
+  - objMaster: {fileID: 11426002, guid: e98d5cb961d367b468d30a8dd7e9523a, type: 2}
+  - exampleMenuObject: {fileID: 174798, guid: 67948ce77f7573644a4ba52b86546b67, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

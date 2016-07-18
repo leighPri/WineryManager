@@ -80,6 +80,7 @@
     <Compile Include="Assets\Scripts\Control Scripts\InHandCtrl.cs" />
     <Compile Include="Assets\Scripts\Control Scripts\LevelManager.cs" />
     <Compile Include="Assets\Scripts\Control Scripts\LoadingScene.cs" />
+    <Compile Include="Assets\Scripts\Control Scripts\MenuControl.cs" />
     <Compile Include="Assets\Scripts\Control Scripts\MoneyCtrl.cs" />
     <Compile Include="Assets\Scripts\Control Scripts\ObjectMaster.cs" />
     <Compile Include="Assets\Scripts\Control Scripts\TimerControl.cs" />

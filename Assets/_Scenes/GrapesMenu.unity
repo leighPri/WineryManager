@@ -102,7 +102,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &295355570
 RectTransform:
   m_ObjectHideFlags: 0
@@ -473,7 +473,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &516739485
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -768,16 +768,18 @@ GameObject:
 --- !u!114 &1129671981
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11422736, guid: 4961c1deb0d75ed408dd86a3152e7690,
-    type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1129671980}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ce21898d53251c489b30806777f63bb, type: 3}
+  m_Script: {fileID: 11500000, guid: 895a81c91f0a8f04184f55c11bfab682, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cancelButton: {fileID: 0}
+  buildingGeneric: {fileID: 11429554, guid: 46b80a758d6d3e04c90714ae85eb2f83, type: 2}
+  objMaster: {fileID: 11426002, guid: e98d5cb961d367b468d30a8dd7e9523a, type: 2}
+  exampleMenuObject: {fileID: 174798, guid: 67948ce77f7573644a4ba52b86546b67, type: 2}
+  menuObjects: []
 --- !u!114 &1129671982
 MonoBehaviour:
   m_ObjectHideFlags: 0

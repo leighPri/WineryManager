@@ -60,5 +60,6 @@ public class ObjectMaster : MonoBehaviour {
         MoneyCtrl.moneyOnHand += (wineList[wineID].baseSellValue * amtToSell);
         wineList[wineID].bottlesOnHand -= amtToSell;
         SaveLoad.Save();
+        SceneManager.LoadScene(2);
     }
 }
