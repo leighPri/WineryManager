@@ -100,6 +100,7 @@
     <Compile Include="Assets\Scripts\ObjectBuilders\UnagedTemplate.cs" />
     <Compile Include="Assets\Scripts\ObjectBuilders\VineTemplate.cs" />
     <Compile Include="Assets\Scripts\ObjectBuilders\WineTemplate.cs" />
+    <Compile Include="Assets\Scripts\ScrollView.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
 </Project>
