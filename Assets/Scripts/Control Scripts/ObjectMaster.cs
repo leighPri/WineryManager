@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System.Collections;
 using System.Collections.Generic;
@@ -60,6 +61,7 @@ public class ObjectMaster : MonoBehaviour {
 
         MoneyCtrl.moneyOnHand += (wineList[wineID].baseSellValue * amtToSell);
         wineList[wineID].bottlesOnHand -= amtToSell;
+        MenuControl.tempSellMenuItem.GetComponent<Text>().text = wineList[wineID].bottlesOnHand.ToString();
         SaveLoad.Save();
     }
 

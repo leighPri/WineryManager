@@ -10,6 +10,7 @@ public class MenuControl : MonoBehaviour {
     public ObjectMaster objMaster;
     public GameObject exampleMenuObject;
     public GameObject[] menuObjects;
+    public static GameObject tempSellMenuItem;
     public GameObject scrollView;
 
     //change just these values to change the menu sizes for all menus
@@ -100,7 +101,7 @@ public class MenuControl : MonoBehaviour {
         float yOffset = masterOffset;
         for (int i = 0; i < ObjectMaster.wineList.Count; i++) {
             if (ObjectMaster.wineList[i].bottlesOnHand > 0) { //only populates list if there are bottles available to sell
-                int tempID = ObjectMaster.consumableList[i].id;
+                int tempID = ObjectMaster.wineList[i].id;
                 menuObjects[i] = Instantiate(exampleMenuObject, initialPos, Quaternion.identity) as GameObject;
                 menuObjects[i].transform.SetParent(scrollView.gameObject.transform, false);
                 //displays name of building
@@ -108,13 +109,17 @@ public class MenuControl : MonoBehaviour {
                 //displays number of bottles available
                 menuObjects[i].gameObject.transform.GetChild(0).gameObject.GetComponent<Text>().text = ObjectMaster.wineList[i].bottlesOnHand.ToString();
                 //enables button functionality
-                menuObjects[i].gameObject.AddComponent<Button>().onClick.AddListener(delegate () { objMaster.TryToSellBottles(tempID); menuObjects[tempID].gameObject.transform.GetChild(0).gameObject.GetComponent<Text>().text = ObjectMaster.wineList[tempID].bottlesOnHand.ToString(); });
+                menuObjects[i].gameObject.AddComponent<Button>().onClick.AddListener(delegate () { tempSellMenuItem = menuObjects[tempID].gameObject.transform.GetChild(0).gameObject; if (ObjectMaster.wineList[tempID].bottlesOnHand > 0) { objMaster.TryToSellBottles(tempID); } /*menuObjects[tempID].gameObject.transform.GetChild(0).gameObject.GetComponent<Text>().text = ObjectMaster.wineList[tempID].bottlesOnHand.ToString();*/ });
                 //stores initialPos over again so that the offsets are maintained
                 initialPos = new Vector3(initialPos.x, //x
                                         initialPos.y - yOffset, //y, with an offset
                                          initialPos.z); //z
             }
         }
+    }
+
+    public void UpdateSellMenuAfterWait(GameObject menuItem) {
+
     }
 
 }
