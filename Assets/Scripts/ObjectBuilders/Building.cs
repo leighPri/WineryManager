@@ -120,7 +120,6 @@ public class Building : MonoBehaviour {
             SaveLoad.Save();
         }
     }
-
     public void EmptyBuilding() {
         finishedProcessing = false;
         isProcessing = false; //This is redundant on purpose, isProcessing should be set to false by FinishedProcessing()

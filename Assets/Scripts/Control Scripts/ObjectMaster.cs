@@ -46,7 +46,8 @@ public class ObjectMaster : MonoBehaviour {
     }
     
     //cannot be static because the buttons don't like it
-    public void SellBottles(int wineID) {
+    public void SellBottles(object wineIDObj) {
+        int wineID = (int)wineIDObj;
         int amtToSell = 100; //will be set to 100 bottles in Inspector for testing purposes, make amtToSell someting to pass in later
 
         if (wineList[wineID].bottlesOnHand <= 0){
@@ -60,6 +61,17 @@ public class ObjectMaster : MonoBehaviour {
         MoneyCtrl.moneyOnHand += (wineList[wineID].baseSellValue * amtToSell);
         wineList[wineID].bottlesOnHand -= amtToSell;
         SaveLoad.Save();
-        //SceneManager.LoadScene(2);
+    }
+
+    public void TryToSellBottles(int wineID) {
+        List<object> tempList = new List<object>();
+        object tempObject = wineID;
+        tempList.Add(tempObject);
+
+        string confirmText = "Are you sure you want to sell ";
+        confirmText += wineList[wineID].bottlesOnHand + " bottles of ";
+        confirmText += wineList[wineID].wineName + "?";
+
+        ConfirmationPanel.confirmPanel.ShowAndWait(confirmText, this, "SellBottles", tempList);
     }
 }

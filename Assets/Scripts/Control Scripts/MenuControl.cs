@@ -108,7 +108,7 @@ public class MenuControl : MonoBehaviour {
                 //displays number of bottles available
                 menuObjects[i].gameObject.transform.GetChild(0).gameObject.GetComponent<Text>().text = ObjectMaster.wineList[i].bottlesOnHand.ToString();
                 //enables button functionality
-                menuObjects[i].gameObject.AddComponent<Button>().onClick.AddListener(delegate () { objMaster.SellBottles(tempID); menuObjects[tempID].gameObject.transform.GetChild(0).gameObject.GetComponent<Text>().text = ObjectMaster.wineList[tempID].bottlesOnHand.ToString(); });
+                menuObjects[i].gameObject.AddComponent<Button>().onClick.AddListener(delegate () { objMaster.TryToSellBottles(tempID); menuObjects[tempID].gameObject.transform.GetChild(0).gameObject.GetComponent<Text>().text = ObjectMaster.wineList[tempID].bottlesOnHand.ToString(); });
                 //stores initialPos over again so that the offsets are maintained
                 initialPos = new Vector3(initialPos.x, //x
                                         initialPos.y - yOffset, //y, with an offset
