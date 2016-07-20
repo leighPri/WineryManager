@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using System.Collections.Generic;
 
 public class BuildingMenuControl : MonoBehaviour {
 
@@ -65,9 +66,11 @@ public class BuildingMenuControl : MonoBehaviour {
     //used to choose what to display in Update() based on the building type
     string DisplayInProcessing() {
 
-        finishButton.gameObject.SetActive(true);
+        if (displayedBuilding.objectType != "aging" || displayedBuilding.hasSelectedOutput)
+            finishButton.gameObject.SetActive(true);
         getProductButton.gameObject.SetActive(false);
         finishButton.GetComponentInChildren<Text>().text = displayedBuilding.roundedTimeTilComplete.ToString();
+
         if (displayedBuilding.canProcess == (int)ObjectMaster.listType.Consumable) 
             return ThisConsumable().objectName;
         else if (displayedBuilding.canProcess == (int)ObjectMaster.listType.Midpoint)
@@ -100,9 +103,9 @@ public class BuildingMenuControl : MonoBehaviour {
     //controls the display of the aging buttons
     public static void DisplayAgingOptions(bool toDisplay) {
         if (toDisplay)
-            buildingMenuCtrl.agingOptions.SetActive(true);
+            buildingMenuCtrl.agingOptions.gameObject.SetActive(true);
         else
-            buildingMenuCtrl.agingOptions.SetActive(false);
+            buildingMenuCtrl.agingOptions.gameObject.SetActive(false);
     }
 
     //these are just used to shorten code elsewhere
@@ -125,10 +128,10 @@ public class BuildingMenuControl : MonoBehaviour {
 
     public void FinishButton() {
         //for testing only, take out later
-        if (!displayedBuilding.timeConsumableTimerComplete) {
-            displayedBuilding.timeRemainingTilComplete = 0;
-            displayedBuilding.timeConsumableTimerComplete = true;
-        }
+            if (!displayedBuilding.timeConsumableTimerComplete) {
+                displayedBuilding.timeRemainingTilComplete = 0;
+                displayedBuilding.timeConsumableTimerComplete = true;
+            }
         if (displayedBuilding.objectType != "aging" || displayedBuilding.hasSelectedOutput) //this conditional is to keep aging barns from being able to "finish" without an option being selected
             displayedBuilding.FinishedProcessing();
         
@@ -170,13 +173,30 @@ public class BuildingMenuControl : MonoBehaviour {
 
     //lets the aging buttons set their desired outputs
     //does not function if there is not something currently being processed
-    public void SetOutput(int output) {
+    public void SetOutput(object output) {
         if (displayedBuilding.isProcessing) {
-            selectedOutput = output;
+            selectedOutput = (int)output;
+            //sets time upon selection
+            displayedBuilding.timeConsumableIsPlaced = Time.time;
             displayedBuilding.hasSelectedOutput = true;
             //hides the whole set once a button is clicked as the user should only be able to select one option
             DisplayAgingOptions(false);
         }
+    }
+
+    public void TryToSetOutput(int output) {
+        List<object> tempList = new List<object>();
+        object tempObject = output;
+        tempList.Add(tempObject);
+        string confirmText = "Are you sure you want to select ";
+        if (output == 0)
+            confirmText += "stainless steel aging?";
+        else if (output == 1)
+            confirmText += "oak barrel aging?";
+        else if (output == 2)
+            confirmText += "bottle aging?";
+        confirmText += " You cannot change this choice";
+        ConfirmationPanel.confirmPanel.ShowAndWait(confirmText, this, "SetOutput", tempList);
     }
 
     //sets the displayed building

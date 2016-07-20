@@ -140,7 +140,7 @@ public class Building : MonoBehaviour {
     }
 
     void OnMouseUpAsButton() {
-        if (!isProcessing && InHandCtrl.isInHand)
+        if (!isProcessing && !finishedProcessing && InHandCtrl.isInHand)
             FillBuilding();
         ShowBuildingMenu();
     }

@@ -73,6 +73,7 @@
     <Compile Include="Assets\Scripts\BuildingMenuControl.cs" />
     <Compile Include="Assets\Scripts\BuildingSprites.cs" />
     <Compile Include="Assets\Scripts\BuyPanel.cs" />
+    <Compile Include="Assets\Scripts\ConfirmationPanel.cs" />
     <Compile Include="Assets\Scripts\Control Scripts\BuildingCtrl.cs" />
     <Compile Include="Assets\Scripts\Control Scripts\BuildingHolder.cs" />
     <Compile Include="Assets\Scripts\Control Scripts\ControlHolder.cs" />

@@ -126,11 +126,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22424022, guid: df712df82954baf40affb555d867a895, type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: -384.5
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 22424022, guid: df712df82954baf40affb555d867a895, type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -240.04999
+      value: -17.049995
       objectReference: {fileID: 0}
     - target: {fileID: 22424022, guid: df712df82954baf40affb555d867a895, type: 2}
       propertyPath: m_SizeDelta.x

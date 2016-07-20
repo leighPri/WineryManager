@@ -30,7 +30,7 @@ public class Element : MonoBehaviour {
     void OnMouseUpAsButton() {
         if (InHandCtrl.isInHand)
             if (InHandCtrl.typeOfObject == (int)ObjectMaster.listType.Building) {
-                BuildingCtrl.placeBuilding(this);
+                BuildingCtrl.buildingCtrl.TryToPlaceBuilding(this);
                 SaveLoad.Save();
             }
     }

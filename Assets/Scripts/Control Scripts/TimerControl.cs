@@ -11,11 +11,10 @@ public class TimerControl : MonoBehaviour {
     public int totalElapsedTimeRounded;
 
     void Awake() {
-        if (timerControl == null) {
+        if (timerControl == null)
             timerControl = this;
-        } else if (timerControl != this) {
+        else if (timerControl != this)
             Destroy(gameObject);
-        }
 
         startTime = Time.time;  //get total time since start of scene.  Might need to be re-worked for loading games.  Maybe store the value and fetch it here for when game is loaded?
     }
