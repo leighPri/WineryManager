@@ -153,7 +153,11 @@ public class Building : MonoBehaviour {
         //passes this building to the menu so that it can be populated 
         BuildingMenuControl.GetBuilding(this);
     }
-    
+
+    public void DemolishBuilding(object toDestroy) {
+        BuildingMenuControl.buildingMenuCtrl.gameObject.SetActive(false);
+        Destroy((GameObject)toDestroy);
+    }
 
     public void TimerCheck() {
         //gets how much time has elapsed since consumable placed

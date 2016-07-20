@@ -68,4 +68,5 @@ public class ConfirmationPanel : MonoBehaviour {
     public void InvokeMethod(Object myClass, string methodName, List<object> args) {
         myClass.GetType().GetMethod(methodName).Invoke(myClass, args.ToArray());
     }
+
 }

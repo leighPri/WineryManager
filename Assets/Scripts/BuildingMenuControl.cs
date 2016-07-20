@@ -23,6 +23,7 @@ public class BuildingMenuControl : MonoBehaviour {
 
     public GameObject finishButton;
     public GameObject getProductButton;
+    public GameObject demolishButton;
 
     void Awake() {
         if (buildingMenuCtrl == null)
@@ -41,6 +42,8 @@ public class BuildingMenuControl : MonoBehaviour {
             statusText = status.GetComponent<Text>();
         if (getProductText == null)
             getProductText = getProduct.GetComponent<Text>();
+
+        demolishButton.GetComponent<Button>().onClick.AddListener(delegate () { TryToDemolishBuilding(); });
     }
 
     void Update() {
@@ -197,6 +200,16 @@ public class BuildingMenuControl : MonoBehaviour {
             confirmText += "bottle aging?";
         confirmText += " You cannot change this choice";
         ConfirmationPanel.confirmPanel.ShowAndWait(confirmText, this, "SetOutput", tempList);
+    }
+
+    public void TryToDemolishBuilding() {
+        List<object> tempList = new List<object>();
+        object tempObject = displayedBuilding.gameObject;
+        tempList.Add(tempObject);
+
+        string confirmText = "Are you sure you want to demolish this building?";
+        confirmText += " This cannot be undone.";
+        ConfirmationPanel.confirmPanel.ShowAndWait(confirmText, displayedBuilding, "DemolishBuilding", tempList);
     }
 
     //sets the displayed building
