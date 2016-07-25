@@ -29,6 +29,8 @@ public class Building : MonoBehaviour {
     public Sprite[] spriteArray;
     SpriteRenderer spriteRenderer;
 
+    public PopUpControl popUp;
+
     //These values are used for timing
     public float timeConsumableIsPlaced;  //marks time consumable is placed on building
     public float tempTimerValue = 5f;  //this is a placeholder and should be filled with the JSON value of how long a consumable takes to process
@@ -64,6 +66,27 @@ public class Building : MonoBehaviour {
             spriteRenderer.sprite = spriteArray[id]; //enables visual sprite if an instance of this object has been populated
         if (isProcessing && !timeConsumableTimerComplete)
                 TimerCheck();
+
+        //hides and shows pop up based on whether or not something is available to retrieve
+        if (!isProcessing && finishedProcessing && !InHandCtrl.isInHand) {
+            popUp.gameObject.SetActive(true);
+            popUp.DisplayProcessedItem(GetProcessingIcon());
+        } else
+            popUp.gameObject.SetActive(false);
+    }
+
+    public int GetProcessingIcon() {
+        if (canProcess == (int)ObjectMaster.listType.Vine)
+            return 0;
+        else if (canProcess == (int)ObjectMaster.listType.Consumable)
+            return 1;
+        else if (canProcess == (int)ObjectMaster.listType.Midpoint)
+            return 2;
+        else if (canProcess == (int)ObjectMaster.listType.Unaged)
+            return 3;
+        else
+            return 0; //this should never trigger
+
     }
 
     //used to set an instance of a Building to the details from the relevant template on the BuildingTemplate list
@@ -131,6 +154,12 @@ public class Building : MonoBehaviour {
         }
     }
 
+    public void ForceEmptyBuliding(GameObject justToMakeItCompile) {
+        finishedProcessing = false;
+        isProcessing = false;
+        hasSelectedOutput = false;
+    }
+
     public void FinishedProcessing() {
         if (isProcessing) {
             finishedProcessing = true;
@@ -138,13 +167,18 @@ public class Building : MonoBehaviour {
         }
     }
 
+    //Fills building and only displays building menu when it's an aging barn (because you have to select an option)
+    //If it is not doing the fill action, displays building menu anyway on click
     void OnMouseUpAsButton() {
-        if (!isProcessing && !finishedProcessing && InHandCtrl.isInHand)
+        if (!isProcessing && !finishedProcessing && InHandCtrl.isInHand) {
             FillBuilding();
-        ShowBuildingMenu();
+            if (canProcess == (int)ObjectMaster.listType.Unaged)
+                ShowBuildingMenu();
+        } else
+            ShowBuildingMenu();
     }
 
-    void ShowBuildingMenu() {
+    public void ShowBuildingMenu() {
         BuildingMenuControl.buildingMenuCtrl.gameObject.SetActive(true);
         if (objectType == "aging" && !hasSelectedOutput)
             BuildingMenuControl.DisplayAgingOptions(true);

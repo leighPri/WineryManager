@@ -70,12 +70,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\BottleDisplay.cs" />
-    <Compile Include="Assets\Scripts\BuildingMenuControl.cs" />
     <Compile Include="Assets\Scripts\BuildingSprites.cs" />
     <Compile Include="Assets\Scripts\BuyPanel.cs" />
     <Compile Include="Assets\Scripts\ConfirmationPanel.cs" />
     <Compile Include="Assets\Scripts\Control Scripts\BuildingCtrl.cs" />
     <Compile Include="Assets\Scripts\Control Scripts\BuildingHolder.cs" />
+    <Compile Include="Assets\Scripts\Control Scripts\BuildingMenuControl.cs" />
     <Compile Include="Assets\Scripts\Control Scripts\ControlHolder.cs" />
     <Compile Include="Assets\Scripts\Control Scripts\GameControl.cs" />
     <Compile Include="Assets\Scripts\Control Scripts\InHandCtrl.cs" />
@@ -93,11 +93,13 @@
     <Compile Include="Assets\Scripts\Grid.cs" />
     <Compile Include="Assets\Scripts\InHandImage.cs" />
     <Compile Include="Assets\Scripts\InHandLabel.cs" />
+    <Compile Include="Assets\Scripts\ItemToDisplay.cs" />
     <Compile Include="Assets\Scripts\MoneyDisplayLabel.cs" />
     <Compile Include="Assets\Scripts\ObjectBuilders\Building.cs" />
     <Compile Include="Assets\Scripts\ObjectBuilders\BuildingTemplate.cs" />
     <Compile Include="Assets\Scripts\ObjectBuilders\ConsumableTemplate.cs" />
     <Compile Include="Assets\Scripts\ObjectBuilders\MidpointTemplate.cs" />
+    <Compile Include="Assets\Scripts\ObjectBuilders\PopUpControl.cs" />
     <Compile Include="Assets\Scripts\ObjectBuilders\UnagedTemplate.cs" />
     <Compile Include="Assets\Scripts\ObjectBuilders\VineTemplate.cs" />
     <Compile Include="Assets\Scripts\ObjectBuilders\WineTemplate.cs" />
