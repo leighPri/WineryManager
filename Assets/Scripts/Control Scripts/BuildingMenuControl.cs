@@ -66,10 +66,11 @@ public class BuildingMenuControl : MonoBehaviour {
     //used to choose what to display in Update() based on the building type
     string DisplayInProcessing() {
 
-        if (displayedBuilding.objectType != "aging" || displayedBuilding.hasSelectedOutput)
+        if (displayedBuilding.objectType != "aging" || displayedBuilding.hasSelectedOutput) {
             finishButton.gameObject.SetActive(true);
-        getProductButton.gameObject.SetActive(false);
-        finishButton.GetComponentInChildren<Text>().text = displayedBuilding.roundedTimeTilComplete.ToString();
+            finishButton.GetComponentInChildren<Text>().text = displayedBuilding.roundedTimeTilComplete.ToString();
+        }
+            getProductButton.gameObject.SetActive(false);
 
         if (displayedBuilding.canProcess == (int)ObjectMaster.listType.Consumable) 
             return ThisConsumable().objectName;

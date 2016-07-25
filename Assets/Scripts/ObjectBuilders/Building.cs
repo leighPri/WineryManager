@@ -68,9 +68,11 @@ public class Building : MonoBehaviour {
                 TimerCheck();
 
         //hides and shows pop up based on whether or not something is available to retrieve
-        if (!isProcessing && finishedProcessing && !InHandCtrl.isInHand) {
+        if (!isProcessing && finishedProcessing) {
             popUp.gameObject.SetActive(true);
             popUp.DisplayProcessedItem(GetProcessingIcon());
+            if (InHandCtrl.isInHand && BuildingMenuControl.previousBuilding == this)
+                popUp.gameObject.SetActive(false);
         } else
             popUp.gameObject.SetActive(false);
     }
@@ -133,9 +135,9 @@ public class Building : MonoBehaviour {
         if (canProcess == InHandCtrl.typeOfObject && isProcessing == false && finishedProcessing == false) {
             isProcessing = true;
             finishedProcessing = false;
-            timeConsumableIsPlaced = Time.time;
             consumableIDInProcessing = InHandCtrl.objectInHand;
-            
+            timeConsumableIsPlaced = Time.time;
+
             InHandCtrl.ClearHand();
             //clears previously-used building if applicable (see BuildingMenuControl.CanClearPrev() comments for breakdown of conditionals)
             if (BuildingMenuControl.CanClearPrev(this))
@@ -147,6 +149,7 @@ public class Building : MonoBehaviour {
         finishedProcessing = false;
         isProcessing = false; //This is redundant on purpose, isProcessing should be set to false by FinishedProcessing()
         hasSelectedOutput = false;
+        timeConsumableTimerComplete = false;
 
         if(canProcess == (int)ObjectMaster.listType.Vine) {
             isProcessing = true;
@@ -158,6 +161,7 @@ public class Building : MonoBehaviour {
         finishedProcessing = false;
         isProcessing = false;
         hasSelectedOutput = false;
+        timeConsumableTimerComplete = false;
     }
 
     public void FinishedProcessing() {
