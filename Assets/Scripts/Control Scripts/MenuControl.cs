@@ -109,7 +109,7 @@ public class MenuControl : MonoBehaviour {
                 //displays number of bottles available
                 menuObjects[i].gameObject.transform.GetChild(0).gameObject.GetComponent<Text>().text = ObjectMaster.wineList[i].bottlesOnHand.ToString();
                 //enables button functionality
-                menuObjects[i].gameObject.AddComponent<Button>().onClick.AddListener(delegate () { tempSellMenuItem = menuObjects[tempID].gameObject.transform.GetChild(0).gameObject; if (ObjectMaster.wineList[tempID].bottlesOnHand > 0) { objMaster.TryToSellBottles(tempID); } });
+                menuObjects[i].gameObject.AddComponent<Button>().onClick.AddListener(delegate () { tempSellMenuItem = menuObjects[tempID].gameObject.transform.GetChild(0).gameObject; if (ObjectMaster.wineList[tempID].bottlesOnHand > 0) { SetSellAmount.setSellAmt.gameObject.SetActive(true); SetSellAmount.setSellAmt.SetWineID(tempID); } });
                 //stores initialPos over again so that the offsets are maintained
                 initialPos = new Vector3(initialPos.x, //x
                                         initialPos.y - yOffset, //y, with an offset

@@ -84,6 +84,7 @@
     <Compile Include="Assets\Scripts\Control Scripts\MenuControl.cs" />
     <Compile Include="Assets\Scripts\Control Scripts\MoneyCtrl.cs" />
     <Compile Include="Assets\Scripts\Control Scripts\ObjectMaster.cs" />
+    <Compile Include="Assets\Scripts\Control Scripts\SetSellAmount.cs" />
     <Compile Include="Assets\Scripts\Control Scripts\TimerControl.cs" />
     <Compile Include="Assets\Scripts\Control Scripts\UIControl.cs" />
     <Compile Include="Assets\Scripts\DataHandling\JSONParse.cs" />

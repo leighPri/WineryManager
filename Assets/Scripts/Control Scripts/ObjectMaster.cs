@@ -17,6 +17,14 @@ public class ObjectMaster : MonoBehaviour {
 
     public enum listType { Building, Consumable, Midpoint, Unaged, Vine };
 
+    void Awake() {
+        if (objectMaster == null) {
+            objectMaster = this;
+            DontDestroyOnLoad(this);
+        } else if (objectMaster != this)
+            Destroy(gameObject);
+    }
+
     public void BuyGrape(int ID) {
         if (MoneyCtrl.CanAfford(consumableList[ID].cost)) {
             if (!InHandCtrl.isInHand) {
@@ -27,8 +35,7 @@ public class ObjectMaster : MonoBehaviour {
         } 
     }
 
-    public void BuyVine(int ID)
-    {
+    public void BuyVine(int ID) {
         if (MoneyCtrl.CanAfford(vineList[ID].cost))
         {
             if (!InHandCtrl.isInHand)
@@ -47,9 +54,9 @@ public class ObjectMaster : MonoBehaviour {
     }
     
     //cannot be static because the buttons don't like it
-    public void SellBottles(object wineIDObj) {
-        int wineID = (int)wineIDObj;
-        int amtToSell = 100; //will be set to 100 bottles in Inspector for testing purposes, make amtToSell someting to pass in later
+    public void SellBottles(object[] wineIDObj) {
+        int wineID = (int)wineIDObj[0];
+        int amtToSell = (int)wineIDObj[1]; /*100; //will be set to 100 bottles in Inspector for testing purposes, make amtToSell someting to pass in later*/
 
         if (wineList[wineID].bottlesOnHand <= 0){
             Debug.Log("You have no " + wineList[wineID].wineName + " to sell!");
@@ -65,15 +72,17 @@ public class ObjectMaster : MonoBehaviour {
         SaveLoad.Save();
     }
 
-    public void TryToSellBottles(int wineID) {
+    public void TryToSellBottles(int wineID, int amtToSell) {
         List<object> tempList = new List<object>();
-        object tempObject = wineID;
-        tempList.Add(tempObject);
+        object[] masterObject = new object[2];
+        masterObject[0] = wineID;
+        masterObject[1] = amtToSell;
+        tempList.Add(masterObject);
 
         string confirmText = "Are you sure you want to sell ";
-        confirmText += wineList[wineID].bottlesOnHand + " bottles of ";
+        confirmText += amtToSell + " bottles of ";
         confirmText += wineList[wineID].wineName + "?";
 
-        ConfirmationPanel.confirmPanel.ShowAndWait(confirmText, this, "SellBottles", tempList);
+        ConfirmationPanel.confirmPanel.ShowAndWait(confirmText, objectMaster, "SellBottles", tempList);
     }
 }
