@@ -23,8 +23,6 @@ public class PopUpControl : MonoBehaviour {
     }
 
     void OnMouseUpAsButton() {
-        //need eventually to not have to manually show the building menu...separate out building processing functions from the actual menu object
-        parentBuilding.ShowBuildingMenu();
-        BuildingMenuControl.buildingMenuCtrl.GetOutput();
+        parentBuilding.GetOutput();
     }
 }

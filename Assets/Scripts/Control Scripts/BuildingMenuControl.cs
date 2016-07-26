@@ -8,10 +8,6 @@ public class BuildingMenuControl : MonoBehaviour {
     public static BuildingMenuControl buildingMenuCtrl;
 
     public static Building displayedBuilding;
-    public static Building previousBuilding;
-
-    //accepts 0, 1, or 2 used to pick an output from the Consumable output array
-    public  int selectedOutput;
 
     public GameObject buildingName;
     public static Text buildingNameText;
@@ -48,6 +44,11 @@ public class BuildingMenuControl : MonoBehaviour {
         clearButton.GetComponent<Button>().onClick.AddListener(delegate () { TryToClearBuilding(); });
     }
 
+    //sets the displayed building
+    public static void GetBuilding(Building building) {
+        displayedBuilding = building;
+    }
+
     void Update() {
         buildingNameText.text = displayedBuilding.objectName; //sets elements to the specifics of the passed building
 
@@ -66,12 +67,16 @@ public class BuildingMenuControl : MonoBehaviour {
     //used to choose what to display in Update() based on the building type
     string DisplayInProcessing() {
 
+        //shows timer in the finish button
         if (displayedBuilding.objectType != "aging" || displayedBuilding.hasSelectedOutput) {
             finishButton.gameObject.SetActive(true);
             finishButton.GetComponentInChildren<Text>().text = displayedBuilding.roundedTimeTilComplete.ToString();
         }
-            getProductButton.gameObject.SetActive(false);
 
+        //hides get product button
+        getProductButton.gameObject.SetActive(false);
+
+        //displays the name of whatever the building is processing
         if (displayedBuilding.canProcess == (int)ObjectMaster.listType.Consumable) 
             return ThisConsumable().objectName;
         else if (displayedBuilding.canProcess == (int)ObjectMaster.listType.Midpoint)
@@ -94,7 +99,7 @@ public class BuildingMenuControl : MonoBehaviour {
         else if (displayedBuilding.canProcess == (int)ObjectMaster.listType.Midpoint)
             return ThisUnagedWine().objectName;
         else if (displayedBuilding.canProcess == (int)ObjectMaster.listType.Unaged)
-            return ObjectMaster.wineList[ThisUnagedWine().outputID[selectedOutput]].wineName;
+            return ObjectMaster.wineList[ThisUnagedWine().outputID[displayedBuilding.selectedOutput]].wineName;
         else if (displayedBuilding.canProcess == (int)ObjectMaster.listType.Vine)
             return ThisConsumable().objectName;
         else
@@ -127,8 +132,8 @@ public class BuildingMenuControl : MonoBehaviour {
         return ObjectMaster.vineList[displayedBuilding.consumableIDInProcessing];
     }
 
+    //for testing only, take out later
     public void FinishButton() {
-        //for testing only, take out later
             if (!displayedBuilding.timeConsumableTimerComplete) {
                 displayedBuilding.timeRemainingTilComplete = 0;
                 displayedBuilding.timeConsumableTimerComplete = true;
@@ -138,51 +143,9 @@ public class BuildingMenuControl : MonoBehaviour {
         
     }
 
-    //places output in hand and hides the building menu
+    //this is a nested call because it's used to set buttons
     public void GetOutput() {
-        if (displayedBuilding.finishedProcessing) {
-            if (displayedBuilding.canProcess == (int)ObjectMaster.listType.Consumable) { //if Wine Press
-                InHandCtrl.PutMidpointInHand(ThisConsumable().outputID);
-
-            } else if (displayedBuilding.canProcess == (int)ObjectMaster.listType.Midpoint) { //if Fermentation Shed
-                InHandCtrl.PutUnagedWineInHand(ThisMidpoint().outputID);
-
-            } else if (displayedBuilding.canProcess == (int)ObjectMaster.listType.Unaged) { //if Aging Barn
-                ObjectMaster.AddBottles(ThisUnagedWine().outputID[selectedOutput]); //adds 100 bottles to the proper wine in the wine list
-                Debug.Log("You now have " + ObjectMaster.wineList[ThisUnagedWine().outputID[selectedOutput]].bottlesOnHand + " bottles of " + ObjectMaster.wineList[ThisUnagedWine().outputID[selectedOutput]].wineName + " available to sell.");
-                displayedBuilding.EmptyBuilding(); //aging barns clear themselves because there is nowhere else for wines to go except into storage (currently)
-            }
-            else if (displayedBuilding.canProcess == (int)ObjectMaster.listType.Vine) { //if vineyard
-                InHandCtrl.PutConsumableInHand(ThisConsumable().outputID);
-            }
-            
-            previousBuilding = displayedBuilding;
-            gameObject.SetActive(false); //hides the Building Menu
-        }
-    }
-
-    public static bool CanClearPrev(Building nextBuild) {
-        //if previousBuilding and displayedBuilding are not null
-        //if the upcoming building is not the exact same instance as the one currently stored in previousBuilding
-        //if previous building is finished processing
-        //if the next building is currently processing (i.e., has been passed a consumable but has not processed it)
-        if (previousBuilding != null && displayedBuilding != null && previousBuilding != nextBuild && previousBuilding.finishedProcessing && nextBuild.isProcessing)
-            return true;
-        else
-            return false;
-    }
-
-    //lets the aging buttons set their desired outputs
-    //does not function if there is not something currently being processed
-    public void SetOutput(object output) {
-        if (displayedBuilding.isProcessing) {
-            selectedOutput = (int)output;
-            //sets time upon selection
-            displayedBuilding.timeConsumableIsPlaced = Time.time;
-            displayedBuilding.hasSelectedOutput = true;
-            //hides the whole set once a button is clicked as the user should only be able to select one option
-            DisplayAgingOptions(false);
-        }
+        displayedBuilding.GetOutput();
     }
 
     public void TryToSetOutput(int output) {
@@ -197,7 +160,7 @@ public class BuildingMenuControl : MonoBehaviour {
         else if (output == 2)
             confirmText += "bottle aging?";
         confirmText += " You cannot change this choice";
-        ConfirmationPanel.confirmPanel.ShowAndWait(confirmText, this, "SetOutput", tempList);
+        ConfirmationPanel.confirmPanel.ShowAndWait(confirmText, displayedBuilding, "SetOutput", tempList);
     }
 
     public void TryToDemolishBuilding() {
@@ -218,10 +181,5 @@ public class BuildingMenuControl : MonoBehaviour {
         string confirmText = "Are you sure you want to empty this building?";
         confirmText += " This cannot be undone.";
         ConfirmationPanel.confirmPanel.ShowAndWait(confirmText, displayedBuilding, "ForceEmptyBuliding", tempList);
-    }
-
-    //sets the displayed building
-    public static void GetBuilding(Building building) {
-        displayedBuilding = building;
     }
 }

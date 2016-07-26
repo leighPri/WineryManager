@@ -13,6 +13,9 @@ public class Building : MonoBehaviour {
     public string description;
     public int cost;
 
+    //accepts 0, 1, or 2 used to pick an output from the Consumable output array
+    public int selectedOutput;
+
     //valid inputs are "press" "ferment" and "aging"
     //used for conditionals, must be correct
     public string objectType;
@@ -71,7 +74,7 @@ public class Building : MonoBehaviour {
         if (!isProcessing && finishedProcessing) {
             popUp.gameObject.SetActive(true);
             popUp.DisplayProcessedItem(GetProcessingIcon());
-            if (InHandCtrl.isInHand && BuildingMenuControl.previousBuilding == this)
+            if (InHandCtrl.isInHand && BuildingCtrl.prevBuild == this)
                 popUp.gameObject.SetActive(false);
         } else
             popUp.gameObject.SetActive(false);
@@ -139,9 +142,9 @@ public class Building : MonoBehaviour {
             timeConsumableIsPlaced = Time.time;
 
             InHandCtrl.ClearHand();
-            //clears previously-used building if applicable (see BuildingMenuControl.CanClearPrev() comments for breakdown of conditionals)
-            if (BuildingMenuControl.CanClearPrev(this))
-                BuildingMenuControl.previousBuilding.EmptyBuilding();
+            //clears previously-used building if applicable (see BuildingCtrl.CanClearPrev() comments for breakdown of conditionals)
+            if (BuildingCtrl.CanClearPrev(this))
+                BuildingCtrl.prevBuild.EmptyBuilding();
             SaveLoad.Save();
         }
     }
@@ -171,6 +174,42 @@ public class Building : MonoBehaviour {
         }
     }
 
+    //lets the aging buttons set their desired outputs
+    //does not function if there is not something currently being processed
+    public void SetOutput(object output) {
+        if (isProcessing) {
+            selectedOutput = (int)output;
+            //sets time upon selection
+            timeConsumableIsPlaced = Time.time;
+            hasSelectedOutput = true;
+            //hides the whole set once a button is clicked as the user should only be able to select one option
+            if (BuildingMenuControl.buildingMenuCtrl.gameObject.activeSelf)
+                BuildingMenuControl.DisplayAgingOptions(false);
+        }
+    }
+
+    //places output in hand
+    public void GetOutput() {
+        if (finishedProcessing) {
+            if (canProcess == (int)ObjectMaster.listType.Consumable) { //if Wine Press
+                InHandCtrl.PutMidpointInHand(ObjectMaster.consumableList[consumableIDInProcessing].outputID);
+
+            } else if (canProcess == (int)ObjectMaster.listType.Midpoint) { //if Fermentation Shed
+                InHandCtrl.PutUnagedWineInHand(ObjectMaster.midpointList[consumableIDInProcessing].outputID);
+
+            } else if (canProcess == (int)ObjectMaster.listType.Unaged) { //if Aging Barn
+                ObjectMaster.AddBottles(ObjectMaster.unagedList[consumableIDInProcessing].outputID[selectedOutput]); //adds 100 bottles to the proper wine in the wine list
+                Debug.Log("You now have " + ObjectMaster.wineList[ObjectMaster.unagedList[consumableIDInProcessing].outputID[selectedOutput]].bottlesOnHand + " bottles of " + ObjectMaster.wineList[ObjectMaster.unagedList[consumableIDInProcessing].outputID[selectedOutput]].wineName + " available to sell.");
+                EmptyBuilding(); //aging barns clear themselves because there is nowhere else for wines to go except into storage (currently)
+            } else if (canProcess == (int)ObjectMaster.listType.Vine) { //if vineyard
+                InHandCtrl.PutConsumableInHand(ObjectMaster.consumableList[consumableIDInProcessing].outputID);
+            }
+
+            BuildingCtrl.prevBuild = this;
+            HideBuildingMenu(); //hides the Building Menu if it's active
+        }
+    }
+
     //Fills building and only displays building menu when it's an aging barn (because you have to select an option)
     //If it is not doing the fill action, displays building menu anyway on click
     void OnMouseUpAsButton() {
@@ -192,8 +231,14 @@ public class Building : MonoBehaviour {
         BuildingMenuControl.GetBuilding(this);
     }
 
+    public void HideBuildingMenu() {
+        //only works if the menu is enabled
+        if (BuildingMenuControl.buildingMenuCtrl.gameObject.activeSelf)
+            BuildingMenuControl.buildingMenuCtrl.gameObject.SetActive(false);
+    }
+
     public void DemolishBuilding(object toDestroy) {
-        BuildingMenuControl.buildingMenuCtrl.gameObject.SetActive(false);
+        HideBuildingMenu();
         Destroy((GameObject)toDestroy);
     }
 

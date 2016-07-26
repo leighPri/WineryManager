@@ -7,6 +7,8 @@ public class BuildingCtrl : MonoBehaviour {
 
     public static BuildingCtrl buildingCtrl;
 
+    public static Building prevBuild;
+
     //holder of current buildings
     public static Building[] playerBuilding = new Building[GameControl.w * GameControl.h];
 
@@ -40,5 +42,17 @@ public class BuildingCtrl : MonoBehaviour {
             tempCell.Add(cell);
             ConfirmationPanel.confirmPanel.ShowAndWait("Are you sure you want to place " + ObjectMaster.buildingList[InHandCtrl.objectInHand].objectName + " here?", this, "PlaceBuilding", tempCell);
         }
+    }
+
+    public static bool CanClearPrev(Building nextBuild) {
+        //if previousBuilding and displayedBuilding are not null
+            //commented out temporarily since displayedBuilding will no longer be a large part of the logic
+        //if the upcoming building is not the exact same instance as the one currently stored in previousBuilding
+        //if previous building is finished processing
+        //if the next building is currently processing (i.e., has been passed a consumable but has not processed it)
+        if (prevBuild != null && /*displayedBuilding != null &&*/ prevBuild != nextBuild && prevBuild.finishedProcessing && nextBuild.isProcessing)
+            return true;
+        else
+            return false;
     }
 }
