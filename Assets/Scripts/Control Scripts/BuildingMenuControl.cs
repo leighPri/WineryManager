@@ -140,7 +140,7 @@ public class BuildingMenuControl : MonoBehaviour {
             }
         if (displayedBuilding.objectType != "aging" || displayedBuilding.hasSelectedOutput) //this conditional is to keep aging barns from being able to "finish" without an option being selected
             displayedBuilding.FinishedProcessing();
-        
+
     }
 
     //this is a nested call because it's used to set buttons

@@ -7,16 +7,16 @@ public class InHandLabel : MonoBehaviour {
     Text inHandText;
 	
     void Awake() {
-        inHandText = GetComponent<Text>();
+        inHandText = GetComponentInChildren<Text>();
     }
 
     void Start() {
         if (!InHandCtrl.isInHand)
-            inHandText.text = "In Hand: ";
+            inHandText.text = "";
     }
     
     void Update () {
-        inHandText.text = "In Hand: ";
+        inHandText.text = "";
         //GetComponent<SpriteRenderer>().sprite = null;
 
         if (InHandCtrl.isInHand)

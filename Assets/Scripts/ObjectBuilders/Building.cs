@@ -59,8 +59,8 @@ public class Building : MonoBehaviour {
     }
     
     void Update() {
-        //enables and disables colliders based on whether or not the BuildingMenu is active (only on MainGame)
-        if ((SceneManager.GetActiveScene().buildIndex == 2 && BuildingMenuControl.buildingMenuCtrl.gameObject.activeSelf) || (InHandCtrl.isInHand && InHandCtrl.typeOfObject == (int)ObjectMaster.listType.Building))
+        //enables and disables colliders based on whether or not panels are active (only on MainGame)
+        if ((SceneManager.GetActiveScene().buildIndex == 2 && UIControl.panelIsActive) || (InHandCtrl.isInHand && InHandCtrl.typeOfObject == (int)ObjectMaster.listType.Building))
             GetComponent<BoxCollider2D>().enabled = false;
         else
             GetComponent<BoxCollider2D>().enabled = true;
@@ -193,7 +193,6 @@ public class Building : MonoBehaviour {
         if (finishedProcessing) {
             if (canProcess == (int)ObjectMaster.listType.Consumable) { //if Wine Press
                 InHandCtrl.PutMidpointInHand(ObjectMaster.consumableList[consumableIDInProcessing].outputID);
-
             } else if (canProcess == (int)ObjectMaster.listType.Midpoint) { //if Fermentation Shed
                 InHandCtrl.PutUnagedWineInHand(ObjectMaster.midpointList[consumableIDInProcessing].outputID);
 
@@ -223,6 +222,7 @@ public class Building : MonoBehaviour {
 
     public void ShowBuildingMenu() {
         BuildingMenuControl.buildingMenuCtrl.gameObject.SetActive(true);
+        UIControl.panelIsActive = true;
         if (objectType == "aging" && !hasSelectedOutput)
             BuildingMenuControl.DisplayAgingOptions(true);
         else
@@ -233,8 +233,10 @@ public class Building : MonoBehaviour {
 
     public void HideBuildingMenu() {
         //only works if the menu is enabled
-        if (BuildingMenuControl.buildingMenuCtrl.gameObject.activeSelf)
+        if (BuildingMenuControl.buildingMenuCtrl.gameObject.activeSelf) {
             BuildingMenuControl.buildingMenuCtrl.gameObject.SetActive(false);
+            UIControl.panelIsActive = false;
+        }
     }
 
     public void DemolishBuilding(object toDestroy) {

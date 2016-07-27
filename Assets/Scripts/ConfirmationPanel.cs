@@ -57,6 +57,7 @@ public class ConfirmationPanel : MonoBehaviour {
             InvokeMethod(myClass, methodName, args);
         }
         //hides the panel
+        UIControl.panelIsActive = false;
         gameObject.SetActive(false);
     }
 

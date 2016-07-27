@@ -8,17 +8,24 @@ public class UIControl : MonoBehaviour {
     public static UIControl uiControl;
 
     public GameObject cancelButton;
+    public static bool panelIsActive;
+
+    void Start() {
+        panelIsActive = false;
+    }
 
     public void ShowPanel(GameObject panel) {
         if (!InHandCtrl.isInHand) {
             panel.gameObject.SetActive(true);
-            BuildingHolder.HideBuildingHolder(true);
+            panelIsActive = true;
+            //BuildingHolder.HideBuildingHolder(true);
         }
     }
 
     public void HidePanel(GameObject panel) {
         panel.gameObject.SetActive(false);
-        BuildingHolder.HideBuildingHolder(false);
+        panelIsActive = false;
+        //BuildingHolder.HideBuildingHolder(false);
     }
 
     void Update() {

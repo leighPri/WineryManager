@@ -7,6 +7,7 @@ public class Element : MonoBehaviour {
 
     //holders for this square's location info
     public int myPosition;
+    public Vector3 myOriginalPosition;
 
     void Start () {
         //squares register themselves to the Grid
