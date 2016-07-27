@@ -20,7 +20,6 @@ public class ObjectMaster : MonoBehaviour {
     void Awake() {
         if (objectMaster == null) {
             objectMaster = this;
-            DontDestroyOnLoad(this);
         } else if (objectMaster != this)
             Destroy(gameObject);
     }

@@ -17,7 +17,6 @@ public class ConfirmationPanel : MonoBehaviour {
 	void Awake() {
         if (confirmPanel == null) {
             confirmPanel = this;
-            DontDestroyOnLoad(this);
         } else if (confirmPanel != this)
             Destroy(gameObject);
     }
