@@ -21,8 +21,8 @@ public class Element : MonoBehaviour {
     }
 
     void Update() {
-        //enables and disables colliders based on whether or not the BuildingMenu is active (only on MainGame)
-        if (SceneManager.GetActiveScene().buildIndex == 2 && BuildingMenuControl.buildingMenuCtrl.gameObject.activeSelf)
+        //enables and disables colliders based on whether or not panels are active (only on MainGame)
+        if (SceneManager.GetActiveScene().buildIndex == 2 && UIControl.panelIsActive)
             GetComponent<PolygonCollider2D>().enabled = false;
         else
             GetComponent<PolygonCollider2D>().enabled = true;
