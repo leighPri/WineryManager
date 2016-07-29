@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -12,6 +13,15 @@ public class UIControl : MonoBehaviour {
 
     void Start() {
         panelIsActive = false;
+    }
+
+    void Update() {
+        if (cancelButton != null) {
+            if (InHandCtrl.isInHand)
+                cancelButton.SetActive(true);
+            else if (!InHandCtrl.isInHand)
+                cancelButton.SetActive(false);
+        }
     }
 
     public static void ShowPanel(PanelHider panel) {
@@ -29,16 +39,26 @@ public class UIControl : MonoBehaviour {
         //BuildingHolder.HideBuildingHolder(false);
     }
 
-    public void ManageButton(PanelHider panel) {
+    public void NonStaticPanelToggle(PanelHider panel) {
         ShowPanel(panel);
     }
 
-    void Update() {
-        if (cancelButton != null) { 
-            if (InHandCtrl.isInHand)
-                cancelButton.SetActive(true);
-            else if (!InHandCtrl.isInHand)
-                cancelButton.SetActive(false);
-        }
+    public void NonStaticSave(PanelHider panel) {
+        SaveLoad.Save();
+        HidePanel(panel);
+    }
+
+    public void LoadMainMenu(object holderObject) {
+        SceneManager.LoadScene("Start");
+    }
+
+    public void TryToReturnToMainMenu() {
+        List<object> tempList = new List<object>();
+        object tempObject = 1;
+        tempList.Add(tempObject);
+
+        string confirmText = "Are you sure you want to return to the main menu?";
+        confirmText += " All unsaved progress will be lost.";
+        ConfirmationPanel.confirmPanel.ShowAndWait(confirmText, this, "LoadMainMenu", tempList);
     }
 }

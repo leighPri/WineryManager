@@ -15,11 +15,17 @@ public class GameControl : MonoBehaviour {
     //holder of the actual grid data
     public static Element[] grid = new Element[w * h];
 
+    public static bool TryToLoad; //set to true when Load Game selected, set to false on Start
+
     void Awake() {
         if (control == null)
             control = this;
         else if (control != this)
             Destroy(gameObject);
+    }
+
+    public void SetTryToLoad(bool setInput) {
+        TryToLoad = setInput;
     }
 
     //hides and shows grid depending on what scene is active. 1 (loading screen) so that buildings can be reinitialized if relevant, 2 (main game) for the actual game

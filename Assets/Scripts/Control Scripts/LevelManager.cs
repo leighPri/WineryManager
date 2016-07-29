@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections;
+using System.Collections.Generic;
 
 public class LevelManager : MonoBehaviour {
 
@@ -16,6 +17,19 @@ public class LevelManager : MonoBehaviour {
             Debug.Log("Cannot change scenes while " + ObjectMaster.buildingList[InHandCtrl.objectInHand].objectName + " is in hand.");
         else if (InHandCtrl.typeOfObject == (int)ObjectMaster.listType.Consumable)
             Debug.Log("Cannot change scenes while " + ObjectMaster.consumableList[InHandCtrl.objectInHand].objectName + " is in hand.");
+    }
+
+    public void StartNewGame(object sceneName) {
+        SceneManager.LoadScene((string)sceneName);
+    }
+
+    public void TryToStartNewGame(string sceneName) {
+        List<object> tempList = new List<object>();
+        object tempObject = sceneName;
+        tempList.Add(tempObject);
+
+        string confirmText = "Are you sure you want to start a new game? You will lose all previous progress.";
+        ConfirmationPanel.confirmPanel.ShowAndWait(confirmText, this, "StartNewGame", tempList);
     }
 
 }

@@ -7,11 +7,15 @@ public class LoadingScene : MonoBehaviour {
 
 	void Awake() {
         //Loads information if there is an existing save file
-        try {
-            SaveLoad.Load();
-        } catch (System.Exception e) {
-            //SaveLoad.DeleteSave();
-            Debug.Log("Error: " + e);
+        if (GameControl.TryToLoad) {
+            try {
+                SaveLoad.Load();
+            } catch (System.Exception e) {
+                //SaveLoad.DeleteSave();
+                Debug.Log("Error: " + e);
+                SceneManager.LoadScene("MainGame");
+            }
+        } else {
             SceneManager.LoadScene("MainGame");
         }
     }
