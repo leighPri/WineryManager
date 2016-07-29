@@ -141,8 +141,8 @@ RectTransform:
   m_Children:
   - {fileID: 916797656}
   - {fileID: 1513641442}
-  - {fileID: 2073524519}
   - {fileID: 1545248493}
+  - {fileID: 2073524519}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 0}
@@ -379,6 +379,10 @@ Prefab:
       propertyPath: m_Name
       value: Back Button
       objectReference: {fileID: 0}
+    - target: {fileID: 11485796, guid: 58f163239dc85e04d95e47c733f391e6, type: 2}
+      propertyPath: m_FontData.m_BestFit
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 58f163239dc85e04d95e47c733f391e6, type: 2}
   m_IsPrefabParent: 0
@@ -424,7 +428,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22424022, guid: df712df82954baf40affb555d867a895, type: 2}
       propertyPath: m_RootOrder
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 22424022, guid: df712df82954baf40affb555d867a895, type: 2}
       propertyPath: m_AnchoredPosition.x

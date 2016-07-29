@@ -20,12 +20,11 @@ public class BuildingManageMenu : MonoBehaviour {
             buildingManageMenu = this;
         else if (buildingManageMenu != this)
             Destroy(gameObject);
-        gameObject.SetActive(false); //sets active by default but allows it to be recovered via script
-    }
 
-    void Start() {
-        demolishButton.GetComponent<Button>().onClick.AddListener(delegate () { TryToDemolishBuilding(); });
-        clearButton.GetComponent<Button>().onClick.AddListener(delegate () { TryToClearBuilding(); });
+        demolishButton.GetComponent<Button>().onClick.AddListener(delegate () { DemolishButton(); });
+        clearButton.GetComponent<Button>().onClick.AddListener(delegate () { ForceClearButton(); });
+
+        gameObject.SetActive(false); //sets active by default but allows it to be recovered via script
     }
 
     void Update() {
@@ -38,23 +37,11 @@ public class BuildingManageMenu : MonoBehaviour {
         displayedBuilding = BuildingMenuControl.displayedBuilding;
     }
 
-    public void TryToDemolishBuilding() {
-        List<object> tempList = new List<object>();
-        object tempObject = displayedBuilding.gameObject;
-        tempList.Add(tempObject);
-
-        string confirmText = "Are you sure you want to demolish this building?";
-        confirmText += " This cannot be undone.";
-        ConfirmationPanel.confirmPanel.ShowAndWait(confirmText, displayedBuilding, "DemolishBuilding", tempList);
+    public void DemolishButton() {
+        displayedBuilding.TryToDemolishBuilding(gameObject);
     }
 
-    public void TryToClearBuilding() {
-        List<object> tempList = new List<object>();
-        object tempObject = displayedBuilding.gameObject;
-        tempList.Add(tempObject);
-
-        string confirmText = "Are you sure you want to empty this building?";
-        confirmText += " This cannot be undone.";
-        ConfirmationPanel.confirmPanel.ShowAndWait(confirmText, displayedBuilding, "ForceEmptyBuliding", tempList);
+    public void ForceClearButton() {
+        displayedBuilding.TryToClearBuilding(gameObject);
     }
 }

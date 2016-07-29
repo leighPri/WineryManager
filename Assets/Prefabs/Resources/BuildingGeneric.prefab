@@ -133,10 +133,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbfc5de6201dee7479e182725ce5121f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buildingMenuPanel: {fileID: 11453672, guid: 1e4d0560fa445a343a1e6f457548b364, type: 2}
   id: 0
   objectName: 
   description: 
   cost: 0
+  selectedOutput: 0
   objectType: 
   parentList: 0
   isProcessing: 0

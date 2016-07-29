@@ -23,7 +23,7 @@ public class Building : MonoBehaviour {
 
     public bool isProcessing;
     public bool finishedProcessing;
-    public bool hasSelectedOutput;
+    public bool hasSelectedOutput = false;
     
     public int canProcess; //use the ObjectMaster enum list
     public int consumableIDInProcessing;
@@ -160,13 +160,6 @@ public class Building : MonoBehaviour {
         }
     }
 
-    public void ForceEmptyBuliding(GameObject justToMakeItCompile) {
-        finishedProcessing = false;
-        isProcessing = false;
-        hasSelectedOutput = false;
-        timeConsumableTimerComplete = false;
-    }
-
     public void FinishedProcessing() {
         if (isProcessing) {
             finishedProcessing = true;
@@ -183,8 +176,8 @@ public class Building : MonoBehaviour {
             timeConsumableIsPlaced = Time.time;
             hasSelectedOutput = true;
             //hides the whole set once a button is clicked as the user should only be able to select one option
-            if (BuildingMenuControl.buildingMenuCtrl.gameObject.activeSelf)
-                BuildingMenuControl.DisplayAgingOptions(false);
+            //if (BuildingMenuControl.buildingMenuCtrl.gameObject.activeSelf)
+            //    BuildingMenuControl.DisplayAgingOptions(false);
         }
     }
 
@@ -221,14 +214,17 @@ public class Building : MonoBehaviour {
     }
 
     public void ShowBuildingMenu() {
+        //UIControl.uiControl.ShowPanel(buildingMenuPanel);
         BuildingMenuControl.buildingMenuCtrl.gameObject.SetActive(true);
         UIControl.panelIsActive = true;
-        if (objectType == "aging" && !hasSelectedOutput)
-            BuildingMenuControl.DisplayAgingOptions(true);
-        else
-            BuildingMenuControl.DisplayAgingOptions(false);
+        BuildingMenuControl.buildingMenuCtrl.gameObject.GetComponent<PanelHider>().showPanel = true;
+        //if (objectType == "aging" && !hasSelectedOutput)
+        //    BuildingMenuControl.DisplayAgingOptions(true);
+        //else
+        //    BuildingMenuControl.DisplayAgingOptions(false);
         //passes this building to the menu so that it can be populated 
         BuildingMenuControl.GetBuilding(this);
+
     }
 
     public void HideBuildingMenu() {
@@ -239,9 +235,42 @@ public class Building : MonoBehaviour {
         }
     }
 
-    public void DemolishBuilding(object toDestroy) {
+    public void TryToDemolishBuilding(GameObject panel) {
+        List<object> tempList = new List<object>();
+        object tempObject = panel;
+        tempList.Add(tempObject);
+
+        string confirmText = "Are you sure you want to demolish this building?";
+        confirmText += " This cannot be undone.";
+        ConfirmationPanel.confirmPanel.ShowAndWait(confirmText, this, "DemolishBuilding", tempList);
+    }
+
+    public void TryToClearBuilding(GameObject panel) {
+        List<object> tempList = new List<object>();
+        object tempObject = panel;
+        tempList.Add(tempObject);
+
+        string confirmText = "Are you sure you want to empty this building?";
+        confirmText += " This cannot be undone.";
+        ConfirmationPanel.confirmPanel.ShowAndWait(confirmText, this, "ForceEmptyBuliding", tempList);
+    }
+
+    public void DemolishBuilding(object panel) {
         HideBuildingMenu();
-        Destroy((GameObject)toDestroy);
+        GameObject tempPanel = (GameObject)panel;
+        tempPanel.SetActive(false);
+        Destroy(gameObject);
+        SaveLoad.Save();
+    }
+
+    public void ForceEmptyBuliding(object panel) {
+        finishedProcessing = false;
+        isProcessing = false;
+        hasSelectedOutput = false;
+        timeConsumableTimerComplete = false;
+        GameObject tempPanel = (GameObject)panel;
+        tempPanel.SetActive(false);
+        SaveLoad.Save();
     }
 
     public void TimerCheck() {

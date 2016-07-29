@@ -19,6 +19,7 @@ public class BuildingMenuControl : MonoBehaviour {
 
     public GameObject finishButton;
     public GameObject getProductButton;
+    public GameObject manageButton;
     //public GameObject demolishButton;
     //public GameObject clearButton;
 
@@ -48,8 +49,9 @@ public class BuildingMenuControl : MonoBehaviour {
     }
 
     void Update() {
-        if (gameObject.activeSelf)
-            UIControl.panelIsActive = true;
+        //manageButton.gameObject.SetActive(true);
+        //if (gameObject.activeSelf)
+        //    UIControl.panelIsActive = true;
 
         buildingNameText.text = displayedBuilding.objectName; //sets elements to the specifics of the passed building
 
@@ -62,7 +64,13 @@ public class BuildingMenuControl : MonoBehaviour {
         else {
             statusText.text = "Empty"; //default display option
             finishButton.gameObject.SetActive(false);
+            getProductButton.gameObject.SetActive(false);
         }
+
+        if ((displayedBuilding.hasSelectedOutput || !displayedBuilding.isProcessing) || displayedBuilding.objectType != "aging") {
+            DisplayAgingOptions(false);
+        } else if (displayedBuilding.isProcessing && !displayedBuilding.finishedProcessing)
+            DisplayAgingOptions(true);
     }
 
     //used to choose what to display in Update() based on the building type
@@ -128,8 +136,7 @@ public class BuildingMenuControl : MonoBehaviour {
         return ObjectMaster.unagedList[displayedBuilding.consumableIDInProcessing];
     }
 
-    public VineTemplate ThisVine()
-    {
+    public VineTemplate ThisVine() {
         return ObjectMaster.vineList[displayedBuilding.consumableIDInProcessing];
     }
 
@@ -163,24 +170,5 @@ public class BuildingMenuControl : MonoBehaviour {
         confirmText += " You cannot change this choice";
         ConfirmationPanel.confirmPanel.ShowAndWait(confirmText, displayedBuilding, "SetOutput", tempList);
     }
-
-    //public void TryToDemolishBuilding() {
-    //    List<object> tempList = new List<object>();
-    //    object tempObject = displayedBuilding.gameObject;
-    //    tempList.Add(tempObject);
-
-    //    string confirmText = "Are you sure you want to demolish this building?";
-    //    confirmText += " This cannot be undone.";
-    //    ConfirmationPanel.confirmPanel.ShowAndWait(confirmText, displayedBuilding, "DemolishBuilding", tempList);
-    //}
-
-    //public void TryToClearBuilding() {
-    //    List<object> tempList = new List<object>();
-    //    object tempObject = displayedBuilding.gameObject;
-    //    tempList.Add(tempObject);
-
-    //    string confirmText = "Are you sure you want to empty this building?";
-    //    confirmText += " This cannot be undone.";
-    //    ConfirmationPanel.confirmPanel.ShowAndWait(confirmText, displayedBuilding, "ForceEmptyBuliding", tempList);
-    //}
+    
 }

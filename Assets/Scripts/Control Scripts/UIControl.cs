@@ -14,18 +14,23 @@ public class UIControl : MonoBehaviour {
         panelIsActive = false;
     }
 
-    public void ShowPanel(GameObject panel) {
+    public static void ShowPanel(PanelHider panel) {
         if (!InHandCtrl.isInHand) {
             panel.gameObject.SetActive(true);
             panelIsActive = true;
+            panel.showPanel = true;
             //BuildingHolder.HideBuildingHolder(true);
         }
     }
 
-    public void HidePanel(GameObject panel) {
+    public static void HidePanel(PanelHider panel) {
         panel.gameObject.SetActive(false);
         panelIsActive = false;
         //BuildingHolder.HideBuildingHolder(false);
+    }
+
+    public void ManageButton(PanelHider panel) {
+        ShowPanel(panel);
     }
 
     void Update() {

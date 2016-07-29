@@ -684,6 +684,10 @@ Prefab:
       propertyPath: m_Name
       value: Back Button
       objectReference: {fileID: 0}
+    - target: {fileID: 11485796, guid: 58f163239dc85e04d95e47c733f391e6, type: 2}
+      propertyPath: m_FontData.m_BestFit
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 58f163239dc85e04d95e47c733f391e6, type: 2}
   m_IsPrefabParent: 0
