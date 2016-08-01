@@ -24,10 +24,24 @@ public class ObjectMaster : MonoBehaviour {
             Destroy(gameObject);
     }
 
+    //the int passed in in the inspector should be the object ID from ObjectMaster.buildingList
+    public void BuyBuilding(int ID) {
+        if (MoneyCtrl.CanAfford(ObjectMaster.buildingList[ID].cost)) {
+            if (!InHandCtrl.isInHand) {
+                InHandCtrl.PutBuildingInHand(ID);
+                InHandCtrl.justBought = true;
+                MoneyCtrl.SubtractMoney(ObjectMaster.buildingList[ID].cost);
+                SceneManager.LoadScene("MainGame");
+            }
+        } else
+            Debug.Log("Not enough cash on hand to buy " + ObjectMaster.buildingList[ID].objectName);
+    }
+
     public void BuyGrape(int ID) {
         if (MoneyCtrl.CanAfford(consumableList[ID].cost)) {
             if (!InHandCtrl.isInHand) {
                 InHandCtrl.PutConsumableInHand(ID);
+                InHandCtrl.justBought = true;
                 MoneyCtrl.SubtractMoney(consumableList[ID].cost);
                 SceneManager.LoadScene("MainGame");
             }
@@ -37,9 +51,9 @@ public class ObjectMaster : MonoBehaviour {
     public void BuyVine(int ID) {
         if (MoneyCtrl.CanAfford(vineList[ID].cost))
         {
-            if (!InHandCtrl.isInHand)
-            {
+            if (!InHandCtrl.isInHand) {
                 InHandCtrl.PutVineInHand(ID);
+                InHandCtrl.justBought = true;
                 MoneyCtrl.SubtractMoney(vineList[ID].cost);
                 SceneManager.LoadScene("MainGame");
             }

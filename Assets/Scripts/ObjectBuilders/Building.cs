@@ -121,18 +121,6 @@ public class Building : MonoBehaviour {
         myPos = new Vector3(buildTempl.myPos[0], buildTempl.myPos[1], buildTempl.myPos[2]);
     }
 
-    //the int passed in in the inspector should be the object ID from ObjectMaster.buildingList
-    public void BuyBuilding (int ID) {
-        if (MoneyCtrl.CanAfford(ObjectMaster.buildingList[ID].cost)) {
-            if (!InHandCtrl.isInHand) {
-                InHandCtrl.PutBuildingInHand(ID);
-                MoneyCtrl.SubtractMoney(ObjectMaster.buildingList[ID].cost);
-                SceneManager.LoadScene("MainGame");
-            }
-        } else
-            Debug.Log("Not enough cash on hand to buy " + ObjectMaster.buildingList[ID].objectName);
-    }
-
     public void FillBuilding() {
         //fills only if the object in hand is compatible and if this building is not currently processing anything and if it's not holding a finished product waiting to be picked up
         if (canProcess == InHandCtrl.typeOfObject && isProcessing == false && finishedProcessing == false) {

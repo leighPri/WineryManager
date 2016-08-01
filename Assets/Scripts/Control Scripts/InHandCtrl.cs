@@ -10,6 +10,7 @@ public class InHandCtrl : MonoBehaviour {
     
     //variables used to hold onto the "inhand" operators
     public static bool isInHand;
+    public static bool justBought; //whether something came directly from a store or a building--true if store, false from building
     public static int typeOfObject; //stores the type of object that is in hand, used for conditionals
     public static int objectInHand; //value should be the ID of the specific object, typeOfObject should handle the list selection
 
@@ -60,11 +61,18 @@ public class InHandCtrl : MonoBehaviour {
     }
 
     public void CancelInHand() {
-        //only consumables and buildings can be canceled and sold back for money, so only those are noted. All others are just cleared (they are not lost due to BuildingMenuControl's CanClearPrev()
-        if (typeOfObject == (int)ObjectMaster.listType.Consumable)
-            ObjectMaster.consumableList[objectInHand].SellBackConsumable();
-        else if (typeOfObject == (int)ObjectMaster.listType.Building)
-            ObjectMaster.buildingList[objectInHand].SellBackBuilding();
-        ClearHand();
+        if (isInHand) {
+            if (justBought) { //sells only if it came from a store, then sets justBought to false. Clears without a sellback otherwise
+                //only consumables, vines, and buildings can be canceled and sold back for money, so only those are noted. All others are just cleared (they are not lost due to BuildingMenuControl's CanClearPrev())
+                if (typeOfObject == (int)ObjectMaster.listType.Consumable)
+                    ObjectMaster.consumableList[objectInHand].SellBackConsumable();
+                else if (typeOfObject == (int)ObjectMaster.listType.Vine)
+                    ObjectMaster.vineList[objectInHand].SellBackVine();
+                else if (typeOfObject == (int)ObjectMaster.listType.Building)
+                    ObjectMaster.buildingList[objectInHand].SellBackBuilding();
+                justBought = false;
+            }
+            ClearHand();
+        }
     }
 }

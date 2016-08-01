@@ -45,7 +45,7 @@ public class MenuControl : MonoBehaviour {
             //displays cost of building in child of object
             menuObjects[i].gameObject.transform.GetChild(0).gameObject.GetComponent<Text>().text = ObjectMaster.buildingList[i].cost.ToString() + "g";
             //enables button functionality
-            menuObjects[i].gameObject.AddComponent<Button>().onClick.AddListener(delegate() { buildingGeneric.BuyBuilding(tempID); });
+            menuObjects[i].gameObject.AddComponent<Button>().onClick.AddListener(delegate() { ObjectMaster.objectMaster.BuyBuilding(tempID); });
             //stores initialPos over again so that the offsets are maintained
             initialPos = new Vector3(initialPos.x, //x
                                     initialPos.y - yOffset, //y, with an offset
