@@ -251,6 +251,10 @@ public class Building : MonoBehaviour {
         SaveLoad.Save();
     }
 
+    public void DemolishBuilding() {
+        Destroy(gameObject);
+    }
+
     public void ForceEmptyBuliding(object panel) {
         finishedProcessing = false;
         isProcessing = false;

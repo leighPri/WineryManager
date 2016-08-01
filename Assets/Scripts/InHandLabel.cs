@@ -29,5 +29,7 @@ public class InHandLabel : MonoBehaviour {
                 inHandText.text = "In Hand: " + ObjectMaster.midpointList[InHandCtrl.objectInHand].objectName;
             else if (InHandCtrl.typeOfObject == (int)ObjectMaster.listType.Unaged)
                 inHandText.text = "In Hand: " + ObjectMaster.unagedList[InHandCtrl.objectInHand].objectName;
+            else if (InHandCtrl.typeOfObject == (int)ObjectMaster.listType.Vine)
+                inHandText.text = "In Hand: " + ObjectMaster.vineList[InHandCtrl.objectInHand].objectName;
     }
 }

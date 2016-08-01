@@ -5,7 +5,9 @@ using System;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 
-public static class SaveLoad {
+public class SaveLoad {
+
+    public static SaveLoad saveLoad;
 
     public static bool finishedLoading = false;
 
@@ -30,6 +32,23 @@ public static class SaveLoad {
         bf.Serialize(file, data);
         //stops editing playerInfo.dat
         file.Close();
+    }
+
+    //resets all parameters to zero but DOES NOT save over the current save file
+    //however, as soon as the player does something that initiates SaveLoad.Save() the old data will be overwritten
+    public static void NewGame() {
+        if (File.Exists(Application.persistentDataPath + "/playerInfo.dat")) {
+            MoneyCtrl.moneyOnHand = 5000;
+            for (int i = 0; i < BuildingCtrl.playerBuilding.Length; i++) {
+                if (BuildingCtrl.playerBuilding[i] != null) {
+                    BuildingCtrl.playerBuilding[i].DemolishBuilding();
+                }
+            }
+            BuildingCtrl.playerBuilding = new Building[GameControl.w * GameControl.h];
+            for (int i = 0; i < ObjectMaster.wineList.Count; i++) {
+                ObjectMaster.wineList[i].bottlesOnHand = 0;
+            }
+        }
     }
 
     public static void Load() {
