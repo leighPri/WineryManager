@@ -106,8 +106,7 @@ public class JSONParse : MonoBehaviour {
             tempVines = new VineTemplate(int.Parse(jsonObj[i]["id"]),
                                              int.Parse(jsonObj[i]["cost"]),
                                              int.Parse(jsonObj[i]["outputID"]),
-                                             jsonObj[i]["objectName"].Value,
-                                             jsonObj[i]["description"].Value);
+                                             jsonObj[i]["objectName"].Value);
             vineList.Add(tempVines);
         }
     }
