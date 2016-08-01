@@ -3,13 +3,13 @@ using System.Collections;
 
 public class ScrollView : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-	
+    public bool isSet;
+    
+	void OnLevelWasLoaded() {
+        if (gameObject.transform.childCount == 0)
+            isSet = false;
+        else
+            isSet = true;
 	}
 	
-	// Update is called once per frame
-	void Update () {
-	
-	}
 }

@@ -15,23 +15,38 @@ public class JSONParse : MonoBehaviour {
 
     // Use this for initialization
     void Awake () {
-        consumableJSON = JSON.Parse((Resources.Load("consumableJSON") as TextAsset).text); //loads the text of the JSON file as a TextAsset and passes it to the Parser to initialize a JSONNode object
-        ConsumableCreator(consumableJSON["Consumable"], ObjectMaster.consumableList);
 
-        buildingJSON = JSON.Parse((Resources.Load("buildingJSON") as TextAsset).text); //see above
-        BuildingCreator(buildingJSON["Building"], ObjectMaster.buildingList);
+        //the if statements here keep the JSON from reloading when the user goes back to the main menu then reloads
 
-        midpointJSON = JSON.Parse((Resources.Load("midpointJSON") as TextAsset).text); //see above
-        MidpointCreator(midpointJSON["Midpoint"], ObjectMaster.midpointList);
+        if (ObjectMaster.consumableList.Count == 0) {
+            consumableJSON = JSON.Parse((Resources.Load("consumableJSON") as TextAsset).text); //loads the text of the JSON file as a TextAsset and passes it to the Parser to initialize a JSONNode object
+            ConsumableCreator(consumableJSON["Consumable"], ObjectMaster.consumableList);
+        }
 
-        unagedJSON = JSON.Parse((Resources.Load("unagedJSON") as TextAsset).text); //see above
-        UnagedCreator(unagedJSON["Unaged"], ObjectMaster.unagedList);
+        if (ObjectMaster.buildingList.Count == 0) {
+            buildingJSON = JSON.Parse((Resources.Load("buildingJSON") as TextAsset).text); //see above
+            BuildingCreator(buildingJSON["Building"], ObjectMaster.buildingList);
+        }
 
-        wineJSON = JSON.Parse((Resources.Load("wineJSON") as TextAsset).text); //see above
-        WineCreator(wineJSON["Wine"], ObjectMaster.wineList);
+        if (ObjectMaster.midpointList.Count == 0) {
+            midpointJSON = JSON.Parse((Resources.Load("midpointJSON") as TextAsset).text); //see above
+            MidpointCreator(midpointJSON["Midpoint"], ObjectMaster.midpointList);
+        }
 
-        vineJSON = JSON.Parse((Resources.Load("vineJSON") as TextAsset).text); //loads the text of the JSON file as a TextAsset and passes it to the Parser to initialize a JSONNode object
-        VineCreator(vineJSON["Vine"], ObjectMaster.vineList);
+        if (ObjectMaster.unagedList.Count == 0) {
+            unagedJSON = JSON.Parse((Resources.Load("unagedJSON") as TextAsset).text); //see above
+            UnagedCreator(unagedJSON["Unaged"], ObjectMaster.unagedList);
+        }
+
+        if (ObjectMaster.wineList.Count == 0) {
+            wineJSON = JSON.Parse((Resources.Load("wineJSON") as TextAsset).text); //see above
+            WineCreator(wineJSON["Wine"], ObjectMaster.wineList);
+        }
+
+        if (ObjectMaster.vineList.Count == 0) {
+            vineJSON = JSON.Parse((Resources.Load("vineJSON") as TextAsset).text); //loads the text of the JSON file as a TextAsset and passes it to the Parser to initialize a JSONNode object
+            VineCreator(vineJSON["Vine"], ObjectMaster.vineList);
+        }
 
     }
 

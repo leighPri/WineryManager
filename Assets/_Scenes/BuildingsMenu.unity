@@ -181,10 +181,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 628827187}
   m_RootOrder: 1
-  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 0.8954546}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 200}
-  m_SizeDelta: {x: 0, y: -385}
+  m_AnchoredPosition: {x: 0, y: 3}
+  m_SizeDelta: {x: 0, y: 9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &662761544
 MonoBehaviour:
@@ -470,10 +470,12 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: df712df82954baf40affb555d867a895, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &1335488524 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 165368, guid: df712df82954baf40affb555d867a895, type: 2}
+--- !u!114 &1335488524 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11453452, guid: df712df82954baf40affb555d867a895,
+    type: 2}
   m_PrefabInternal: {fileID: 1335488523}
+  m_Script: {fileID: 11500000, guid: 950ad6b162db7384aa655a38766b89df, type: 3}
 --- !u!1001 &1700467855
 Prefab:
   m_ObjectHideFlags: 0
