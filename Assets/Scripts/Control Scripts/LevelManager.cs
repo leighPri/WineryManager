@@ -24,12 +24,8 @@ public class LevelManager : MonoBehaviour {
     }
 
     public void TryToStartNewGame(string sceneName) {
-        List<object> tempList = new List<object>();
-        object tempObject = sceneName;
-        tempList.Add(tempObject);
-
         string confirmText = "Are you sure you want to start a new game? You will lose all previous progress.";
-        ConfirmationPanel.confirmPanel.ShowAndWait(confirmText, this, "StartNewGame", tempList);
+        ConfirmationPanel.confirmPanel.ShowAndWait(confirmText, this, "StartNewGame", ConfirmationPanel.confirmPanel.WrapStrings(sceneName));
     }
 
 }

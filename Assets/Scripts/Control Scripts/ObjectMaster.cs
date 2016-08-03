@@ -18,9 +18,9 @@ public class ObjectMaster : MonoBehaviour {
     public enum listType { Building, Consumable, Midpoint, Unaged, Vine };
 
     void Awake() {
-        if (objectMaster == null) {
+        if (objectMaster == null)
             objectMaster = this;
-        } else if (objectMaster != this)
+        else if (objectMaster != this)
             Destroy(gameObject);
     }
 
@@ -62,7 +62,8 @@ public class ObjectMaster : MonoBehaviour {
 
     //needs to be static
     public static void AddBottles(int wineID) {
-        wineList[wineID].bottlesOnHand += 100;
+        int amtToAdd = 100;
+        wineList[wineID].bottlesOnHand += amtToAdd;
         SaveLoad.Save();
     }
     
@@ -86,16 +87,10 @@ public class ObjectMaster : MonoBehaviour {
     }
 
     public void TryToSellBottles(int wineID, int amtToSell) {
-        List<object> tempList = new List<object>();
-        object[] masterObject = new object[2];
-        masterObject[0] = wineID;
-        masterObject[1] = amtToSell;
-        tempList.Add(masterObject);
-
         string confirmText = "Are you sure you want to sell ";
         confirmText += amtToSell + " bottles of ";
         confirmText += wineList[wineID].wineName + "?";
 
-        ConfirmationPanel.confirmPanel.ShowAndWait(confirmText, objectMaster, "SellBottles", tempList);
+        ConfirmationPanel.confirmPanel.ShowAndWait(confirmText, objectMaster, "SellBottles", ConfirmationPanel.confirmPanel.WrapInts(wineID, amtToSell));
     }
 }

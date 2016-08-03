@@ -8,6 +8,7 @@ public class ConsumableTemplate {
     public string objectName; //the name that the player sees
     public string description;
     public int cost;
+    public float timeRequired = 5f; //hard-set here for testing purposes, will eventually be set via JSON
     
     public int parentList = (int)ObjectMaster.listType.Consumable;
 

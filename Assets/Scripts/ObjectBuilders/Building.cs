@@ -16,10 +16,8 @@ public class Building : MonoBehaviour {
     //accepts 0, 1, or 2 used to pick an output from the Consumable output array
     public int selectedOutput;
 
-    //valid inputs are "press" "ferment" and "aging"
-    //used for conditionals, must be correct
-    public string objectType;
-    public int parentList = (int)ObjectMaster.listType.Building;
+    public string objectType; //used to set canProcess
+    //public int parentList = (int)ObjectMaster.listType.Building;
 
     public bool isProcessing;
     public bool finishedProcessing;
@@ -157,9 +155,9 @@ public class Building : MonoBehaviour {
 
     //lets the aging buttons set their desired outputs
     //does not function if there is not something currently being processed
-    public void SetOutput(object output) {
+    public void SetOutput(object[] output) {
         if (isProcessing) {
-            selectedOutput = (int)output;
+            selectedOutput = (int)output[0];
             //sets time upon selection
             timeConsumableIsPlaced = Time.time;
             hasSelectedOutput = true;
@@ -224,23 +222,15 @@ public class Building : MonoBehaviour {
     }
 
     public void TryToDemolishBuilding(GameObject panel) {
-        List<object> tempList = new List<object>();
-        object tempObject = panel;
-        tempList.Add(tempObject);
-
         string confirmText = "Are you sure you want to demolish this building?";
         confirmText += " This cannot be undone.";
-        ConfirmationPanel.confirmPanel.ShowAndWait(confirmText, this, "DemolishBuilding", tempList);
+        ConfirmationPanel.confirmPanel.ShowAndWait(confirmText, this, "DemolishBuilding", ConfirmationPanel.confirmPanel.WrapGameObjects(panel));
     }
 
     public void TryToClearBuilding(GameObject panel) {
-        List<object> tempList = new List<object>();
-        object tempObject = panel;
-        tempList.Add(tempObject);
-
         string confirmText = "Are you sure you want to empty this building?";
         confirmText += " This cannot be undone.";
-        ConfirmationPanel.confirmPanel.ShowAndWait(confirmText, this, "ForceEmptyBuliding", tempList);
+        ConfirmationPanel.confirmPanel.ShowAndWait(confirmText, this, "ForceEmptyBuliding", ConfirmationPanel.confirmPanel.WrapGameObjects(panel));
     }
 
     public void DemolishBuilding(object panel) {
@@ -265,11 +255,24 @@ public class Building : MonoBehaviour {
         SaveLoad.Save();
     }
 
+    public float GetTimeRequired() {
+        if (canProcess == (int)ObjectMaster.listType.Consumable)
+            return ObjectMaster.consumableList[consumableIDInProcessing].timeRequired;
+        else if (canProcess == (int)ObjectMaster.listType.Midpoint)
+            return ObjectMaster.midpointList[consumableIDInProcessing].timeRequired;
+        else if (canProcess == (int)ObjectMaster.listType.Unaged)
+            return ObjectMaster.unagedList[consumableIDInProcessing].timeRequired;
+        else if (canProcess == (int)ObjectMaster.listType.Vine)
+            return ObjectMaster.vineList[consumableIDInProcessing].timeRequired;
+        else
+            return 5f;
+    }
+
     public void TimerCheck() {
         //gets how much time has elapsed since consumable placed
         float timeCheck = Time.time - timeConsumableIsPlaced;
 
-        timeRemainingTilComplete = tempTimerValue - timeCheck;
+        timeRemainingTilComplete = GetTimeRequired() - timeCheck;
 
         roundedTimeTilComplete = (int)timeRemainingTilComplete;
 

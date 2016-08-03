@@ -53,12 +53,8 @@ public class UIControl : MonoBehaviour {
     }
 
     public void TryToReturnToMainMenu() {
-        List<object> tempList = new List<object>();
-        object tempObject = 1;
-        tempList.Add(tempObject);
-
         string confirmText = "Are you sure you want to return to the main menu?";
         confirmText += " All unsaved progress will be lost.";
-        ConfirmationPanel.confirmPanel.ShowAndWait(confirmText, this, "LoadMainMenu", tempList);
+        ConfirmationPanel.confirmPanel.ShowAndWait(confirmText, this, "LoadMainMenu", ConfirmationPanel.confirmPanel.WrapInts(1));
     }
 }

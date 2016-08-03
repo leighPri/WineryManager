@@ -69,4 +69,35 @@ public class ConfirmationPanel : MonoBehaviour {
         myClass.GetType().GetMethod(methodName).Invoke(myClass, args.ToArray());
     }
 
+    //wrapping methods
+    public List<object> WrapInts(params int[] list) {
+        List<object> tempList = new List<object>();
+        object[] masterObject = new object[list.Length]; 
+        for (int i = 0; i < list.Length; i ++) {
+            masterObject[i] = list[i];
+        }
+        tempList.Add(masterObject);
+        return tempList;
+    }
+
+    public List<object> WrapStrings(params string[] list) {
+        List<object> tempList = new List<object>();
+        object[] masterObject = new object[list.Length];
+        for (int i = 0; i < list.Length; i++) {
+            masterObject[i] = list[i];
+        }
+        tempList.Add(masterObject);
+        return tempList;
+    }
+
+    public List<object> WrapGameObjects(params GameObject[] list) {
+        List<object> tempList = new List<object>();
+        object[] masterObject = new object[list.Length];
+        for (int i = 0; i < list.Length; i++) {
+            masterObject[i] = list[i];
+        }
+        tempList.Add(masterObject);
+        return tempList;
+    }
+
 }

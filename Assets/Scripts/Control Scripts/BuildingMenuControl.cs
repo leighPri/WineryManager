@@ -67,7 +67,7 @@ public class BuildingMenuControl : MonoBehaviour {
             getProductButton.gameObject.SetActive(false);
         }
 
-        if ((displayedBuilding.hasSelectedOutput || !displayedBuilding.isProcessing) || displayedBuilding.objectType != "aging") {
+        if ((displayedBuilding.hasSelectedOutput || !displayedBuilding.isProcessing) || displayedBuilding.canProcess != (int)ObjectMaster.listType.Unaged) {
             DisplayAgingOptions(false);
         } else if (displayedBuilding.isProcessing && !displayedBuilding.finishedProcessing)
             DisplayAgingOptions(true);
@@ -77,7 +77,7 @@ public class BuildingMenuControl : MonoBehaviour {
     string DisplayInProcessing() {
 
         //shows timer in the finish button
-        if (displayedBuilding.objectType != "aging" || displayedBuilding.hasSelectedOutput) {
+        if (displayedBuilding.canProcess != (int)ObjectMaster.listType.Unaged || displayedBuilding.hasSelectedOutput) {
             finishButton.gameObject.SetActive(true);
             finishButton.GetComponentInChildren<Text>().text = displayedBuilding.roundedTimeTilComplete.ToString();
         }
@@ -157,9 +157,6 @@ public class BuildingMenuControl : MonoBehaviour {
     }
 
     public void TryToSetOutput(int output) {
-        List<object> tempList = new List<object>();
-        object tempObject = output;
-        tempList.Add(tempObject);
         string confirmText = "Are you sure you want to select ";
         if (output == 0)
             confirmText += "stainless steel aging?";
@@ -168,7 +165,7 @@ public class BuildingMenuControl : MonoBehaviour {
         else if (output == 2)
             confirmText += "bottle aging?";
         confirmText += " You cannot change this choice";
-        ConfirmationPanel.confirmPanel.ShowAndWait(confirmText, displayedBuilding, "SetOutput", tempList);
+        ConfirmationPanel.confirmPanel.ShowAndWait(confirmText, displayedBuilding, "SetOutput", ConfirmationPanel.confirmPanel.WrapInts(output));
     }
     
 }
