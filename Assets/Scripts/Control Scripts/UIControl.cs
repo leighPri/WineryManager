@@ -29,14 +29,12 @@ public class UIControl : MonoBehaviour {
             panel.gameObject.SetActive(true);
             panelIsActive = true;
             panel.showPanel = true;
-            //BuildingHolder.HideBuildingHolder(true);
         }
     }
 
     public static void HidePanel(PanelHider panel) {
         panel.gameObject.SetActive(false);
         panelIsActive = false;
-        //BuildingHolder.HideBuildingHolder(false);
     }
 
     public void NonStaticPanelToggle(PanelHider panel) {

@@ -9,7 +9,8 @@ public class BottleDisplay : MonoBehaviour {
     Text numBottles; 
     
 	void Start () {
-        numBottles = GetComponent<Text>();
+        if (numBottles == null)
+            numBottles = GetComponent<Text>();
 	}
 	
 	void Update () {

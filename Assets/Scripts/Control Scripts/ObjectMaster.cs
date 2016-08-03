@@ -49,8 +49,7 @@ public class ObjectMaster : MonoBehaviour {
     }
 
     public void BuyVine(int ID) {
-        if (MoneyCtrl.CanAfford(vineList[ID].cost))
-        {
+        if (MoneyCtrl.CanAfford(vineList[ID].cost)) {
             if (!InHandCtrl.isInHand) {
                 InHandCtrl.PutVineInHand(ID);
                 InHandCtrl.justBought = true;

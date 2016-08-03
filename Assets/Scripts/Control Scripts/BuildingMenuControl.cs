@@ -20,8 +20,6 @@ public class BuildingMenuControl : MonoBehaviour {
     public GameObject finishButton;
     public GameObject getProductButton;
     public GameObject manageButton;
-    //public GameObject demolishButton;
-    //public GameObject clearButton;
 
     void Awake() {
         if (buildingMenuCtrl == null)

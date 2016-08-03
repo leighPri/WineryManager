@@ -13,7 +13,6 @@ public class LoadingScene : MonoBehaviour {
                 SaveLoad.finishedLoading = false;
                 SaveLoad.Load();
             } catch (System.Exception e) {
-                //SaveLoad.DeleteSave();
                 Debug.Log("Error: " + e);
                 SceneManager.LoadScene("MainGame");
             }
@@ -22,15 +21,6 @@ public class LoadingScene : MonoBehaviour {
             SceneManager.LoadScene("MainGame");
         }
     }
-
-    //public void TryToStartNewGame(int makeItWork) {
-    //    List<object> tempList = new List<object>();
-    //    object tempObject = makeItWork;
-    //    tempList.Add(tempObject);
-
-    //    string confirmText = "Are you sure you want to start a new game? All previous data will be lost.";
-    //    ConfirmationPanel.confirmPanel.ShowAndWait(confirmText, SaveLoad.saveLoad, "NewGame", tempList);
-    //}
 
     void Update() {
         if (SaveLoad.finishedLoading)

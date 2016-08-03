@@ -8,8 +8,6 @@ public class MidpointTemplate {
     public string description;
     public float timeRequired = 5f; //hard-set here for testing purposes, will eventually be set via JSON
 
-    public int parentList = (int)ObjectMaster.listType.Midpoint;
-
     public int outputID;
 
     public MidpointTemplate(int newID, int NewOutputID, string newObjectName, string newDescription) {

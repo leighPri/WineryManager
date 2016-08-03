@@ -9,9 +9,8 @@ public class BuildingHolder : MonoBehaviour {
         if (buildingHolder == null) {
             DontDestroyOnLoad(gameObject);
             buildingHolder = this;
-        } else if (buildingHolder != this) {
+        } else if (buildingHolder != this)
             Destroy(gameObject);
-        }
     }
 
     public static void HideBuildingHolder(bool toHide) {

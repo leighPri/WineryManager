@@ -2,28 +2,13 @@
 using System.Collections;
 
 public class PanelHider : MonoBehaviour {
-
-    //public GameObject panelToHide;
-    //public UIControl uiControl;
-
+    
     public bool showPanel;
 
     void Update() {
-        //HideIfClickedOutside(gameObject);
         if (!showPanel)
             UIControl.HidePanel(this);
     }
-
-    //private void HideIfClickedOutside(GameObject panel) {
-    //    if (Input.GetMouseButton(0) && panel.activeSelf &&
-    //        !RectTransformUtility.RectangleContainsScreenPoint(
-    //            panel.GetComponent<RectTransform>(),
-    //            Input.mousePosition,
-    //            Camera.main)) {
-    //        UIControl.panelIsActive = false;
-    //        panel.SetActive(false);
-    //    }
-    //}
 
     private void OnGUI() {
         HideIfClickedOutside(gameObject, Event.current);
@@ -48,10 +33,5 @@ public class PanelHider : MonoBehaviour {
         }
         return false;
     }
-
-    //void OnMouseUpAsButton(){
-    //       //triggers hide panel 2 levels up since the collider will be inside a holder that's inside the desired object to hide
-    //       uiControl.HidePanel(panelToHide);
-    //   }
 
 }

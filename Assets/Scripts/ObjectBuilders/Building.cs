@@ -17,7 +17,6 @@ public class Building : MonoBehaviour {
     public int selectedOutput;
 
     public string objectType; //used to set canProcess
-    //public int parentList = (int)ObjectMaster.listType.Building;
 
     public bool isProcessing;
     public bool finishedProcessing;
@@ -34,7 +33,6 @@ public class Building : MonoBehaviour {
 
     //These values are used for timing
     public float timeConsumableIsPlaced;  //marks time consumable is placed on building
-    public float tempTimerValue = 5f;  //this is a placeholder and should be filled with the JSON value of how long a consumable takes to process
     public float timeRemainingTilComplete;
     public bool timeConsumableTimerComplete = false;
     public int roundedTimeTilComplete;
@@ -45,15 +43,14 @@ public class Building : MonoBehaviour {
     }
 
     public void SetEnum() {
-        if (objectType == "press") {
+        if (objectType == "press")
             canProcess = (int)ObjectMaster.listType.Consumable;
-        } else if (objectType == "ferment") {
+        else if (objectType == "ferment")
             canProcess = (int)ObjectMaster.listType.Midpoint;
-        } else if (objectType == "aging") {
+        else if (objectType == "aging")
             canProcess = (int)ObjectMaster.listType.Unaged;
-        } else if (objectType == "vineyard") {
+        else if (objectType == "vineyard")
             canProcess = (int)ObjectMaster.listType.Vine;
-        }
     }
     
     void Update() {
@@ -66,7 +63,7 @@ public class Building : MonoBehaviour {
         if (spriteRenderer.sprite == null)
             spriteRenderer.sprite = spriteArray[id]; //enables visual sprite if an instance of this object has been populated
         if (isProcessing && !timeConsumableTimerComplete)
-                TimerCheck();
+            TimerCheck();
 
         //hides and shows pop up based on whether or not something is available to retrieve
         if (!isProcessing && finishedProcessing) {

@@ -10,13 +10,7 @@ public class InHandImage : MonoBehaviour {
         if (!InHandCtrl.isInHand)
             gameObject.SetActive(false);
     }
-
-	// Use this for initialization
-	void Start () {
-	    
-	}
 	
-	// Update is called once per frame
 	void Update () {
         if (InHandCtrl.isInHand) {
             if (InHandCtrl.typeOfObject == (int)ObjectMaster.listType.Building)

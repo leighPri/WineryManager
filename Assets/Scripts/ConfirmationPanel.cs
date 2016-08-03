@@ -15,9 +15,9 @@ public class ConfirmationPanel : MonoBehaviour {
     public GameObject confirmButton;
 
 	void Awake() {
-        if (confirmPanel == null) {
+        if (confirmPanel == null)
             confirmPanel = this;
-        } else if (confirmPanel != this)
+        else if (confirmPanel != this)
             Destroy(gameObject);
     }
 
@@ -47,24 +47,17 @@ public class ConfirmationPanel : MonoBehaviour {
         ShowPanel(confirmTextFromMethod);
         StartCoroutine(Wait(myClass, methodName, args));
     }
-
-    //TODO: needs to be able to accept string(s) as parameter(s) which are then used to invoke the method named in the first string
+    
     public IEnumerator Wait(Object myClass, string methodName, List<object> args) {
         yield return new WaitUntil(() => buttonWasPressed);
         //place only if returnBool was true after button is pressed
-        if (returnBool) {
+        if (returnBool)
             InvokeMethod(myClass, methodName, args);
-        }
         //hides the panel
         UIControl.panelIsActive = false;
         gameObject.SetActive(false);
     }
 
-    //myClass will probably be invoked as "this" when passing params to ShowAndWait() in other classes
-    //Syntax for setting up params for args is:
-    //List<object> tempList = new List<object>();
-    //tempList.Add(whatever); <-- repeat for more than one param
-    //pass tempList for args
     public void InvokeMethod(Object myClass, string methodName, List<object> args) {
         myClass.GetType().GetMethod(methodName).Invoke(myClass, args.ToArray());
     }

@@ -10,7 +10,6 @@ public class BuildingTemplate {
     public string objectType;
     public int cost;
     public int canProcess;
-    public int parentList = (int)ObjectMaster.listType.Building;
 
     //filled when saved
     public bool isProcessing;

@@ -63,51 +63,51 @@ public class SetSellAmount : MonoBehaviour {
     }
 
     public string Displayones() {
-        if (amtToSell <= 0) {
+        if (amtToSell <= 0)
             return "0";
-        } else if (amtToSell >= 1 && amtToSell <= 9) {
+        else if (amtToSell >= 1 && amtToSell <= 9)
             return AmtToSellString().Substring(0);
-        } else if (amtToSell >= 10 && amtToSell <= 99) {
+        else if (amtToSell >= 10 && amtToSell <= 99)
             return AmtToSellString().Substring(1);
-        } else if (amtToSell >= 100 && amtToSell <= 999) {
+        else if (amtToSell >= 100 && amtToSell <= 999)
             return AmtToSellString().Substring(2);
-        } else if (amtToSell >= 1000 && amtToSell <= 9999) {
+        else if (amtToSell >= 1000 && amtToSell <= 9999)
             return AmtToSellString().Substring(3);
-        } else
-            return "#";
+        else
+            return "#"; //should not run
     }
 
     public string Displaytens() {
-        if (amtToSell < 10) {
+        if (amtToSell < 10)
             return "0";
-        }else if (amtToSell >= 10 && amtToSell <= 99) {
+        else if (amtToSell >= 10 && amtToSell <= 99)
             return AmtToSellString().Substring(0);
-        } else if (amtToSell >= 100 && amtToSell <= 999) {
+        else if (amtToSell >= 100 && amtToSell <= 999)
             return AmtToSellString().Substring(1);
-        } else if (amtToSell >= 1000 && amtToSell <= 9999) {
+        else if (amtToSell >= 1000 && amtToSell <= 9999)
             return AmtToSellString().Substring(2);
-        } else
-            return "#";
+        else
+            return "#"; //should not run
     }
 
     public string Displayhundreds() {
-        if (amtToSell < 100) {
+        if (amtToSell < 100)
             return "0";
-        } else if (amtToSell >= 100 && amtToSell <= 999) {
+        else if (amtToSell >= 100 && amtToSell <= 999)
             return AmtToSellString().Substring(0);
-        } else if (amtToSell >= 1000 && amtToSell <= 9999) {
+        else if (amtToSell >= 1000 && amtToSell <= 9999)
             return AmtToSellString().Substring(1);
-        } else
-            return "#";
+        else
+            return "#"; //should not run
     }
 
     public string Displaythousands() {
-        if (amtToSell < 1000) {
+        if (amtToSell < 1000)
             return "0";
-        } else if (amtToSell >= 1000 && amtToSell <= 9999) {
+        else if (amtToSell >= 1000 && amtToSell <= 9999)
             return AmtToSellString().Substring(0);
-        } else
-            return "#";
+        else
+            return "#"; //should not run
     }
 
     public void CancelButton() {

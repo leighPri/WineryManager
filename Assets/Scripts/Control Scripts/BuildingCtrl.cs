@@ -37,7 +37,6 @@ public class BuildingCtrl : MonoBehaviour {
 
     public void TryToPlaceBuilding(Element cell) {
         if (playerBuilding[cell.myPosition] == null && InHandCtrl.isInHand && InHandCtrl.typeOfObject == (int)ObjectMaster.listType.Building) { //only place a building if there is not one already there and if a building is in hand
-            //must have Element in a list so that it can be passed to the master Wait function
             List<object> tempCell = new List<object>();
             tempCell.Add(cell);
             ConfirmationPanel.confirmPanel.ShowAndWait("Are you sure you want to place " + ObjectMaster.buildingList[InHandCtrl.objectInHand].objectName + " here?", this, "PlaceBuilding", tempCell);
