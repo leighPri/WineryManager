@@ -20,6 +20,8 @@ public class BuildingManageMenu : MonoBehaviour {
             buildingManageMenu = this;
         else if (buildingManageMenu != this)
             Destroy(gameObject);
+        if (buildingNameText == null)
+            buildingNameText = buildingName.GetComponent<Text>();
 
         demolishButton.GetComponent<Button>().onClick.AddListener(delegate () { DemolishButton(); });
         clearButton.GetComponent<Button>().onClick.AddListener(delegate () { ForceClearButton(); });
@@ -30,6 +32,7 @@ public class BuildingManageMenu : MonoBehaviour {
     void Update() {
         if (gameObject.activeSelf)
             UIControl.panelIsActive = true;
+        buildingNameText.text = displayedBuilding.objectName;
     }
 
     //sets displayedBuilding so this menu can call building stuff too
