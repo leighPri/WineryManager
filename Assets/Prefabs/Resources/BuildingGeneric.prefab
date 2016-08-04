@@ -46,6 +46,7 @@ GameObject:
   - 114: {fileID: 11429554}
   - 212: {fileID: 21205610}
   - 61: {fileID: 6114828}
+  - 114: {fileID: 11486518}
   m_Layer: 0
   m_Name: BuildingGeneric
   m_TagString: Untagged
@@ -133,14 +134,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbfc5de6201dee7479e182725ce5121f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buildingMenuPanel: {fileID: 11453672, guid: 1e4d0560fa445a343a1e6f457548b364, type: 2}
   id: 0
   objectName: 
   description: 
   cost: 0
   selectedOutput: 0
   objectType: 
-  parentList: 0
   isProcessing: 0
   finishedProcessing: 0
   hasSelectedOutput: 0
@@ -154,7 +153,6 @@ MonoBehaviour:
   - {fileID: 21300000, guid: dd5f937ad2eeb594c9628e94f4729857, type: 3}
   popUp: {fileID: 11447008}
   timeConsumableIsPlaced: 0
-  tempTimerValue: 5
   timeRemainingTilComplete: 0
   timeConsumableTimerComplete: 0
   roundedTimeTilComplete: 0
@@ -189,6 +187,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemSpriteArray:
   - {fileID: 21300000, guid: df5d9157281cdae4b96a476527bbe0a6, type: 3}
+--- !u!114 &11486518
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 171226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 839c8e638e5eb7f46a522c760c89ad34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myOriginalPos: {x: 0, y: 0, z: 0}
 --- !u!212 &21205610
 SpriteRenderer:
   m_ObjectHideFlags: 1

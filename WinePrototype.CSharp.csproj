@@ -97,6 +97,7 @@
     <Compile Include="Assets\Scripts\InHandLabel.cs" />
     <Compile Include="Assets\Scripts\ItemToDisplay.cs" />
     <Compile Include="Assets\Scripts\MoneyDisplayLabel.cs" />
+    <Compile Include="Assets\Scripts\Mover.cs" />
     <Compile Include="Assets\Scripts\ObjectBuilders\Building.cs" />
     <Compile Include="Assets\Scripts\ObjectBuilders\BuildingTemplate.cs" />
     <Compile Include="Assets\Scripts\ObjectBuilders\ConsumableTemplate.cs" />
