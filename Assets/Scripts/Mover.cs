@@ -7,21 +7,21 @@ public class Mover : MonoBehaviour {
     bool originalPosIsSet;
 
     void Start() {
-        if (!originalPosIsSet) {
-            if (gameObject.GetComponent<Element>()) {
-                myOriginalPos = gameObject.GetComponent<Element>().myOriginalPosition;
-            } else if (gameObject.GetComponent<Building>()) {
-                myOriginalPos = gameObject.GetComponent<Building>().myPos;
-            }
-            originalPosIsSet = true;
-        }
+        //if (!originalPosIsSet) {
+        //    if (gameObject.GetComponent<Element>()) {
+        //        myOriginalPos = gameObject.GetComponent<Element>().myOriginalPosition;
+        //    } else if (gameObject.GetComponent<Building>()) {
+        //        myOriginalPos = gameObject.GetComponent<Building>().myPos;
+        //    }
+        //    originalPosIsSet = true;
+        //}
     }
 
-    void OnLevelWasLoaded(int level) {
-        if (level == 2) {
-            gameObject.transform.position = myOriginalPos;
-        }
-    }
+    //void OnLevelWasLoaded(int level) {
+    //    if (level == 2) {
+    //        gameObject.transform.position = myOriginalPos;
+    //    }
+    //}
 
     // Update is called once per frame
     void Update () {
