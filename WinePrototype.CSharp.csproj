@@ -69,9 +69,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\BGScript.cs" />
     <Compile Include="Assets\Scripts\BottleDisplay.cs" />
     <Compile Include="Assets\Scripts\BuildingSprites.cs" />
     <Compile Include="Assets\Scripts\BuyPanel.cs" />
+    <Compile Include="Assets\Scripts\Collider.cs" />
     <Compile Include="Assets\Scripts\ConfirmationPanel.cs" />
     <Compile Include="Assets\Scripts\Control Scripts\BuildingCtrl.cs" />
     <Compile Include="Assets\Scripts\Control Scripts\BuildingHolder.cs" />

@@ -15,9 +15,18 @@ public class Element : MonoBehaviour {
             if (GameControl.grid[i] == null) {
                 GameControl.grid[i] = this;
                 myPosition = i;
-                myOriginalPosition = gameObject.transform.position;
+                myOriginalPosition = gameObject.transform.localPosition;
                 break;
             }
+        }
+        //gameObject.GetComponent<Mover>().SnapBackToOrigin(myOriginalPosition);
+    }
+
+    //snaps grid back to the center anytime the level changes...doing this just on the main game breaks it for some reason
+    void OnLevelWasLoaded() {
+        if (myOriginalPosition != new Vector3(0, 0, 0)/* && gameObject.transform.localPosition != myOriginalPosition*/) {
+            gameObject.GetComponent<Mover>().SnapBackToOrigin(myOriginalPosition);
+            Debug.Log(gameObject.name + " is set back to its original position");
         }
     }
 

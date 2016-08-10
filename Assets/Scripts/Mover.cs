@@ -2,39 +2,38 @@
 using System.Collections;
 
 public class Mover : MonoBehaviour {
-
-    public Vector3 myOriginalPos;
+    
     bool originalPosIsSet;
+    public static bool canMoveLeft; //static so that they all either move or don't move
+    public static bool canMoveRight; //static so that they all either move or don't move
+    public static bool canMoveUp; //static so that they all either move or don't move
+    public static bool canMoveDown; //static so that they all either move or don't move
+    int moveSpeed = 2;
 
-    void Start() {
-        //if (!originalPosIsSet) {
-        //    if (gameObject.GetComponent<Element>()) {
-        //        myOriginalPos = gameObject.GetComponent<Element>().myOriginalPosition;
-        //    } else if (gameObject.GetComponent<Building>()) {
-        //        myOriginalPos = gameObject.GetComponent<Building>().myPos;
-        //    }
-        //    originalPosIsSet = true;
-        //}
+    void Awake() {
+        canMoveDown = true;
+        canMoveLeft = true;
+        canMoveUp = true;
+        canMoveRight = true;
     }
-
-    //void OnLevelWasLoaded(int level) {
-    //    if (level == 2) {
-    //        gameObject.transform.position = myOriginalPos;
-    //    }
-    //}
 
     // Update is called once per frame
     void Update () {
-        //should enable WASD and arrow key movement on any object that has this script attached
-        //probably with attach to Elements and Buildings
-        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
-            transform.Translate(Vector3.left * Time.deltaTime); //move left
-        else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
-            transform.Translate(Vector3.right * Time.deltaTime); //move right
-        else if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
-            transform.Translate(Vector3.up * Time.deltaTime); //move up
-        else if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
-            transform.Translate(Vector3.down * Time.deltaTime); //move down
+        if (!UIControl.panelIsActive) {
+            //should enable WASD and arrow key movement on any object that has this script attached
+            if ((Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) && canMoveLeft)
+                transform.Translate(Vector3.left * Time.deltaTime * moveSpeed); //move left
+            else if ((Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) && canMoveRight)
+                transform.Translate(Vector3.right * Time.deltaTime * moveSpeed); //move right
+            else if ((Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)) && canMoveUp)
+                transform.Translate(Vector3.up * Time.deltaTime * moveSpeed); //move up
+            else if ((Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow)) && canMoveDown)
+                transform.Translate(Vector3.down * Time.deltaTime * moveSpeed); //move down
+        }
+    }
+
+    public void SnapBackToOrigin(Vector3 posToMoveTo) {
+        gameObject.transform.localPosition = posToMoveTo;
     }
 
 

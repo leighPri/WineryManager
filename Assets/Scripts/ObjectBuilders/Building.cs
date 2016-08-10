@@ -41,6 +41,14 @@ public class Building : MonoBehaviour {
     void Start() {
         SetEnum();
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+        //gameObject.GetComponent<Mover>().SnapBackToOrigin(myPos);
+    }
+
+    //snaps grid back to the center anytime the level changes...doing this just on the main game breaks it for some reason
+    void OnLevelWasLoaded() {
+        //if (GameControl.grid[myArrayPos].myOriginalPosition != new Vector3(0, 0, 0))
+        gameObject.GetComponent<Mover>().SnapBackToOrigin(myPos);
+        Debug.Log(gameObject.name + " is set back to its original position");
     }
 
     public void SetEnum() {
@@ -98,7 +106,7 @@ public class Building : MonoBehaviour {
         cost = ObjectMaster.buildingList[templateID].cost;
         objectType = ObjectMaster.buildingList[templateID].objectType;
 
-        myPos = gameObject.transform.position;
+        myPos = gameObject.transform.localPosition;
 
         myArrayPos = cell.myPosition;
     }
