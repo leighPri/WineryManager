@@ -25,6 +25,7 @@ public class Building : MonoBehaviour {
     public int canProcess; //use the ObjectMaster enum list
     public int consumableIDInProcessing;
     public Vector3 myPos;
+    public int myArrayPos;
 
     public Sprite[] spriteArray;
     SpriteRenderer spriteRenderer;
@@ -90,7 +91,7 @@ public class Building : MonoBehaviour {
     }
 
     //used to set an instance of a Building to the details from the relevant template on the BuildingTemplate list
-    public void SetParamsByID(int templateID) {
+    public void SetParamsByID(int templateID, Element cell) {
         id = ObjectMaster.buildingList[templateID].id;
         objectName = ObjectMaster.buildingList[templateID].objectName;
         description = ObjectMaster.buildingList[templateID].description;
@@ -98,6 +99,8 @@ public class Building : MonoBehaviour {
         objectType = ObjectMaster.buildingList[templateID].objectType;
 
         myPos = gameObject.transform.position;
+
+        myArrayPos = cell.myPosition;
     }
 
     public void SetParams(BuildingTemplate buildTempl) {

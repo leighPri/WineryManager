@@ -15,6 +15,7 @@ public class Element : MonoBehaviour {
             if (GameControl.grid[i] == null) {
                 GameControl.grid[i] = this;
                 myPosition = i;
+                myOriginalPosition = gameObject.transform.position;
                 break;
             }
         }
