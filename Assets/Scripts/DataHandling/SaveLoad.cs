@@ -82,6 +82,7 @@ public class SaveLoad {
     public static void LoadBuildings(PlayerData data, BuildingTemplate[] buildTemplateArray) {
         for (int i = 0; i < data.playerBuildings.Length; i++) {
             if (data.playerBuildings[i] != null) {
+                MonoBehaviour.Destroy(BuildingCtrl.playerBuilding[i].gameObject);
                 BuildingCtrl.playerBuilding[i] = GameObject.Instantiate(InHandCtrl.inHandCtrl.buildingInHand, new Vector3(data.playerBuildings[i].myPos[0], data.playerBuildings[i].myPos[1], data.playerBuildings[i].myPos[2]), Quaternion.identity) as Building;
                 BuildingCtrl.playerBuilding[i].SetParams(data.playerBuildings[i]); //populates details of above building instance
                 BuildingCtrl.playerBuilding[i].transform.SetParent(BuildingHolder.buildingHolder.gameObject.transform, false);

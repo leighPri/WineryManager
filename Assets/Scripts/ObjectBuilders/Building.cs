@@ -106,8 +106,8 @@ public class Building : MonoBehaviour {
         cost = ObjectMaster.buildingList[templateID].cost;
         objectType = ObjectMaster.buildingList[templateID].objectType;
 
-        myPos = gameObject.transform.localPosition;
-
+        myPos = cell.myOriginalPosition;
+         
         myArrayPos = cell.myPosition;
     }
 

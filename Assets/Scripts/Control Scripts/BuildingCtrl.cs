@@ -31,6 +31,7 @@ public class BuildingCtrl : MonoBehaviour {
            playerBuilding[cell.myPosition] = Instantiate(InHandCtrl.inHandCtrl.buildingInHand, cell.transform.position, Quaternion.identity) as Building;
            playerBuilding[cell.myPosition].SetParamsByID(InHandCtrl.objectInHand, cell); //populates details of above building instance
            playerBuilding[cell.myPosition].transform.SetParent(BuildingHolder.buildingHolder.gameObject.transform, false);
+           playerBuilding[cell.myPosition].transform.localPosition = cell.transform.localPosition;
            InHandCtrl.ClearHand();
            SaveLoad.Save();
     }

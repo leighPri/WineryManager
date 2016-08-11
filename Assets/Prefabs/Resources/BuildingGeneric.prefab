@@ -89,7 +89,7 @@ Transform:
   m_GameObject: {fileID: 171226}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 7.7497187, y: 5.761203, z: -22}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.75, y: 0.75, z: 0.75}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 481998}
@@ -146,6 +146,7 @@ MonoBehaviour:
   canProcess: 0
   consumableIDInProcessing: 0
   myPos: {x: 0, y: 0, z: 0}
+  myArrayPos: 0
   spriteArray:
   - {fileID: 21300000, guid: b4fac150b20fdd245a97d29651112c66, type: 3}
   - {fileID: 21300000, guid: 129fda61625042c4d99a09f1281f8938, type: 3}
@@ -198,7 +199,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 839c8e638e5eb7f46a522c760c89ad34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myOriginalPos: {x: 0, y: 0, z: 0}
 --- !u!212 &21205610
 SpriteRenderer:
   m_ObjectHideFlags: 1
