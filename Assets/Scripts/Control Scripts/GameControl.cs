@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public class GameControl : MonoBehaviour {
     
     public static GameControl control;
+    public static int wineryRegion;
 
     //declare variables to be persisted here
     public static int w = 18; //grid width
@@ -13,6 +14,8 @@ public class GameControl : MonoBehaviour {
     //public static int h = 29; //grid height for huge grid
     //holder of the actual grid data
     public static Element[] grid = new Element[w * h];
+    
+    public enum region { Building, Consumable, Midpoint, Unaged, Vine };
 
     public static bool TryToLoad; //set to true when Load Game selected, set to false on Start
 
@@ -21,6 +24,12 @@ public class GameControl : MonoBehaviour {
             control = this;
         else if (control != this)
             Destroy(gameObject);
+    }
+
+    public static void SetRegion(int regionInput) {
+        if (regionInput == 0) {
+            //wineryRegion = (int)region.;
+        }
     }
 
     public void SetTryToLoad(bool setInput) {
